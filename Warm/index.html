@@ -393,7 +393,7 @@
 <script src="/js/gitment.browser.js"></script>
 <script>
     var gitment = new Gitment({
-      id: window.location.pathname,
+      id: (window.location.pathname.length < 50) ? window.location.pathname : 'Fri Mar 24 2017 00:21:31 GMT+0800',
       owner: 'iCocos',
       repo: 'icocos.github.io',
       oauth: {
