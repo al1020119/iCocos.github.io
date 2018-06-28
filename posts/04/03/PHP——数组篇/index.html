@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>PHP——数组篇 | iCocos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么是数组？数组就是被命名的用来存储一系列数值的地方。数组array是非常重要的数据类型。相对于其他的数据类型，它更像是一种结构，而这种结果构可以存储一系列数值。数组能够在单一变量名中存储许多值，并且能够通过引用下标号来访问某个值。">
+<meta name="keywords" content="PHP,数组篇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP——数组篇">
+<meta property="og:url" content="http://yoursite.com/posts/04/03/PHP——数组篇/index.html">
+<meta property="og:site_name" content="iCocos">
+<meta property="og:description" content="什么是数组？数组就是被命名的用来存储一系列数值的地方。数组array是非常重要的数据类型。相对于其他的数据类型，它更像是一种结构，而这种结果构可以存储一系列数值。数组能够在单一变量名中存储许多值，并且能够通过引用下标号来访问某个值。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/iCocosImages/201703/iCocosBlogHeader.JPG">
+<meta property="og:updated_time" content="2018-05-06T13:06:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP——数组篇">
+<meta name="twitter:description" content="什么是数组？数组就是被命名的用来存储一系列数值的地方。数组array是非常重要的数据类型。相对于其他的数据类型，它更像是一种结构，而这种结果构可以存储一系列数值。数组能够在单一变量名中存储许多值，并且能够通过引用下标号来访问某个值。">
+<meta name="twitter:image" content="http://yoursite.com/iCocosImages/201703/iCocosBlogHeader.JPG">
+  
+    <link rel="alternative" href="/atom.xml" title="iCocos" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">iCocos</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">梦工厂</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Homes">首页</a></li>
+                        
+                            <li><a href="/Sites">网站</a></li>
+                        
+                            <li><a href="/Uscvs">简历</a></li>
+                        
+                            <li><a href="/Works">作品</a></li>
+                        
+                            <li><a href="/Mesgs">留言</a></li>
+                        
+                            <li><a href="/Warm">温馨</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl pinterest" target="_blank" href="http://www.icocos.cn" title="pinterest">pinterest</a>
+                            
+                                <a class="fl pinboard" target="_blank" href="http://al1020119.github.io/" title="pinboard">pinboard</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/al1020119" title="github">github</a>
+                            
+                                <a class="fl weibo" target="_blank" href="https://weibo.com/iCocosLver" title="weibo">weibo</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="http://www.linkedin.com/in/%E7%90%86%E9%B9%8F-%E6%9B%B9-3b30b5134/" title="linkedin">linkedin</a>
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=LE9AXE1FTUBsXV0CT0NB" title="mail">mail</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/icocos-65/activities" title="zhihu">zhihu</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/2017/" style="font-size: 10px;">2017</a> <a href="/tags/3-rf一把无形的双刃剑/" style="font-size: 10px;">3-rf一把无形的双刃剑</a> <a href="/tags/500错误/" style="font-size: 10px;">500错误</a> <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/APP接口/" style="font-size: 10px;">APP接口</a> <a href="/tags/ARC中循环引用问题/" style="font-size: 10px;">ARC中循环引用问题</a> <a href="/tags/Algo/" style="font-size: 10px;">Algo</a> <a href="/tags/Apple/" style="font-size: 10px;">Apple</a> <a href="/tags/App启动优化分析与总结/" style="font-size: 10px;">App启动优化分析与总结</a> <a href="/tags/App整个启动过程分析/" style="font-size: 10px;">App整个启动过程分析</a> <a href="/tags/App跳转到系统设置/" style="font-size: 10px;">App跳转到系统设置</a> <a href="/tags/Array、Slice、Map、Set/" style="font-size: 10px;">Array、Slice、Map、Set</a> <a href="/tags/CURL初探/" style="font-size: 10px;">CURL初探</a> <a href="/tags/CocoaPods私有化组件/" style="font-size: 10px;">CocoaPods私有化组件</a> <a href="/tags/GET-POST方式总结/" style="font-size: 10px;">GET/POST方式总结</a> <a href="/tags/Games/" style="font-size: 10px;">Games</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Golang知识图谱/" style="font-size: 10px;">Golang知识图谱</a> <a href="/tags/Google-I-O/" style="font-size: 10px;">Google I/O</a> <a href="/tags/Go基础/" style="font-size: 16.67px;">Go基础</a> <a href="/tags/Go安装与配置/" style="font-size: 10px;">Go安装与配置</a> <a href="/tags/Http服务初探/" style="font-size: 10px;">Http服务初探</a> <a href="/tags/Live/" style="font-size: 10px;">Live</a> <a href="/tags/Meeting/" style="font-size: 10px;">Meeting</a> <a href="/tags/MySql安装与配置/" style="font-size: 10px;">MySql安装与配置</a> <a href="/tags/Nginx安装与配置/" style="font-size: 10px;">Nginx安装与配置</a> <a href="/tags/Objective-C与Swift优缺点对比/" style="font-size: 10px;">Objective-C与Swift优缺点对比</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/PHP经典面试一/" style="font-size: 10px;">PHP经典面试一</a> <a href="/tags/PHP经典面试二/" style="font-size: 10px;">PHP经典面试二</a> <a href="/tags/Php安装与配置/" style="font-size: 10px;">Php安装与配置</a> <a href="/tags/QQ号与QQ群添加与调整功能/" style="font-size: 10px;">QQ号与QQ群添加与调整功能</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/React-Native搭建与初始化项目/" style="font-size: 10px;">React Native搭建与初始化项目</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Response/" style="font-size: 10px;">Response</a> <a href="/tags/RunLoop/" style="font-size: 10px;">RunLoop</a> <a href="/tags/Server/" style="font-size: 15.56px;">Server</a> <a href="/tags/Swift/" style="font-size: 17.78px;">Swift</a> <a href="/tags/Swift-4-0-适配实战总结（Xcode9）/" style="font-size: 10px;">Swift 4.0 适配实战总结（Xcode9）</a> <a href="/tags/Swift3/" style="font-size: 13.33px;">Swift3</a> <a href="/tags/Swift3中的Runtime/" style="font-size: 11.11px;">Swift3中的Runtime</a> <a href="/tags/Swift从入门到入门/" style="font-size: 10px;">Swift从入门到入门</a> <a href="/tags/Swift内存管理/" style="font-size: 10px;">Swift内存管理</a> <a href="/tags/WWDC/" style="font-size: 12.22px;">WWDC</a> <a href="/tags/WWDC17惊喜/" style="font-size: 10px;">WWDC17惊喜</a> <a href="/tags/Xcode-Server完整教程/" style="font-size: 10px;">Xcode Server完整教程</a> <a href="/tags/Xcode默认路径（Fastlane打包的尴尬）/" style="font-size: 10px;">Xcode默认路径（Fastlane打包的尴尬）</a> <a href="/tags/attribute-使用与总结/" style="font-size: 10px;">attribute__使用与总结</a> <a href="/tags/cocos2dx初探/" style="font-size: 10px;">cocos2dx初探</a> <a href="/tags/goroutine和channel/" style="font-size: 10px;">goroutine和channel</a> <a href="/tags/groutine和channel底层机制/" style="font-size: 10px;">groutine和channel底层机制</a> <a href="/tags/iCocos/" style="font-size: 10px;">iCocos</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iPhone-X适配实战总结/" style="font-size: 10px;">iPhone X适配实战总结</a> <a href="/tags/ipv6-客户端/" style="font-size: 10px;">ipv6(客户端)</a> <a href="/tags/ipv6-服务器/" style="font-size: 10px;">ipv6(服务器)</a> <a href="/tags/kotlin/" style="font-size: 12.22px;">kotlin</a> <a href="/tags/session和cookie/" style="font-size: 10px;">session和cookie</a> <a href="/tags/万物皆对象/" style="font-size: 10px;">万物皆对象</a> <a href="/tags/不为人知的淫技/" style="font-size: 10px;">不为人知的淫技</a> <a href="/tags/免密登录，我以为有多难？/" style="font-size: 10px;">免密登录，我以为有多难？</a> <a href="/tags/关于马甲包与审核/" style="font-size: 10px;">关于马甲包与审核</a> <a href="/tags/内存管理/" style="font-size: 10px;">内存管理</a> <a href="/tags/函数与方法/" style="font-size: 10px;">函数与方法</a> <a href="/tags/函数篇/" style="font-size: 10px;">函数篇</a> <a href="/tags/分页与实现/" style="font-size: 10px;">分页与实现</a> <a href="/tags/动态-静态分析与实战/" style="font-size: 10px;">动态&静态分析与实战</a> <a href="/tags/可选类型总结/" style="font-size: 10px;">可选类型总结</a> <a href="/tags/合并两个链表/" style="font-size: 10px;">合并两个链表</a> <a href="/tags/图像与图像操作/" style="font-size: 10px;">图像与图像操作</a> <a href="/tags/基础学习笔记/" style="font-size: 10px;">基础学习笔记</a> <a href="/tags/大会/" style="font-size: 11.11px;">大会</a> <a href="/tags/大会后感/" style="font-size: 10px;">大会后感</a> <a href="/tags/大流量高并发解决方案/" style="font-size: 10px;">大流量高并发解决方案</a> <a href="/tags/字符串操作/" style="font-size: 10px;">字符串操作</a> <a href="/tags/实战验证与补充/" style="font-size: 10px;">实战验证与补充</a> <a href="/tags/实用技巧/" style="font-size: 10px;">实用技巧</a> <a href="/tags/屏幕旋转/" style="font-size: 10px;">屏幕旋转</a> <a href="/tags/工具集选/" style="font-size: 10px;">工具集选</a> <a href="/tags/底层分析/" style="font-size: 14.44px;">底层分析</a> <a href="/tags/底层机制/" style="font-size: 10px;">底层机制</a> <a href="/tags/开发文档/" style="font-size: 11.11px;">开发文档</a> <a href="/tags/开发者中心更新手机号码/" style="font-size: 10px;">开发者中心更新手机号码</a> <a href="/tags/异常处理/" style="font-size: 10px;">异常处理</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/技术原理/" style="font-size: 10px;">技术原理</a> <a href="/tags/接口设计规范/" style="font-size: 10px;">接口设计规范</a> <a href="/tags/数据库优化的八种方式/" style="font-size: 10px;">数据库优化的八种方式</a> <a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a> <a href="/tags/数组篇/" style="font-size: 10px;">数组篇</a> <a href="/tags/文件上传下载原理与配置/" style="font-size: 10px;">文件上传下载原理与配置</a> <a href="/tags/文件上传下载实战/" style="font-size: 10px;">文件上传下载实战</a> <a href="/tags/文件处理/" style="font-size: 10px;">文件处理</a> <a href="/tags/文件操作/" style="font-size: 10px;">文件操作</a> <a href="/tags/方法调用技巧/" style="font-size: 10px;">方法调用技巧</a> <a href="/tags/时间与日期处理/" style="font-size: 10px;">时间与日期处理</a> <a href="/tags/最新高级面试题整理（阿里篇）/" style="font-size: 10px;">最新高级面试题整理（阿里篇）</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/漫威科幻/" style="font-size: 10px;">漫威科幻</a> <a href="/tags/第一周语法总结/" style="font-size: 10px;">第一周语法总结</a> <a href="/tags/类-结构体-枚举总结/" style="font-size: 10px;">类&结构体&枚举总结</a> <a href="/tags/缓存/" style="font-size: 10px;">缓存</a> <a href="/tags/自动打包上传/" style="font-size: 10px;">自动打包上传</a> <a href="/tags/访问控制/" style="font-size: 10px;">访问控制</a> <a href="/tags/语法小结/" style="font-size: 10px;">语法小结</a> <a href="/tags/重整iOS技术（Fastlane完整打包流程）/" style="font-size: 10px;">重整iOS技术（Fastlane完整打包流程）</a> <a href="/tags/防止反编译总结/" style="font-size: 10px;">防止反编译总结</a> <a href="/tags/阿里云主机配置与操作/" style="font-size: 10px;">阿里云主机配置与操作</a> <a href="/tags/除了代码，还有生活/" style="font-size: 10px;">除了代码，还有生活</a> <a href="/tags/面试一/" style="font-size: 10px;">面试一</a> <a href="/tags/面试二/" style="font-size: 10px;">面试二</a> <a href="/tags/魔术方法/" style="font-size: 10px;">魔术方法</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://al1020119.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯码迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中！</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">iCocos</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">iCocos</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">梦工厂</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Homes">首页</a></li>
+                
+                    <li><a href="/Sites">网站</a></li>
+                
+                    <li><a href="/Uscvs">简历</a></li>
+                
+                    <li><a href="/Works">作品</a></li>
+                
+                    <li><a href="/Mesgs">留言</a></li>
+                
+                    <li><a href="/Warm">温馨</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="pinterest" target="_blank" href="http://www.icocos.cn" title="pinterest">pinterest</a>
+                    
+                        <a class="pinboard" target="_blank" href="http://al1020119.github.io/" title="pinboard">pinboard</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/al1020119" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/iCocosLver" title="weibo">weibo</a>
+                    
+                        <a class="linkedin" target="_blank" href="http://www.linkedin.com/in/%E7%90%86%E9%B9%8F-%E6%9B%B9-3b30b5134/" title="linkedin">linkedin</a>
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=LE9AXE1FTUBsXV0CT0NB" title="mail">mail</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/icocos-65/activities" title="zhihu">zhihu</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-PHP——数组篇" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/posts/04/03/PHP——数组篇/" class="article-date">
+      <time datetime="2017-04-02T16:06:22.000Z" itemprop="datePublished">2017-04-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP——数组篇
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组篇/">数组篇</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>什么是数组？数组就是被命名的用来存储一系列数值的地方。数组array是非常重要的数据类型。相对于其他的数据类型，它更像是一种结构，而这种结果构可以存储一系列数值。数组能够在单一变量名中存储许多值，并且能够通过引用下标号来访问某个值。</p>
+<p>在 PHP 中，有三种数组类型：</p>
+<pre><code>索引数组 - 带有数字索引的数组
+关联数组 - 带有指定键的数组
+多维数组 - 包含一个或多个数组的数组
+</code></pre><h2 id="数组篇"><a href="#数组篇" class="headerlink" title="数组篇"></a>数组篇</h2><a id="more"></a>
+<h3 id="嗨，欢迎来到梦工厂，我是曹理鹏-iCocos-，一名-iOS-前端-开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。"><a href="#嗨，欢迎来到梦工厂，我是曹理鹏-iCocos-，一名-iOS-前端-开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。" class="headerlink" title="嗨，欢迎来到梦工厂，我是曹理鹏 (@iCocos)，一名 iOS / 前端 开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。"></a>嗨，欢迎来到梦工厂，我是曹理鹏 (@iCocos)，一名 iOS / 前端 开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。</h3><h3 id="微信：clpaial10201119-QQ：2211523682"><a href="#微信：clpaial10201119-QQ：2211523682" class="headerlink" title="微信：clpaial10201119 / QQ：2211523682"></a>微信：clpaial10201119 / QQ：2211523682</h3><h3 id="博客-前后端-：https-icocos-github-io"><a href="#博客-前后端-：https-icocos-github-io" class="headerlink" title="博客(前后端)：https://icocos.github.io/"></a>博客(前后端)：<a href="https://icocos.github.io/" target="_blank" rel="noopener">https://icocos.github.io/</a></h3><h3 id="博客-iOS-：http-al1020119-github-io"><a href="#博客-iOS-：http-al1020119-github-io" class="headerlink" title="博客(iOS)：http://al1020119.github.io/"></a>博客(iOS)：<a href="http://al1020119.github.io/" target="_blank" rel="noopener">http://al1020119.github.io/</a></h3><h3 id="github：https-github-com-al1020119"><a href="#github：https-github-com-al1020119" class="headerlink" title="github：https://github.com/al1020119"></a>github：<a href="https://github.com/al1020119" target="_blank" rel="noopener">https://github.com/al1020119</a></h3><h3 id="个人网站：http-www-icocos-cn"><a href="#个人网站：http-www-icocos-cn" class="headerlink" title="个人网站：http://www.icocos.cn/"></a>个人网站：<a href="http://www.icocos.cn/" target="_blank" rel="noopener">http://www.icocos.cn/</a></h3><p><img src="/iCocosImages/201703/iCocosBlogHeader.JPG" alt="曹理鹏(iCocos)-梦工厂"></p>
+<h3 id="PHP数组定义"><a href="#PHP数组定义" class="headerlink" title="PHP数组定义"></a>PHP数组定义</h3><p>数组就是一个键值对组成的语言结构，键类似于酒店的房间号，值类似于酒店房间里存储的东西。</p>
+<p>其实在PHP中数组感觉更像iOS中的字典，但也有iOS中的数组相似点，只是数组通过索引，字典是通过键值对。</p>
+<p>创建数组（空）</p>
+<pre><code>$arr = array();
+</code></pre><h2 id="PHP有两种数组：索引数组、关联数组。"><a href="#PHP有两种数组：索引数组、关联数组。" class="headerlink" title="PHP有两种数组：索引数组、关联数组。"></a>PHP有两种数组：索引数组、关联数组。</h2><pre><code>索引和关联两个词都是针对数组的键而言的。
+</code></pre><h2 id="PHP索引数组–iOS中的数组"><a href="#PHP索引数组–iOS中的数组" class="headerlink" title="PHP索引数组–iOS中的数组"></a>PHP索引数组–iOS中的数组</h2><p>先介绍下索引数组，索引数组是指数组的键是整数的数组，并且键的整数顺序是从0开始，依次类推。</p>
+<h3 id="创建索引数组"><a href="#创建索引数组" class="headerlink" title="创建索引数组"></a>创建索引数组</h3><pre><code>$arrIndex = array(&quot;iCocos&quot;, &quot;iOS&quot;, &quot;苹果&quot;);
+</code></pre><p>注意数组的键是从0开始的。可以使用print_r($arr);语句输出数组键及对应的值。</p>
+<h3 id="赋值方式"><a href="#赋值方式" class="headerlink" title="赋值方式"></a>赋值方式</h3><pre><code>第一种：用数组变量的名字后面跟一个中括号的方式赋值，当然，索引数组中，中括号内的键一定是整数。比如，$arr[0]=&apos;iCocos&apos;;
+
+第二种：用array()创建一个空数组，使用=&gt;符号来分隔键和值，左侧表示键，右侧表示值。当然，索引数组中，键一定是整数。比如，array(&apos;0&apos;=&gt;&apos;iCocos&apos;);
+
+第三种：用array()创建一个空数组，直接在数组里用英文的单引号&apos;或者英文的双引号&quot;赋值，数组会默认建立从0开始的整数的键。比如array(&apos;iCocos&apos;);这个数组相当于array(&apos;0&apos;=&gt;&apos;iCocos&apos;);
+</code></pre><h3 id="读取内容"><a href="#读取内容" class="headerlink" title="读取内容"></a>读取内容</h3><p>用数组变量的名字后跟的中括号中的键，来访问数组中的值。</p>
+<pre><code>$arr = array(&apos;iCocos&apos;,&apos;iOS&apos;);
+$arr0 = $arr[&apos;0&apos;];
+print_r($arr0);//结果为iCocos
+</code></pre><h3 id="遍历数组（开发中最常用的操作）–-gt-for"><a href="#遍历数组（开发中最常用的操作）–-gt-for" class="headerlink" title="遍历数组（开发中最常用的操作）–&gt;for"></a>遍历数组（开发中最常用的操作）–&gt;for</h3><pre><code>$arr=array(&apos;iCocos&apos;,&apos;iOS&apos;,&apos;苹果&apos;);
+for($i=0; $i&lt;3; $i++){
+echo &apos;&lt;br&gt;数组第&apos;.$i.&apos;值是：&apos;.$arr[$i];
+}
+</code></pre><h3 id="遍历数组（开发中最常用的操作）–-gt-foreach"><a href="#遍历数组（开发中最常用的操作）–-gt-foreach" class="headerlink" title="遍历数组（开发中最常用的操作）–&gt;foreach"></a>遍历数组（开发中最常用的操作）–&gt;foreach</h3><pre><code>$arr=array(&apos;iCocos&apos;,&apos;iOS&apos;,&apos;苹果&apos;);
+foreach($arr as $k=&gt;$v){
+echo &apos;&lt;br&gt;第&apos;.$k.&apos;值是：&apos;.$v;
+}
+</code></pre><h2 id="PHP关联数组–iOS中的字典"><a href="#PHP关联数组–iOS中的字典" class="headerlink" title="PHP关联数组–iOS中的字典"></a>PHP关联数组–iOS中的字典</h2><p>关联数组是指数组的键是字符串的数组。</p>
+<h3 id="创建关联数组"><a href="#创建关联数组" class="headerlink" title="创建关联数组"></a>创建关联数组</h3><pre><code>$arr = array(
+&apos;apple&apos;=&gt;&quot;iCocos&quot;,
+&apos;banana&apos;=&gt;&quot;iOS&quot;,
+&apos;pineapple&apos;=&gt;&quot;苹果&quot;
+); 
+</code></pre><h3 id="赋值方式-1"><a href="#赋值方式-1" class="headerlink" title="赋值方式"></a>赋值方式</h3><pre><code>第一种：用数组变量的名字后面跟一个中括号的方式赋值，当然，关联数组中，中括号内的键一定是字符串。比如，$arr[&apos;apple&apos;]=&apos;iCocos&apos;;
+
+第二种：用array()创建一个空数组，使用=&gt;符号来分隔键和值，左侧表示键，右侧表示值。当然，关联数组中，键一定是字符串。比如，array(&apos;apple&apos;=&gt;&apos;iCocos&apos;);
+</code></pre><h3 id="读取内容-1"><a href="#读取内容-1" class="headerlink" title="读取内容"></a>读取内容</h3><p>用数组变量的名字后跟中括号+键的方式来访问数组中的值，键使用单引号或者双引号括起来。</p>
+<pre><code>$arr = array(&apos;apple&apos;=&gt;&quot;iCocos&quot;,&apos;banana&apos;=&gt;&quot;iOS&quot;,&apos;pineapple&apos;=&gt;&quot;苹果&quot;); 
+$arr0 = $arr[&apos;banana&apos;];
+print_r($arr0);
+</code></pre><h3 id="遍历数组（开发中最常用的操作）–-gt-foreach-1"><a href="#遍历数组（开发中最常用的操作）–-gt-foreach-1" class="headerlink" title="遍历数组（开发中最常用的操作）–&gt;foreach"></a>遍历数组（开发中最常用的操作）–&gt;foreach</h3><pre><code>$arr=array(&apos;apple&apos;=&gt;&quot;iCocos&quot;,&apos;banana&apos;=&gt;&quot;iOS&quot;,&apos;pineapple&apos;=&gt;&quot;苹果&quot;);
+foreach($arr as $k=&gt;$v){
+echo &apos;&lt;br&gt;水果的英文键名：&apos;.$k.&apos;，对应的值是：&apos;.$v;
+}
+</code></pre><h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h2><pre><code>array_filter(*array*,*callbackfunction*); 
+array_intersect_uassoc(*array1*,*array2*,*array3*...,*myfunction*) 
+array_intersect_ukey(*array1*,*array2*,*array3*...,*myfunction*) 
+array_reduce(*array*,*myfunction*,*initial*) 
+array_walk(*array*,*myfunction*,*userdata*...) 
+……
+</code></pre><h2 id="其他常用技巧总结"><a href="#其他常用技巧总结" class="headerlink" title="其他常用技巧总结"></a>其他常用技巧总结</h2><h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><pre><code>array(array(),array()) 二维数组
+</code></pre><h3 id="数组长度"><a href="#数组长度" class="headerlink" title="数组长度"></a>数组长度</h3><pre><code>$arr = array(&quot;百度&quot;,&quot;阿里&quot;,&quot;腾讯&quot;); 
+echo count($arr); 
+</code></pre><h2 id="增加删除数组的元素"><a href="#增加删除数组的元素" class="headerlink" title="增加删除数组的元素"></a>增加删除数组的元素</h2><h3 id="在数组元素的尾部增加"><a href="#在数组元素的尾部增加" class="headerlink" title="在数组元素的尾部增加"></a>在数组元素的尾部增加</h3><p>array_push(array,value1,value2…) 函数向第一个参数的数组尾部添加一个或多个元素（入栈），然后返回新数组的长度。<br>该函数等于多次调用 $array[] = $value。</p>
+<pre><code>&lt;?php
+$arr = array(&quot;百度&quot;,&quot;阿里&quot;,&quot;腾讯&quot;);
+array_push($arr,&quot;知乎&quot;,&quot;微博&quot;);
+echo &quot;&lt;pre&gt;&quot;; //换行显示
+print_r($arr);
+打印结果显示：
+Array
+(
+[0] =&gt; 百度
+[1] =&gt; 阿里
+[2] =&gt; 腾讯
+[3] =&gt; 知乎
+[4] =&gt; 微博
+)
+</code></pre><h3 id="在数组元素的开始增加"><a href="#在数组元素的开始增加" class="headerlink" title="在数组元素的开始增加"></a>在数组元素的开始增加</h3><p>array_unshift(array,value1,value2,value3…) 函数用于向数组插入新元素。新数组的值将被插入到数组的开头。</p>
+<pre><code>&lt;?php
+$arr = array(&quot;百度&quot;,&quot;阿里&quot;,&quot;腾讯&quot;);
+array_unshift($arr,&quot;知乎&quot;,&quot;微博&quot;);
+echo &quot;&lt;pre&gt;&quot;; //换行显示
+print_r($arr);
+打印结果显示：
+Array
+(
+[0] =&gt; 知乎
+[1] =&gt; 微博
+[2] =&gt; 百度
+[3] =&gt; 阿里
+[4] =&gt; 腾讯
+)
+</code></pre><h3 id="在数组元素的尾部删除"><a href="#在数组元素的尾部删除" class="headerlink" title="在数组元素的尾部删除"></a>在数组元素的尾部删除</h3><p>array_pop(array) 函数删除数组中的最后一个元素。</p>
+<pre><code>&lt;?php
+$arr = array(&quot;百度&quot;,&quot;阿里&quot;,&quot;腾讯&quot;);
+array_pop($arr);
+echo &quot;&lt;pre&gt;&quot;; //换行显示
+print_r($arr);
+打印结果显示：
+Array
+(
+[0] =&gt; 百度
+[1] =&gt; 阿里
+)
+</code></pre><h3 id="在数组元素的开始删除"><a href="#在数组元素的开始删除" class="headerlink" title="在数组元素的开始删除"></a>在数组元素的开始删除</h3><p>array_shift(array) 函数删除数组中第一个元素 并可以返回被删除元素的值。</p>
+<pre><code>&lt;?php
+$arr = array(&quot;百度&quot;,&quot;阿里&quot;,&quot;腾讯&quot;);
+array_shift($arr);
+echo &quot;&lt;pre&gt;&quot;; //换行显示
+print_r($arr);
+打印结果显示：
+Array
+(
+[0] =&gt; 阿里
+[1] =&gt; 腾讯
+)
+</code></pre><h3 id="移除数组中重复的值"><a href="#移除数组中重复的值" class="headerlink" title="移除数组中重复的值"></a>移除数组中重复的值</h3><p>array_unique(array) 函数移除数组中的重复的值，并返回结果数组。</p>
+<pre><code>&lt;?php
+$arr = array(&quot;百度&quot;,&quot;阿里&quot;,&quot;腾讯&quot;,&quot;百度&quot;,&quot;微博&quot;);
+$data = array_unique($arr);
+echo &quot;&lt;pre&gt;&quot;;
+print_r($data);
+打印结果显示：
+Array
+(
+[0] =&gt; 百度
+[1] =&gt; 阿里
+[2] =&gt; 腾讯
+[4] =&gt; 微博
+)
+</code></pre><h3 id="数组合并、拆分、比较"><a href="#数组合并、拆分、比较" class="headerlink" title="数组合并、拆分、比较"></a>数组合并、拆分、比较</h3><p>array_merge()函数将数组合并到一起，返回一个联合的数组。所得到的数组以第一个输入数组参数开始，按后面数组参数出现的顺序依次追加。</p>
+<pre><code>&lt;?php
+$arr1 = array(&quot;百度&quot;,&quot;阿里&quot;,&quot;腾讯&quot;);
+$arr2 = array(&quot;知乎&quot;,&quot;微博&quot;);
+$data = array_merge($arr1,$arr2);
+echo &quot;&lt;pre&gt;&quot;;
+print_r($data);
+打印结果显示：
+Array
+(
+[0] =&gt; 百度
+[1] =&gt; 阿里
+[2] =&gt; 腾讯
+[3] =&gt; 知乎
+[4] =&gt; 微博
+)
+</code></pre><h3 id="递归追加数组"><a href="#递归追加数组" class="headerlink" title="递归追加数组"></a>递归追加数组</h3><p>array_merge_recursive()函数与array_merge()相同，可以将两个或多个数组合并到一起，形成一个联合的数组。两者之间的区别在于，当某个输入数组中的某个键已经存在于结果数组中时该函数会采取不同的处理方法。array_merge()会覆盖前面存在的键/值对，将其替换为当前输入数组中的键/值对，而array_merge_recursive()将两个值合并在一起，形成一个新的数组并以原有的键作为数组名。其形式为：</p>
+<pre><code>$arr= array(&apos;one&apos;=&gt;&apos;C&apos;, &apos;one&apos;=&gt;&apos;B&apos;); 
+$arr1= array(&apos;three&apos;=&gt;&apos;1&apos;, &apos;one&apos;=&gt;&apos;2&apos;); 
+$arr2= array_merge_recursive($arr, $arr1); 
+echo &quot;&lt;pre&gt;&quot;;
+print_r($arr2); 
+打印结果显示：
+Array
+(
+[one] =&gt; Array
+(
+[0] =&gt; B
+[1] =&gt; 2
+)
+
+[three] =&gt; 1
+)
+</code></pre><h3 id="合并两个数组"><a href="#合并两个数组" class="headerlink" title="合并两个数组"></a>合并两个数组</h3><p>array_combine()函数会生成一个新数组，这个数组由一组提交的键和对应的值组成，其形式为：</p>
+<pre><code>$arr= array(&apos;A&apos;, &apos;B&apos;); 
+$arr1= array(&apos;1&apos;, &apos;2&apos;); 
+$arr2= array_combine($arr, $arr1);
+echo &quot;&lt;pre&gt;&quot;;
+print_r($arr2); 
+打印结果显示：
+Array
+(
+[A] =&gt; 1
+[B] =&gt; 2
+)
+</code></pre><h3 id="求数组的交集"><a href="#求数组的交集" class="headerlink" title="求数组的交集"></a>求数组的交集</h3><p>array_intersect()函数返回一个保留了键的数组，这个数组只由第一个数组中出现的且在其他每个输入数组中都出现的值组成。其形式如下：</p>
+<pre><code>$arr= array(&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;); 
+$arr1= array(&apos;A&apos;, &apos;B&apos;, &apos;E&apos;); 
+$arr2= array(&apos;A&apos;, &apos;F&apos;, &apos;D&apos;); 
+$arr3= array_intersect($arr, $arr1, $arr2); 
+echo &quot;&lt;pre&gt;&quot;;
+print_r($arr3); 
+打印结果显示：
+Array
+(
+[0] =&gt; A
+)
+</code></pre><p>注意：只有在两个元素有相同的数据类型时，array_intersect()才会认为它们相等。</p>
+<h3 id="求关联数组的交集"><a href="#求关联数组的交集" class="headerlink" title="求关联数组的交集"></a>求关联数组的交集</h3><p>array_intersect_assoc()与array_intersect()基本相同，只不过它在比较中还考虑了数组的键。因此，只有在第一个数组中出现，且在所有其他输入数组中也出现的键/值对才被返回到结果数组中。其形式如下：</p>
+<pre><code>$arr= array(&apos;a&apos;=&gt;&apos;A&apos;, &apos;b&apos;=&gt;&apos;B&apos;, &apos;c&apos;=&gt;&apos;C&apos;, &apos;d&apos;=&gt;&apos;D&apos;); 
+$arr1= array(&apos;a&apos;=&gt;&apos;A&apos;, &apos;c&apos;=&gt;&apos;B&apos;, &apos;E&apos;); 
+$arr2= array(&apos;a&apos;=&gt;&apos;A&apos;, &apos;b&apos;=&gt;&apos;F&apos;, &apos;d&apos;=&gt;&apos;B&apos;); 
+$arr3= array_intersect_assoc($arr, $arr1, $arr2); 
+echo &quot;&lt;pre&gt;&quot;;
+print_r($arr3); 
+打印结果显示：
+Array
+(
+[a] =&gt; A
+)
+</code></pre><h3 id="求关联数组的差集"><a href="#求关联数组的差集" class="headerlink" title="求关联数组的差集"></a>求关联数组的差集</h3><p>函数array_diff_assoc()与array_diff()基本相同，只是它在比较时还考虑了数组的键，因此，只在第一个数组中出现而不在其他输入数组中出现的键/值对才会被返回到结果数组中。其形式如下：</p>
+<pre><code>$arr= array(&apos;a&apos;=&gt;&apos;A&apos;, &apos;b&apos;=&gt;&apos;B&apos;, &apos;c&apos;=&gt;&apos;C&apos;, &apos;d&apos;=&gt;&apos;D&apos;); 
+$arr1= array(&apos;a&apos;=&gt;&apos;A&apos;, &apos;b&apos;=&gt;&apos;B&apos;, &apos;e&apos;=&gt;&apos;E&apos;); 
+$arr3= array_diff_assoc($arr, $arr1); 
+echo &quot;&lt;pre&gt;&quot;;
+print_r($arr3); 
+打印结果显示：
+Array
+(
+[c] =&gt; C
+[d] =&gt; D
+)
+</code></pre><h3 id="其他有用的数组函数"><a href="#其他有用的数组函数" class="headerlink" title="其他有用的数组函数"></a>其他有用的数组函数</h3><p>返回一组随机的键 array_rand()函数将返回数组中的一个或多个键。其形式为：</p>
+<pre><code>$arr= array(&apos;a&apos;=&gt;&apos;A&apos;, &apos;b&apos;=&gt;&apos;B&apos;, &apos;c&apos;=&gt;&apos;C&apos;, &apos;d&apos;=&gt;&apos;D&apos;); 
+$arr1= array_rand($arr, 2); 
+echo &quot;&lt;pre&gt;&quot;;
+print_r($arr1);
+打印结果显示：
+Array
+(
+[0] =&gt; c
+[1] =&gt; d
+) //每次刷新显示的结果都不一样
+</code></pre><h3 id="对数组中的值求和"><a href="#对数组中的值求和" class="headerlink" title="对数组中的值求和"></a>对数组中的值求和</h3><p>array_sum()函数将数组内的所有值加在一起，返回最终的和，其形式如下：</p>
+<pre><code>$arr= array(&apos;A&apos;, 32, 12, &apos;B&apos;); 
+$count= array_sum($arr); 
+echo &quot;&lt;pre&gt;&quot;;
+print_r($count); 
+打印结果显示：
+44
+</code></pre><p>如果数组中包含其他数据类型(例如字符串)，这些值将被忽略。</p>
+<h3 id="划分数组"><a href="#划分数组" class="headerlink" title="划分数组"></a>划分数组</h3><p>array_chunk()函数将数组分解为一个多维数组，这个多维数组由多个包含size个元素的数组所组成。其形式如下：</p>
+<pre><code>$arr= array(&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;); 
+$arr1= array_chunk($arr, 2); 
+echo &quot;&lt;pre&gt;&quot;;
+print_r($arr1); 
+打印结果显示：
+Array
+(
+[0] =&gt; Array
+(
+[0] =&gt; A
+[1] =&gt; B
+)
+
+[1] =&gt; Array
+(
+[0] =&gt; C
+[1] =&gt; D
+)
+
+)
+</code></pre>
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>梦工厂@iCocos</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">感谢您的支持，我会继续努力！</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/posts/04/03/PHP——数组篇/">PHP——数组篇</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 iCocos 的个人博客">iCocos</a></p>
+        <p><span>发布时间:</span>2017年04月03日 - 00时06分</p>
+        <p><span>最后更新:</span>2018年05月06日 - 21时06分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/posts/04/03/PHP——数组篇/" title="PHP——数组篇">http://yoursite.com/posts/04/03/PHP——数组篇/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/posts/04/03/PHP——数组篇/　　作者: iCocos" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/posts/04/04/PHP——函数篇/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          PHP——函数篇
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/03/31/PHP第一周——基础总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP第一周——基础总结</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数组篇"><span class="toc-number">1.</span> <span class="toc-text">数组篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#嗨，欢迎来到梦工厂，我是曹理鹏-iCocos-，一名-iOS-前端-开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。"><span class="toc-number">1.1.</span> <span class="toc-text">嗨，欢迎来到梦工厂，我是曹理鹏 (@iCocos)，一名 iOS / 前端 开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微信：clpaial10201119-QQ：2211523682"><span class="toc-number">1.2.</span> <span class="toc-text">微信：clpaial10201119 / QQ：2211523682</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#博客-前后端-：https-icocos-github-io"><span class="toc-number">1.3.</span> <span class="toc-text">博客(前后端)：https://icocos.github.io/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#博客-iOS-：http-al1020119-github-io"><span class="toc-number">1.4.</span> <span class="toc-text">博客(iOS)：http://al1020119.github.io/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github：https-github-com-al1020119"><span class="toc-number">1.5.</span> <span class="toc-text">github：https://github.com/al1020119</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个人网站：http-www-icocos-cn"><span class="toc-number">1.6.</span> <span class="toc-text">个人网站：http://www.icocos.cn/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP数组定义"><span class="toc-number">1.7.</span> <span class="toc-text">PHP数组定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP有两种数组：索引数组、关联数组。"><span class="toc-number">2.</span> <span class="toc-text">PHP有两种数组：索引数组、关联数组。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP索引数组–iOS中的数组"><span class="toc-number">3.</span> <span class="toc-text">PHP索引数组–iOS中的数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建索引数组"><span class="toc-number">3.1.</span> <span class="toc-text">创建索引数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值方式"><span class="toc-number">3.2.</span> <span class="toc-text">赋值方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取内容"><span class="toc-number">3.3.</span> <span class="toc-text">读取内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历数组（开发中最常用的操作）–-gt-for"><span class="toc-number">3.4.</span> <span class="toc-text">遍历数组（开发中最常用的操作）–&gt;for</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历数组（开发中最常用的操作）–-gt-foreach"><span class="toc-number">3.5.</span> <span class="toc-text">遍历数组（开发中最常用的操作）–&gt;foreach</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP关联数组–iOS中的字典"><span class="toc-number">4.</span> <span class="toc-text">PHP关联数组–iOS中的字典</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建关联数组"><span class="toc-number">4.1.</span> <span class="toc-text">创建关联数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值方式-1"><span class="toc-number">4.2.</span> <span class="toc-text">赋值方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取内容-1"><span class="toc-number">4.3.</span> <span class="toc-text">读取内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历数组（开发中最常用的操作）–-gt-foreach-1"><span class="toc-number">4.4.</span> <span class="toc-text">遍历数组（开发中最常用的操作）–&gt;foreach</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用函数"><span class="toc-number">5.</span> <span class="toc-text">常用函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他常用技巧总结"><span class="toc-number">6.</span> <span class="toc-text">其他常用技巧总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#多维数组"><span class="toc-number">6.1.</span> <span class="toc-text">多维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组长度"><span class="toc-number">6.2.</span> <span class="toc-text">数组长度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#增加删除数组的元素"><span class="toc-number">7.</span> <span class="toc-text">增加删除数组的元素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在数组元素的尾部增加"><span class="toc-number">7.1.</span> <span class="toc-text">在数组元素的尾部增加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在数组元素的开始增加"><span class="toc-number">7.2.</span> <span class="toc-text">在数组元素的开始增加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在数组元素的尾部删除"><span class="toc-number">7.3.</span> <span class="toc-text">在数组元素的尾部删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在数组元素的开始删除"><span class="toc-number">7.4.</span> <span class="toc-text">在数组元素的开始删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移除数组中重复的值"><span class="toc-number">7.5.</span> <span class="toc-text">移除数组中重复的值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组合并、拆分、比较"><span class="toc-number">7.6.</span> <span class="toc-text">数组合并、拆分、比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#递归追加数组"><span class="toc-number">7.7.</span> <span class="toc-text">递归追加数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并两个数组"><span class="toc-number">7.8.</span> <span class="toc-text">合并两个数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求数组的交集"><span class="toc-number">7.9.</span> <span class="toc-text">求数组的交集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求关联数组的交集"><span class="toc-number">7.10.</span> <span class="toc-text">求关联数组的交集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求关联数组的差集"><span class="toc-number">7.11.</span> <span class="toc-text">求关联数组的差集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他有用的数组函数"><span class="toc-number">7.12.</span> <span class="toc-text">其他有用的数组函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对数组中的值求和"><span class="toc-number">7.13.</span> <span class="toc-text">对数组中的值求和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#划分数组"><span class="toc-number">7.14.</span> <span class="toc-text">划分数组</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'iCocos',
+      repo: 'icocos.github.io',
+      oauth: {
+        client_id: '4b7d4fdd945e8aa01820',
+        client_secret: 'bb1a81ef2412269255e31aa4e2c8d21fe675c4d0',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/posts/04/04/PHP——函数篇/" title="上一篇: PHP——函数篇">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/posts/03/31/PHP第一周——基础总结/" title="下一篇: PHP第一周——基础总结">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/posts/06/15/初识游戏——cocos2dx初探/">初识游戏——cocos2dx初探</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/12/Golang——groutine和channel底层机制/">Golang——groutine和channel底层机制</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/07/Golang——Http服务初探/">Golang——Http服务初探</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/03/Golang——文件IO处理/">Golang——文件IO处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/01/Go——Golang-Response-Snippets/">Go——Golang Response Snippets</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/29/Go——简单说说goroutine和channel/">Go——简单说说goroutine和channel</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/25/Go——函数与方法的奇妙之处/">Go——函数与方法的奇妙之处</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/22/Go语言中的Array、Slice、Map和Set/">Go语言中的Array、Slice、Map和Set</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/19/漫威铁粉福利——漫威-妇联3/">漫威铁粉福利——漫威+妇联3</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/10/Golang知识图谱/">Golang知识图谱</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/09/Go——基础学习笔记/">Go——基础学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/05/服务器配置——实战验证与补充/">服务器配置——实战验证与补充</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/04/服务器配置——Go安装与配置/">服务器配置——Go安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/04/服务器配置——MySql安装与配置/">服务器配置——MySql安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/03/服务器配置——Php安装与配置/">服务器配置——Php安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/03/服务器配置——Nginx安装与配置/">服务器配置——Nginx安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/01/服务器配置——阿里云主机/">服务器配置——阿里云主机配置与操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/26/iOS——开发者中心更新手机号码/">iOS——开发者中心更新手机号码</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/24/iOS——Xcode默认路径-Fastlane打包/">iOS——Xcode默认路径(Fastlane打包)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/23/iOS——奇葩需求QQ号与QQ群添加与跳转/">iOS——奇葩需求QQ号与QQ群添加与跳转</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/20/iOS——3-rf一把无形的双刃剑/">iOS——3-rf一把无形的双刃剑</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/09/iOS——重整iOS技术（Fastlane完整打包流程）/">iOS——重整iOS技术（Fastlane完整打包流程）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/01/26/iOS游戏——关于马甲包与审核/">iOS游戏——关于马甲包与审核</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/12/31/回顾与展望：梦想之路！/">回顾与展望：梦想之路！</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/27/iOS——Swift-4-0-适配实战总结（Xcode9）/">iOS——Swift 4.0 适配实战总结（Xcode9）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/21/React-Nativec搭建与初始化项目/">React Native搭建与初始化项目</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/20/iOS——遇到的最奇葩的Bug/">iOS——遇到的最奇葩的Bug</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/18/iOS——免密登录，我以为有多难？/">iOS——免密登录，我以为有多难？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/18/iOS——iPhone-X适配实战总结/">iOS——iPhone X适配实战总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/16/iOS——App跳转到系统设置/">iOS——App跳转到系统设置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/11/Xcode-Server完整教程/">Xcode Server完整教程</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/08/iOS——-attribute-使用与总结/">iOS——__attribute__使用与总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/03/iOS——App启动优化分析与总结/">iOS——App启动优化分析与总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/10/26/iOS——防止反编译总结/">iOS——防止反编译总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/10/25/iOS——最新高级面试题整理（阿里篇）/">iOS——最新高级面试题整理（阿里篇）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/10/25/iOS——CocoaPods私有化组件/">iOS——CocoaPods私有化组件</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/09/19/iOS——Objective-C与Swift优缺点对比/">iOS——Objective-C与Swift优缺点对比</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/09/14/iOS开发——SVG图展示方案/">iOS开发——SVG图展示方案</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/09/12/Swift——简单服务端开发实战/">Swift——简单服务端开发实战</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/08/08/iOS开发——系统API使用问题汇总（-解决方案）/">iOS开发——系统API使用问题汇总（+解决方案）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/08/02/iOS（Swift）开发——开发文档/">iOS（Swift）开发——App开发文档</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/31/Swift开发——实用技巧Literal/">Swift开发——实用技巧Literal</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/22/Swift篇——ARC中循环引用问题/">Swift篇——ARC中循环引用问题</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/18/Swift篇——可选类型总结/">Swift篇——可选类型总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/15/Swift——类-结构体-枚举总结/">Swift——类&结构体&枚举总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/13/OC-Swift——方法调用技巧/">OC&&Swift——方法调用技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/08/Swift——不为人知的淫技/">Swift——不为人知的淫技</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/04/Swift——动态-静态分析与实战/">Swift——动态&静态分析与实战</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/01/Swift——访问控制关键字说明/">Swift——访问控制关键字说明</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/28/iOS——App整个启动过程分析/">iOS——App整个启动过程分析</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/25/带你简单理解block和-block的实现？/">带你简单理解block和__block的实现？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/24/带你简单理解weak和-weak的实现？/">带你简单理解weak和__weak的实现？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/20/分类能添加属性吗？成员变量呢？为什么？/">分类能添加属性吗？成员变量呢？为什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/18/为什么调用nil的任何方法都不会崩溃？/">为什么调用nil的任何方法都不会崩溃？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/15/XCode9——还有那些你不知道的新特性？/">XCode9——还有那些你不知道的新特性？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/13/WWDC17惊喜——Xcode9无线调试/">WWDC17惊喜——Xcode9无线调试</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/11/一个偶然的面试机会——我既然懵了/">一个偶然的面试机会——我既然懵了</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/06/WWDC17——都有那些值得你去了解的？/">WWDC17——都有那些值得你去了解的？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/05/Swift3——有了Perfect你也可以做PHP能做的事情/">Swift3——有了Perfect你也可以做PHP能做的事情</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/25/Swift3——Swift3中的Runtime/">Swift3——Swift3中的Runtime</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/23/Swift3——Swift内存管理/">Swift3——Swift内存管理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/20/Swift3——Swift从入门到入门/">Swift3——Swift从入门到入门</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/18/kotlin——和Swift像得一塌糊涂/">kotlin——和Swift像得一塌糊涂</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/18/kotlin——要火了❤️，你还在等什么？/">kotlin——要火了❤️，你还在等什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/15/2017-Swift——后感/">2017@Swift——后感</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/15/2017-Swift——中国开发者大会（第二天）/">2017@Swift——中国开发者大会（第二天）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/15/2017-Swift——中国开发者大会（第一天）/">2017@Swift——中国开发者大会（第一天）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/14/PHP——PHP经典面试二/">PHP——PHP经典面试二</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/14/PHP——PHP经典面试一/">PHP——PHP经典面试一</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/12/PHP——大流量高并发解决方案/">PHP——大流量高并发解决方案</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/12/PHP——数据库优化的八种方式/">PHP——数据库优化的八种方式</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/12/PHP——核心技术之缓存/">PHP——核心技术之缓存</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/10/PHP——魔术方法/">PHP——魔术方法</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/07/PHP——分页与实现/">PHP——分页与实现</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/05/PHP——文件上传下载实战/">PHP——文件上传下载实战</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/02/PHP——文件上传下载原理与配置/">PHP——文件上传下载原理与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/30/PHP——CURL初探/">PHP——CURL初探</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/28/PHP——GET-POST方式总结/">PHP——GET/POST方式总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/25/PHP——Redis安装，配置，简单使用/">PHP——Redis安装，配置，简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/22/PHP——服务器500错误总结/">PHP——服务器500错误总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/21/iOS——自动打包上传/">iOS——自动打包上传</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/20/iOS——ipv6-服务器/">iOS——ipv6(服务器)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/20/iOS——ipv6-客户端/">iOS——ipv6(客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/16/PHP——接口设计规范/">PHP——接口设计规范</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/16/PHP——APP接口是怎么来的？/">PHP——APP接口是怎么来的？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/15/PHP——数据库操作/">PHP——数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/13/PHP——异常处理/">PHP——异常处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/12/PHP——图像与图像操作/">PHP——图像与图像操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/11/PHP——时间与日期处理/">PHP——时间与日期处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/11/PHP——文件处理/">PHP——文件处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/09/PHP——session和cookie/">PHP——session和cookie</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/08/PHP——正则表达式/">PHP——正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/05/PHP——字符串操作/">PHP——字符串操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/04/PHP——万物皆对象/">PHP——万物皆对象</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/04/PHP——函数篇/">PHP——函数篇</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/03/PHP——数组篇/">PHP——数组篇</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/31/PHP第一周——基础总结/">PHP第一周——基础总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/27/PHP第三篇——语法概括/">PHP第三篇——语法概括</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/25/PHP第二篇——底层机制/">PHP第二篇——底层机制</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/23/PHP第一篇——工具集选/">PHP第一篇——工具集选</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/20/直播-技术原理篇/">直播--技术原理篇</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/12/算法-合并两个链表/">算法--合并两个链表</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/12/面试被虐总结二/">面试被虐总结二</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/12/面试被虐总结一/">面试被虐总结一</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/10/生命之源-RunLoop/">生命之源-RunLoop</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/07/想怎么转就怎么转/">想怎么转就怎么转</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/03/前世-内存管理/">前世-内存管理</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 iCocos
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >总到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

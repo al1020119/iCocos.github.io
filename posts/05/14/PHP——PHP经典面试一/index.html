@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>PHP——PHP经典面试一 | iCocos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="文件处理在PHP开发中也是比较常见的，或者你使用的是缓存，但是毕竟根据需求总有用到文件的地方，所以.....">
+<meta name="keywords" content="PHP,PHP经典面试一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP——PHP经典面试一">
+<meta property="og:url" content="http://yoursite.com/posts/05/14/PHP——PHP经典面试一/index.html">
+<meta property="og:site_name" content="iCocos">
+<meta property="og:description" content="文件处理在PHP开发中也是比较常见的，或者你使用的是缓存，但是毕竟根据需求总有用到文件的地方，所以.....">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/iCocosImages/201703/iCocosBlogHeader.JPG">
+<meta property="og:updated_time" content="2018-05-06T13:06:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP——PHP经典面试一">
+<meta name="twitter:description" content="文件处理在PHP开发中也是比较常见的，或者你使用的是缓存，但是毕竟根据需求总有用到文件的地方，所以.....">
+<meta name="twitter:image" content="http://yoursite.com/iCocosImages/201703/iCocosBlogHeader.JPG">
+  
+    <link rel="alternative" href="/atom.xml" title="iCocos" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">iCocos</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">梦工厂</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Homes">首页</a></li>
+                        
+                            <li><a href="/Sites">网站</a></li>
+                        
+                            <li><a href="/Uscvs">简历</a></li>
+                        
+                            <li><a href="/Works">作品</a></li>
+                        
+                            <li><a href="/Mesgs">留言</a></li>
+                        
+                            <li><a href="/Warm">温馨</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl pinterest" target="_blank" href="http://www.icocos.cn" title="pinterest">pinterest</a>
+                            
+                                <a class="fl pinboard" target="_blank" href="http://al1020119.github.io/" title="pinboard">pinboard</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/al1020119" title="github">github</a>
+                            
+                                <a class="fl weibo" target="_blank" href="https://weibo.com/iCocosLver" title="weibo">weibo</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="http://www.linkedin.com/in/%E7%90%86%E9%B9%8F-%E6%9B%B9-3b30b5134/" title="linkedin">linkedin</a>
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=LE9AXE1FTUBsXV0CT0NB" title="mail">mail</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/icocos-65/activities" title="zhihu">zhihu</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/2017/" style="font-size: 10px;">2017</a> <a href="/tags/3-rf一把无形的双刃剑/" style="font-size: 10px;">3-rf一把无形的双刃剑</a> <a href="/tags/500错误/" style="font-size: 10px;">500错误</a> <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/APP接口/" style="font-size: 10px;">APP接口</a> <a href="/tags/ARC中循环引用问题/" style="font-size: 10px;">ARC中循环引用问题</a> <a href="/tags/Algo/" style="font-size: 10px;">Algo</a> <a href="/tags/Apple/" style="font-size: 10px;">Apple</a> <a href="/tags/App启动优化分析与总结/" style="font-size: 10px;">App启动优化分析与总结</a> <a href="/tags/App整个启动过程分析/" style="font-size: 10px;">App整个启动过程分析</a> <a href="/tags/App跳转到系统设置/" style="font-size: 10px;">App跳转到系统设置</a> <a href="/tags/Array、Slice、Map、Set/" style="font-size: 10px;">Array、Slice、Map、Set</a> <a href="/tags/CURL初探/" style="font-size: 10px;">CURL初探</a> <a href="/tags/CocoaPods私有化组件/" style="font-size: 10px;">CocoaPods私有化组件</a> <a href="/tags/GET-POST方式总结/" style="font-size: 10px;">GET/POST方式总结</a> <a href="/tags/Games/" style="font-size: 10px;">Games</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Golang知识图谱/" style="font-size: 10px;">Golang知识图谱</a> <a href="/tags/Google-I-O/" style="font-size: 10px;">Google I/O</a> <a href="/tags/Go基础/" style="font-size: 16.67px;">Go基础</a> <a href="/tags/Go安装与配置/" style="font-size: 10px;">Go安装与配置</a> <a href="/tags/Http服务初探/" style="font-size: 10px;">Http服务初探</a> <a href="/tags/Live/" style="font-size: 10px;">Live</a> <a href="/tags/Meeting/" style="font-size: 10px;">Meeting</a> <a href="/tags/MySql安装与配置/" style="font-size: 10px;">MySql安装与配置</a> <a href="/tags/Nginx安装与配置/" style="font-size: 10px;">Nginx安装与配置</a> <a href="/tags/Objective-C与Swift优缺点对比/" style="font-size: 10px;">Objective-C与Swift优缺点对比</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/PHP经典面试一/" style="font-size: 10px;">PHP经典面试一</a> <a href="/tags/PHP经典面试二/" style="font-size: 10px;">PHP经典面试二</a> <a href="/tags/Php安装与配置/" style="font-size: 10px;">Php安装与配置</a> <a href="/tags/QQ号与QQ群添加与调整功能/" style="font-size: 10px;">QQ号与QQ群添加与调整功能</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/React-Native搭建与初始化项目/" style="font-size: 10px;">React Native搭建与初始化项目</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Response/" style="font-size: 10px;">Response</a> <a href="/tags/RunLoop/" style="font-size: 10px;">RunLoop</a> <a href="/tags/Server/" style="font-size: 15.56px;">Server</a> <a href="/tags/Swift/" style="font-size: 17.78px;">Swift</a> <a href="/tags/Swift-4-0-适配实战总结（Xcode9）/" style="font-size: 10px;">Swift 4.0 适配实战总结（Xcode9）</a> <a href="/tags/Swift3/" style="font-size: 13.33px;">Swift3</a> <a href="/tags/Swift3中的Runtime/" style="font-size: 11.11px;">Swift3中的Runtime</a> <a href="/tags/Swift从入门到入门/" style="font-size: 10px;">Swift从入门到入门</a> <a href="/tags/Swift内存管理/" style="font-size: 10px;">Swift内存管理</a> <a href="/tags/WWDC/" style="font-size: 12.22px;">WWDC</a> <a href="/tags/WWDC17惊喜/" style="font-size: 10px;">WWDC17惊喜</a> <a href="/tags/Xcode-Server完整教程/" style="font-size: 10px;">Xcode Server完整教程</a> <a href="/tags/Xcode默认路径（Fastlane打包的尴尬）/" style="font-size: 10px;">Xcode默认路径（Fastlane打包的尴尬）</a> <a href="/tags/attribute-使用与总结/" style="font-size: 10px;">attribute__使用与总结</a> <a href="/tags/cocos2dx初探/" style="font-size: 10px;">cocos2dx初探</a> <a href="/tags/goroutine和channel/" style="font-size: 10px;">goroutine和channel</a> <a href="/tags/groutine和channel底层机制/" style="font-size: 10px;">groutine和channel底层机制</a> <a href="/tags/iCocos/" style="font-size: 10px;">iCocos</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iPhone-X适配实战总结/" style="font-size: 10px;">iPhone X适配实战总结</a> <a href="/tags/ipv6-客户端/" style="font-size: 10px;">ipv6(客户端)</a> <a href="/tags/ipv6-服务器/" style="font-size: 10px;">ipv6(服务器)</a> <a href="/tags/kotlin/" style="font-size: 12.22px;">kotlin</a> <a href="/tags/session和cookie/" style="font-size: 10px;">session和cookie</a> <a href="/tags/万物皆对象/" style="font-size: 10px;">万物皆对象</a> <a href="/tags/不为人知的淫技/" style="font-size: 10px;">不为人知的淫技</a> <a href="/tags/免密登录，我以为有多难？/" style="font-size: 10px;">免密登录，我以为有多难？</a> <a href="/tags/关于马甲包与审核/" style="font-size: 10px;">关于马甲包与审核</a> <a href="/tags/内存管理/" style="font-size: 10px;">内存管理</a> <a href="/tags/函数与方法/" style="font-size: 10px;">函数与方法</a> <a href="/tags/函数篇/" style="font-size: 10px;">函数篇</a> <a href="/tags/分页与实现/" style="font-size: 10px;">分页与实现</a> <a href="/tags/动态-静态分析与实战/" style="font-size: 10px;">动态&静态分析与实战</a> <a href="/tags/可选类型总结/" style="font-size: 10px;">可选类型总结</a> <a href="/tags/合并两个链表/" style="font-size: 10px;">合并两个链表</a> <a href="/tags/图像与图像操作/" style="font-size: 10px;">图像与图像操作</a> <a href="/tags/基础学习笔记/" style="font-size: 10px;">基础学习笔记</a> <a href="/tags/大会/" style="font-size: 11.11px;">大会</a> <a href="/tags/大会后感/" style="font-size: 10px;">大会后感</a> <a href="/tags/大流量高并发解决方案/" style="font-size: 10px;">大流量高并发解决方案</a> <a href="/tags/字符串操作/" style="font-size: 10px;">字符串操作</a> <a href="/tags/实战验证与补充/" style="font-size: 10px;">实战验证与补充</a> <a href="/tags/实用技巧/" style="font-size: 10px;">实用技巧</a> <a href="/tags/屏幕旋转/" style="font-size: 10px;">屏幕旋转</a> <a href="/tags/工具集选/" style="font-size: 10px;">工具集选</a> <a href="/tags/底层分析/" style="font-size: 14.44px;">底层分析</a> <a href="/tags/底层机制/" style="font-size: 10px;">底层机制</a> <a href="/tags/开发文档/" style="font-size: 11.11px;">开发文档</a> <a href="/tags/开发者中心更新手机号码/" style="font-size: 10px;">开发者中心更新手机号码</a> <a href="/tags/异常处理/" style="font-size: 10px;">异常处理</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/技术原理/" style="font-size: 10px;">技术原理</a> <a href="/tags/接口设计规范/" style="font-size: 10px;">接口设计规范</a> <a href="/tags/数据库优化的八种方式/" style="font-size: 10px;">数据库优化的八种方式</a> <a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a> <a href="/tags/数组篇/" style="font-size: 10px;">数组篇</a> <a href="/tags/文件上传下载原理与配置/" style="font-size: 10px;">文件上传下载原理与配置</a> <a href="/tags/文件上传下载实战/" style="font-size: 10px;">文件上传下载实战</a> <a href="/tags/文件处理/" style="font-size: 10px;">文件处理</a> <a href="/tags/文件操作/" style="font-size: 10px;">文件操作</a> <a href="/tags/方法调用技巧/" style="font-size: 10px;">方法调用技巧</a> <a href="/tags/时间与日期处理/" style="font-size: 10px;">时间与日期处理</a> <a href="/tags/最新高级面试题整理（阿里篇）/" style="font-size: 10px;">最新高级面试题整理（阿里篇）</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/漫威科幻/" style="font-size: 10px;">漫威科幻</a> <a href="/tags/第一周语法总结/" style="font-size: 10px;">第一周语法总结</a> <a href="/tags/类-结构体-枚举总结/" style="font-size: 10px;">类&结构体&枚举总结</a> <a href="/tags/缓存/" style="font-size: 10px;">缓存</a> <a href="/tags/自动打包上传/" style="font-size: 10px;">自动打包上传</a> <a href="/tags/访问控制/" style="font-size: 10px;">访问控制</a> <a href="/tags/语法小结/" style="font-size: 10px;">语法小结</a> <a href="/tags/重整iOS技术（Fastlane完整打包流程）/" style="font-size: 10px;">重整iOS技术（Fastlane完整打包流程）</a> <a href="/tags/防止反编译总结/" style="font-size: 10px;">防止反编译总结</a> <a href="/tags/阿里云主机配置与操作/" style="font-size: 10px;">阿里云主机配置与操作</a> <a href="/tags/除了代码，还有生活/" style="font-size: 10px;">除了代码，还有生活</a> <a href="/tags/面试一/" style="font-size: 10px;">面试一</a> <a href="/tags/面试二/" style="font-size: 10px;">面试二</a> <a href="/tags/魔术方法/" style="font-size: 10px;">魔术方法</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://al1020119.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯码迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中！</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">iCocos</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">iCocos</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">梦工厂</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Homes">首页</a></li>
+                
+                    <li><a href="/Sites">网站</a></li>
+                
+                    <li><a href="/Uscvs">简历</a></li>
+                
+                    <li><a href="/Works">作品</a></li>
+                
+                    <li><a href="/Mesgs">留言</a></li>
+                
+                    <li><a href="/Warm">温馨</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="pinterest" target="_blank" href="http://www.icocos.cn" title="pinterest">pinterest</a>
+                    
+                        <a class="pinboard" target="_blank" href="http://al1020119.github.io/" title="pinboard">pinboard</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/al1020119" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/iCocosLver" title="weibo">weibo</a>
+                    
+                        <a class="linkedin" target="_blank" href="http://www.linkedin.com/in/%E7%90%86%E9%B9%8F-%E6%9B%B9-3b30b5134/" title="linkedin">linkedin</a>
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=LE9AXE1FTUBsXV0CT0NB" title="mail">mail</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/icocos-65/activities" title="zhihu">zhihu</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-PHP——PHP经典面试一" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/posts/05/14/PHP——PHP经典面试一/" class="article-date">
+      <time datetime="2017-05-14T14:21:11.000Z" itemprop="datePublished">2017-05-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP——PHP经典面试一
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP经典面试一/">PHP经典面试一</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>PHP经典面试一…..</p>
+<h2 id="PHP经典面试一"><a href="#PHP经典面试一" class="headerlink" title="PHP经典面试一"></a>PHP经典面试一</h2><a id="more"></a>
+<h3 id="嗨，欢迎来到梦工厂，我是曹理鹏-iCocos-，一名-iOS-前端-开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。"><a href="#嗨，欢迎来到梦工厂，我是曹理鹏-iCocos-，一名-iOS-前端-开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。" class="headerlink" title="嗨，欢迎来到梦工厂，我是曹理鹏 (@iCocos)，一名 iOS / 前端 开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。"></a>嗨，欢迎来到梦工厂，我是曹理鹏 (@iCocos)，一名 iOS / 前端 开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。</h3><h3 id="微信：clpaial10201119-QQ：2211523682"><a href="#微信：clpaial10201119-QQ：2211523682" class="headerlink" title="微信：clpaial10201119 / QQ：2211523682"></a>微信：clpaial10201119 / QQ：2211523682</h3><h3 id="博客-前后端-：https-icocos-github-io"><a href="#博客-前后端-：https-icocos-github-io" class="headerlink" title="博客(前后端)：https://icocos.github.io/"></a>博客(前后端)：<a href="https://icocos.github.io/" target="_blank" rel="noopener">https://icocos.github.io/</a></h3><h3 id="博客-iOS-：http-al1020119-github-io"><a href="#博客-iOS-：http-al1020119-github-io" class="headerlink" title="博客(iOS)：http://al1020119.github.io/"></a>博客(iOS)：<a href="http://al1020119.github.io/" target="_blank" rel="noopener">http://al1020119.github.io/</a></h3><h3 id="github：https-github-com-al1020119"><a href="#github：https-github-com-al1020119" class="headerlink" title="github：https://github.com/al1020119"></a>github：<a href="https://github.com/al1020119" target="_blank" rel="noopener">https://github.com/al1020119</a></h3><h3 id="个人网站：http-www-icocos-cn"><a href="#个人网站：http-www-icocos-cn" class="headerlink" title="个人网站：http://www.icocos.cn/"></a>个人网站：<a href="http://www.icocos.cn/" target="_blank" rel="noopener">http://www.icocos.cn/</a></h3><p><img src="/iCocosImages/201703/iCocosBlogHeader.JPG" alt="曹理鹏(iCocos)-梦工厂"></p>
+<p>本文章将持续更新，希望能在评论区发表自己的见解和认为比较经典的题目，后续笔者会在适当的节点对本文章进行分类和层次划分。文章中的不足之处望多指点，纠正!</p>
+<h3 id="双引号和单引号的区别"><a href="#双引号和单引号的区别" class="headerlink" title="双引号和单引号的区别"></a>双引号和单引号的区别</h3><pre><code>双引号解释变量，单引号不解释变量
+双引号里插入单引号，其中单引号里如果有变量的话，变量解释
+双引号的变量名后面必须要有一个非数字、字母、下划线的特殊字符，或者用{}讲变量括起来，否则会将变量名后面的部分当做一个整体，引起语法错误
+双引号解释转义字符，单引号不解释转义字符，但是解释&apos;\和\\
+能使单引号字符尽量使用单引号，单引号的效率比双引号要高（因为双引号要先遍历一遍，判断里面有没有变量，然后再进行操作，而单引号则不需要判断）
+</code></pre><h3 id="常用的超全局变量-8个"><a href="#常用的超全局变量-8个" class="headerlink" title="常用的超全局变量(8个)"></a>常用的超全局变量(8个)</h3><pre><code>$_GET -----&gt;get传送方式
+$POST -----&gt;post传送方式
+$REQUEST -----&gt;可以接收到get和post两种方式的值
+***
+$GLOBALS -----&gt;所有的变量都放在里面
+$FILE -----&gt;上传文件使用
+
+$SERVER -----&gt;系统环境变量
+* **
+$SESSION -----&gt;会话控制的时候会用到
+
+$COOKIE -----&gt;会话控制的时候会用到
+</code></pre><h3 id="HTTP中POST、GET、PUT、DELETE方式的区别"><a href="#HTTP中POST、GET、PUT、DELETE方式的区别" class="headerlink" title="HTTP中POST、GET、PUT、DELETE方式的区别"></a>HTTP中POST、GET、PUT、DELETE方式的区别</h3><pre><code>HTTP定义了与服务器交互的不同的方法，最基本的是POST、GET、PUT、DELETE，与其比不可少的URL的全称是资源描述符，我们可以这样理解：url描述了一个网络上资源，而post、get、put、delegate就是对这个资源进行增、删、改、查的操作！
+</code></pre><h3 id="表单中get和post提交方式的区别"><a href="#表单中get和post提交方式的区别" class="headerlink" title="表单中get和post提交方式的区别"></a>表单中get和post提交方式的区别</h3><pre><code>get是把参数数据队列加到提交表单的action属性所指的url中，值和表单内各个字段一一对应，从url中可以看到；post是通过HTTPPOST机制，将表单内各个字段与其内容防止在HTML的head中一起传送到action属性所指的url地址，用户看不到这个过程
+对于get方式，服务器端用Request.QueryString获取变量的值，对于post方式，服务器端用Request.Form获取提交的数据
+get传送的数据量较小，post传送的数据量较大，一般被默认不受限制，但在理论上，IIS4中最大量为80kb，IIS5中为1000k，get安全性非常低，post安全性较高
+</code></pre><p>========= </p>
+<pre><code>GET请求会向数据库发索取数据的请求，从而来获取信息，该请求就像数据库的select操作一样，只是用来查询一下数据，不会修改、增加数据，不会影响资源的内容，即该请求不会产生副作用。无论进行多少次操作，结果都是一样的。
+
+与GET不同的是，PUT请求是向服务器端发送数据的，从而改变信息，该请求就像数据库的update操作一样，用来修改数据的内容，但是不会增加数据的种类等，也就是说无论进行多少次PUT操作，其结果并没有不同。
+
+POST请求同PUT请求类似，都是向服务器端发送数据的，但是该请求会改变数据的种类等资源，就像数据库的insert操作一样，会创建新的内容。几乎目前所有的提交操作都是用POST请求的。
+
+DELETE请求顾名思义，就是用来删除某一个资源的，该请求就像数据库的delete操作。
+</code></pre><h2 id="PHP介绍"><a href="#PHP介绍" class="headerlink" title="PHP介绍"></a>PHP介绍</h2><p>Hypertext Preprocessor—-超文本预处理器<br>Personal Home Page 原始名称</p>
+<pre><code>目标用途: 允许web开发人员快速编写动态生成的web页面，与其他页面相比，PHP是将程序嵌入到HTML文档中去执行，效率比完全生成HTML编辑的CGI高很多
+
+HTML: Hypertext Markup Language
+
+创始人: 拉姆斯勒·勒多夫Rasmus Lerdorf，1968年生，加拿大滑铁卢大学
+</code></pre><p>勒多夫最开始是为了维护个人网页，用prel语言写了维护程序，之后又用c进行了重写，最终衍生出php/fi</p>
+<h3 id="时间轴"><a href="#时间轴" class="headerlink" title="时间轴:"></a>时间轴:</h3><pre><code>1995.06.08将PHP/FI公开释出
+1995 php2.0，加入了对MySQL的支持
+1997 php3.0
+2000 php4.0
+2008 php5.0
+</code></pre><p>由于php6.0没有完全解决Unicode编码，所以基本没有生产线上的应用，基本只是一款概念产品，很多功能已经在php5.3.3和php5.3.4上实现</p>
+<h3 id="常见的IDE-Intergrated-Development-Environment-集成开发环境"><a href="#常见的IDE-Intergrated-Development-Environment-集成开发环境" class="headerlink" title="常见的IDE(Intergrated Development Environment): 集成开发环境"></a>常见的IDE(Intergrated Development Environment): 集成开发环境</h3><pre><code>Coda（mac）
+PHPStrom
+Adobe Dreamweaver
+NetBeans
+</code></pre><h3 id="常见文本编辑器，具备代码高亮："><a href="#常见文本编辑器，具备代码高亮：" class="headerlink" title="常见文本编辑器，具备代码高亮："></a>常见文本编辑器，具备代码高亮：</h3><pre><code>NodePad++
+SublimeText
+</code></pre><h2 id="PHP优势"><a href="#PHP优势" class="headerlink" title="PHP优势"></a>PHP优势</h2><h3 id="PHP特性"><a href="#PHP特性" class="headerlink" title="PHP特性:"></a>PHP特性:</h3><pre><code>php独特混合了C,Java,Prel以及PHP自创的语法
+可以比CGI或者Prel更快速去执行动态网页，与其他变成语言相比，PHP是讲程序嵌入到HTML文档中去执行，执行效率比完全生成HTML编辑的CGI要高很多，所有的CGI都能实现
+支持几乎所有流行的数据库以及操作系统
+PHP可以使用C,C++进行程序的扩展
+</code></pre><h3 id="PHP优势-1"><a href="#PHP优势-1" class="headerlink" title="PHP优势:"></a>PHP优势:</h3><pre><code>开放源代码
+免费性
+快捷性
+跨平台强
+效率高
+图形处理
+面向对象
+专业专注
+</code></pre><h3 id="PHP技术应用"><a href="#PHP技术应用" class="headerlink" title="PHP技术应用:"></a>PHP技术应用:</h3><pre><code>静态页面生成
+数据库缓存
+过程缓存
+div+css w3c标准
+大负荷
+分布式
+flex
+支持MVC
+Smarty模块引擎
+</code></pre><h3 id="PHP认证级别"><a href="#PHP认证级别" class="headerlink" title="PHP认证级别"></a>PHP认证级别</h3><pre><code>初级 IFE:Index Front Engineer 前端工程师
+中级 IPE:Index PHP Engineer PHP工程师
+高级 IAE:Index Architecture Engineer 架构工程师
+</code></pre><h3 id="echo、print-r、print、var-dump之间的区别"><a href="#echo、print-r、print、var-dump之间的区别" class="headerlink" title="echo、print_r、print、var_dump之间的区别"></a>echo、print_r、print、var_dump之间的区别</h3><pre><code>* echo、print是php语句，var_dump和print_r是函数
+* echo 输出一个或多个字符串，中间以逗号隔开，没有返回值是语言结构而不是真正的函数，因此不能作为表达式的一部分使用
+* print也是php的一个关键字，有返回值 只能打印出简单类型变量的值(如int，string)，如果字符串显示成功则返回true，否则返回false
+* print_r 可以打印出复杂类型变量的值(如数组、对象）以列表的形式显示，并以array、object开头，但print_r输出布尔值和NULL的结果没有意义，因为都是打印&quot;\n&quot;，因此var_dump()函数更适合调试
+* var_dump() 判断一个变量的类型和长度，并输出变量的数值
+</code></pre><h2 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h2><p>点击这儿查看HTTP状态码详解</p>
+<h3 id="常见的HTTP状态码："><a href="#常见的HTTP状态码：" class="headerlink" title="常见的HTTP状态码："></a>常见的HTTP状态码：</h3><pre><code>200 - 请求成功
+301 - 资源(网页等)被永久转义到其他URL
+404 - 请求的资源(网页等)不存在
+505 - 内部服务器错误
+</code></pre><h3 id="HTTP状态码分类"><a href="#HTTP状态码分类" class="headerlink" title="HTTP状态码分类:"></a>HTTP状态码分类:</h3><pre><code>1** - 信息，服务器收到的请求，需要请求者继续执行操作
+2** - 成功，操作被成功接收并处理
+3** - 重定向，需要进一步的操作以完成请求
+4** - 客户端错误，请求包含语法错误或者无法完成请求
+5** 服务器错误，服务器在处理请求的过程
+中发生了错误
+</code></pre><h3 id="什么是魔术引号"><a href="#什么是魔术引号" class="headerlink" title="什么是魔术引号"></a>什么是魔术引号</h3><pre><code>魔术引号是一个将自动将进入PHP脚本的数据进行转义的过程，最好在编码时不要转义而在运行时根据需要而转义
+</code></pre><h3 id="如何获取客户端的ip-要求取得一个int-和服务器ip的代码"><a href="#如何获取客户端的ip-要求取得一个int-和服务器ip的代码" class="headerlink" title="如何获取客户端的ip(要求取得一个int)和服务器ip的代码"></a>如何获取客户端的ip(要求取得一个int)和服务器ip的代码</h3><pre><code>客户端：$_SERVER[&quot;REMOTE_ADDR&quot;];或者getenv(&apos;REMOTE_ADDR&apos;)
+ip2long进行转换
+服务器端：gethostbyname(&apos;www.baidu.com&apos;)
+</code></pre><h3 id="使用那些工具进行版本控制"><a href="#使用那些工具进行版本控制" class="headerlink" title="使用那些工具进行版本控制"></a>使用那些工具进行版本控制</h3><pre><code>cvs、svn、vss、git
+</code></pre><h3 id="优化数据库的方法"><a href="#优化数据库的方法" class="headerlink" title="优化数据库的方法"></a>优化数据库的方法</h3><p>MySQL数据库优化的八大方式（经典必看）点击获取</p>
+<pre><code>选取最适用的字段属性，尽可能减少定义字段宽度，尽量把字段设置NOTNULL，例如&apos;省份&apos;、&apos;性别&apos;最好适用ENUM
+使用连接(JOIN)来代替子查询
+适用联合(UNION)来代替手动创建的临时表
+事务处理
+锁定表、优化事务处理
+适用外键，优化锁定表
+建立索引
+优化查询语句
+</code></pre><h3 id="是否使用过模板引擎？使用的模板引擎的名字是？"><a href="#是否使用过模板引擎？使用的模板引擎的名字是？" class="headerlink" title="是否使用过模板引擎？使用的模板引擎的名字是？"></a>是否使用过模板引擎？使用的模板引擎的名字是？</h3><pre><code>Smarty:Smarty算是一种很老的PHP模板引擎了，它曾是我使用这门语言模板的最初选择。虽然它的更新已经不算频繁了，并且缺少新一代模板引擎所具有的部分特性，但是它仍然值得一看。
+</code></pre><h3 id="对于大流量网站，采用什么方法来解决访问量的问题"><a href="#对于大流量网站，采用什么方法来解决访问量的问题" class="headerlink" title="对于大流量网站，采用什么方法来解决访问量的问题"></a>对于大流量网站，采用什么方法来解决访问量的问题</h3><pre><code>确认服务器硬件是否能够支持当前的流量
+数据库读写分离，优化数据表
+程序功能规则，禁止外部的盗链
+控制大文件的下载
+使用不同主机分流主要流量
+</code></pre><h3 id="语句include和require的区别是什么？为避免多次包含同一文件，可以用-语句代替他们"><a href="#语句include和require的区别是什么？为避免多次包含同一文件，可以用-语句代替他们" class="headerlink" title="语句include和require的区别是什么？为避免多次包含同一文件，可以用(?)语句代替他们"></a>语句include和require的区别是什么？为避免多次包含同一文件，可以用(?)语句代替他们</h3><pre><code>require是无条件包含，也就是如果一个流程里加入require，无论条件成立与否都会先执行require，当文件不存在或者无法打开的时候，会提示错误，并且会终止程序执行
+
+include有返回值，而require没有(可能因为如此require的速度比include快)，如果被包含的文件不存在的化，那么会提示一个错误，但是程序会继续执行下去
+
+注意:包含文件不存在或者语法错误的时候require是致命的，而include不是
+
+require_once表示了只包含一次，避免了重复包含
+</code></pre><h3 id="谈谈mvc的认识"><a href="#谈谈mvc的认识" class="headerlink" title="谈谈mvc的认识"></a>谈谈mvc的认识</h3><pre><code>由模型、视图、控制器完成的应用程序，由模型发出要实现的功能到控制器，控制器接收组织功能传递给视图
+</code></pre><h3 id="说明php中传值与传引用的区别，并说明传值什么时候传引用？"><a href="#说明php中传值与传引用的区别，并说明传值什么时候传引用？" class="headerlink" title="说明php中传值与传引用的区别，并说明传值什么时候传引用？"></a>说明php中传值与传引用的区别，并说明传值什么时候传引用？</h3><pre><code>变量默认总是传值赋值，那也就是说，当将一个表达式的值赋予一个变量时，整个表达式的值被赋值到目标变量，这意味着：当一个变量的赋予另外一个变量时，改变其中一个变量的值，将不会影响到另外一个变量
+</code></pre><p>php也提供了另外一种方式给变量赋值：引用赋值。这意味着新的变量简单的<strong>引用</strong>(换言之，成为了其别名或者指向)了原始变量。改动的新的变量将影响到原始变量，反之亦然。使用引用赋值，简单地将一个&amp;符号加到将要赋值的变量前(源变量)</p>
+<pre><code>对象默认是传引用
+对于较大是的数据，传引用比较好，这样可以节省内存的开销
+</code></pre>
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>梦工厂@iCocos</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">感谢您的支持，我会继续努力！</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/posts/05/14/PHP——PHP经典面试一/">PHP——PHP经典面试一</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 iCocos 的个人博客">iCocos</a></p>
+        <p><span>发布时间:</span>2017年05月14日 - 22时21分</p>
+        <p><span>最后更新:</span>2018年05月06日 - 21时06分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/posts/05/14/PHP——PHP经典面试一/" title="PHP——PHP经典面试一">http://yoursite.com/posts/05/14/PHP——PHP经典面试一/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/posts/05/14/PHP——PHP经典面试一/　　作者: iCocos" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/posts/05/14/PHP——PHP经典面试二/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          PHP——PHP经典面试二
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/05/12/PHP——大流量高并发解决方案/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP——大流量高并发解决方案</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP经典面试一"><span class="toc-number">1.</span> <span class="toc-text">PHP经典面试一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#嗨，欢迎来到梦工厂，我是曹理鹏-iCocos-，一名-iOS-前端-开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。"><span class="toc-number">1.1.</span> <span class="toc-text">嗨，欢迎来到梦工厂，我是曹理鹏 (@iCocos)，一名 iOS / 前端 开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微信：clpaial10201119-QQ：2211523682"><span class="toc-number">1.2.</span> <span class="toc-text">微信：clpaial10201119 / QQ：2211523682</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#博客-前后端-：https-icocos-github-io"><span class="toc-number">1.3.</span> <span class="toc-text">博客(前后端)：https://icocos.github.io/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#博客-iOS-：http-al1020119-github-io"><span class="toc-number">1.4.</span> <span class="toc-text">博客(iOS)：http://al1020119.github.io/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github：https-github-com-al1020119"><span class="toc-number">1.5.</span> <span class="toc-text">github：https://github.com/al1020119</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个人网站：http-www-icocos-cn"><span class="toc-number">1.6.</span> <span class="toc-text">个人网站：http://www.icocos.cn/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双引号和单引号的区别"><span class="toc-number">1.7.</span> <span class="toc-text">双引号和单引号的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用的超全局变量-8个"><span class="toc-number">1.8.</span> <span class="toc-text">常用的超全局变量(8个)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP中POST、GET、PUT、DELETE方式的区别"><span class="toc-number">1.9.</span> <span class="toc-text">HTTP中POST、GET、PUT、DELETE方式的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表单中get和post提交方式的区别"><span class="toc-number">1.10.</span> <span class="toc-text">表单中get和post提交方式的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP介绍"><span class="toc-number">2.</span> <span class="toc-text">PHP介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间轴"><span class="toc-number">2.1.</span> <span class="toc-text">时间轴:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见的IDE-Intergrated-Development-Environment-集成开发环境"><span class="toc-number">2.2.</span> <span class="toc-text">常见的IDE(Intergrated Development Environment): 集成开发环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见文本编辑器，具备代码高亮："><span class="toc-number">2.3.</span> <span class="toc-text">常见文本编辑器，具备代码高亮：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP优势"><span class="toc-number">3.</span> <span class="toc-text">PHP优势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP特性"><span class="toc-number">3.1.</span> <span class="toc-text">PHP特性:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP优势-1"><span class="toc-number">3.2.</span> <span class="toc-text">PHP优势:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP技术应用"><span class="toc-number">3.3.</span> <span class="toc-text">PHP技术应用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP认证级别"><span class="toc-number">3.4.</span> <span class="toc-text">PHP认证级别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#echo、print-r、print、var-dump之间的区别"><span class="toc-number">3.5.</span> <span class="toc-text">echo、print_r、print、var_dump之间的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP状态码"><span class="toc-number">4.</span> <span class="toc-text">HTTP状态码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见的HTTP状态码："><span class="toc-number">4.1.</span> <span class="toc-text">常见的HTTP状态码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP状态码分类"><span class="toc-number">4.2.</span> <span class="toc-text">HTTP状态码分类:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是魔术引号"><span class="toc-number">4.3.</span> <span class="toc-text">什么是魔术引号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何获取客户端的ip-要求取得一个int-和服务器ip的代码"><span class="toc-number">4.4.</span> <span class="toc-text">如何获取客户端的ip(要求取得一个int)和服务器ip的代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用那些工具进行版本控制"><span class="toc-number">4.5.</span> <span class="toc-text">使用那些工具进行版本控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化数据库的方法"><span class="toc-number">4.6.</span> <span class="toc-text">优化数据库的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#是否使用过模板引擎？使用的模板引擎的名字是？"><span class="toc-number">4.7.</span> <span class="toc-text">是否使用过模板引擎？使用的模板引擎的名字是？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对于大流量网站，采用什么方法来解决访问量的问题"><span class="toc-number">4.8.</span> <span class="toc-text">对于大流量网站，采用什么方法来解决访问量的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语句include和require的区别是什么？为避免多次包含同一文件，可以用-语句代替他们"><span class="toc-number">4.9.</span> <span class="toc-text">语句include和require的区别是什么？为避免多次包含同一文件，可以用(?)语句代替他们</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#谈谈mvc的认识"><span class="toc-number">4.10.</span> <span class="toc-text">谈谈mvc的认识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明php中传值与传引用的区别，并说明传值什么时候传引用？"><span class="toc-number">4.11.</span> <span class="toc-text">说明php中传值与传引用的区别，并说明传值什么时候传引用？</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'iCocos',
+      repo: 'icocos.github.io',
+      oauth: {
+        client_id: '4b7d4fdd945e8aa01820',
+        client_secret: 'bb1a81ef2412269255e31aa4e2c8d21fe675c4d0',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/posts/05/14/PHP——PHP经典面试二/" title="上一篇: PHP——PHP经典面试二">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/posts/05/12/PHP——大流量高并发解决方案/" title="下一篇: PHP——大流量高并发解决方案">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/posts/06/15/初识游戏——cocos2dx初探/">初识游戏——cocos2dx初探</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/12/Golang——groutine和channel底层机制/">Golang——groutine和channel底层机制</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/07/Golang——Http服务初探/">Golang——Http服务初探</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/03/Golang——文件IO处理/">Golang——文件IO处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/01/Go——Golang-Response-Snippets/">Go——Golang Response Snippets</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/29/Go——简单说说goroutine和channel/">Go——简单说说goroutine和channel</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/25/Go——函数与方法的奇妙之处/">Go——函数与方法的奇妙之处</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/22/Go语言中的Array、Slice、Map和Set/">Go语言中的Array、Slice、Map和Set</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/19/漫威铁粉福利——漫威-妇联3/">漫威铁粉福利——漫威+妇联3</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/10/Golang知识图谱/">Golang知识图谱</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/09/Go——基础学习笔记/">Go——基础学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/05/服务器配置——实战验证与补充/">服务器配置——实战验证与补充</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/04/服务器配置——Go安装与配置/">服务器配置——Go安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/04/服务器配置——MySql安装与配置/">服务器配置——MySql安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/03/服务器配置——Php安装与配置/">服务器配置——Php安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/03/服务器配置——Nginx安装与配置/">服务器配置——Nginx安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/01/服务器配置——阿里云主机/">服务器配置——阿里云主机配置与操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/26/iOS——开发者中心更新手机号码/">iOS——开发者中心更新手机号码</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/24/iOS——Xcode默认路径-Fastlane打包/">iOS——Xcode默认路径(Fastlane打包)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/23/iOS——奇葩需求QQ号与QQ群添加与跳转/">iOS——奇葩需求QQ号与QQ群添加与跳转</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/20/iOS——3-rf一把无形的双刃剑/">iOS——3-rf一把无形的双刃剑</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/09/iOS——重整iOS技术（Fastlane完整打包流程）/">iOS——重整iOS技术（Fastlane完整打包流程）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/01/26/iOS游戏——关于马甲包与审核/">iOS游戏——关于马甲包与审核</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/12/31/回顾与展望：梦想之路！/">回顾与展望：梦想之路！</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/27/iOS——Swift-4-0-适配实战总结（Xcode9）/">iOS——Swift 4.0 适配实战总结（Xcode9）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/21/React-Nativec搭建与初始化项目/">React Native搭建与初始化项目</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/20/iOS——遇到的最奇葩的Bug/">iOS——遇到的最奇葩的Bug</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/18/iOS——免密登录，我以为有多难？/">iOS——免密登录，我以为有多难？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/18/iOS——iPhone-X适配实战总结/">iOS——iPhone X适配实战总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/16/iOS——App跳转到系统设置/">iOS——App跳转到系统设置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/11/Xcode-Server完整教程/">Xcode Server完整教程</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/08/iOS——-attribute-使用与总结/">iOS——__attribute__使用与总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/03/iOS——App启动优化分析与总结/">iOS——App启动优化分析与总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/10/26/iOS——防止反编译总结/">iOS——防止反编译总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/10/25/iOS——最新高级面试题整理（阿里篇）/">iOS——最新高级面试题整理（阿里篇）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/10/25/iOS——CocoaPods私有化组件/">iOS——CocoaPods私有化组件</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/09/19/iOS——Objective-C与Swift优缺点对比/">iOS——Objective-C与Swift优缺点对比</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/09/14/iOS开发——SVG图展示方案/">iOS开发——SVG图展示方案</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/09/12/Swift——简单服务端开发实战/">Swift——简单服务端开发实战</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/08/08/iOS开发——系统API使用问题汇总（-解决方案）/">iOS开发——系统API使用问题汇总（+解决方案）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/08/02/iOS（Swift）开发——开发文档/">iOS（Swift）开发——App开发文档</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/31/Swift开发——实用技巧Literal/">Swift开发——实用技巧Literal</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/22/Swift篇——ARC中循环引用问题/">Swift篇——ARC中循环引用问题</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/18/Swift篇——可选类型总结/">Swift篇——可选类型总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/15/Swift——类-结构体-枚举总结/">Swift——类&结构体&枚举总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/13/OC-Swift——方法调用技巧/">OC&&Swift——方法调用技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/08/Swift——不为人知的淫技/">Swift——不为人知的淫技</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/04/Swift——动态-静态分析与实战/">Swift——动态&静态分析与实战</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/01/Swift——访问控制关键字说明/">Swift——访问控制关键字说明</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/28/iOS——App整个启动过程分析/">iOS——App整个启动过程分析</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/25/带你简单理解block和-block的实现？/">带你简单理解block和__block的实现？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/24/带你简单理解weak和-weak的实现？/">带你简单理解weak和__weak的实现？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/20/分类能添加属性吗？成员变量呢？为什么？/">分类能添加属性吗？成员变量呢？为什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/18/为什么调用nil的任何方法都不会崩溃？/">为什么调用nil的任何方法都不会崩溃？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/15/XCode9——还有那些你不知道的新特性？/">XCode9——还有那些你不知道的新特性？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/13/WWDC17惊喜——Xcode9无线调试/">WWDC17惊喜——Xcode9无线调试</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/11/一个偶然的面试机会——我既然懵了/">一个偶然的面试机会——我既然懵了</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/06/WWDC17——都有那些值得你去了解的？/">WWDC17——都有那些值得你去了解的？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/05/Swift3——有了Perfect你也可以做PHP能做的事情/">Swift3——有了Perfect你也可以做PHP能做的事情</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/25/Swift3——Swift3中的Runtime/">Swift3——Swift3中的Runtime</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/23/Swift3——Swift内存管理/">Swift3——Swift内存管理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/20/Swift3——Swift从入门到入门/">Swift3——Swift从入门到入门</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/18/kotlin——和Swift像得一塌糊涂/">kotlin——和Swift像得一塌糊涂</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/18/kotlin——要火了❤️，你还在等什么？/">kotlin——要火了❤️，你还在等什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/15/2017-Swift——后感/">2017@Swift——后感</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/15/2017-Swift——中国开发者大会（第二天）/">2017@Swift——中国开发者大会（第二天）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/15/2017-Swift——中国开发者大会（第一天）/">2017@Swift——中国开发者大会（第一天）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/14/PHP——PHP经典面试二/">PHP——PHP经典面试二</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/14/PHP——PHP经典面试一/">PHP——PHP经典面试一</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/12/PHP——大流量高并发解决方案/">PHP——大流量高并发解决方案</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/12/PHP——数据库优化的八种方式/">PHP——数据库优化的八种方式</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/12/PHP——核心技术之缓存/">PHP——核心技术之缓存</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/10/PHP——魔术方法/">PHP——魔术方法</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/07/PHP——分页与实现/">PHP——分页与实现</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/05/PHP——文件上传下载实战/">PHP——文件上传下载实战</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/02/PHP——文件上传下载原理与配置/">PHP——文件上传下载原理与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/30/PHP——CURL初探/">PHP——CURL初探</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/28/PHP——GET-POST方式总结/">PHP——GET/POST方式总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/25/PHP——Redis安装，配置，简单使用/">PHP——Redis安装，配置，简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/22/PHP——服务器500错误总结/">PHP——服务器500错误总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/21/iOS——自动打包上传/">iOS——自动打包上传</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/20/iOS——ipv6-服务器/">iOS——ipv6(服务器)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/20/iOS——ipv6-客户端/">iOS——ipv6(客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/16/PHP——接口设计规范/">PHP——接口设计规范</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/16/PHP——APP接口是怎么来的？/">PHP——APP接口是怎么来的？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/15/PHP——数据库操作/">PHP——数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/13/PHP——异常处理/">PHP——异常处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/12/PHP——图像与图像操作/">PHP——图像与图像操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/11/PHP——时间与日期处理/">PHP——时间与日期处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/11/PHP——文件处理/">PHP——文件处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/09/PHP——session和cookie/">PHP——session和cookie</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/08/PHP——正则表达式/">PHP——正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/05/PHP——字符串操作/">PHP——字符串操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/04/PHP——万物皆对象/">PHP——万物皆对象</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/04/PHP——函数篇/">PHP——函数篇</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/03/PHP——数组篇/">PHP——数组篇</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/31/PHP第一周——基础总结/">PHP第一周——基础总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/27/PHP第三篇——语法概括/">PHP第三篇——语法概括</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/25/PHP第二篇——底层机制/">PHP第二篇——底层机制</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/23/PHP第一篇——工具集选/">PHP第一篇——工具集选</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/20/直播-技术原理篇/">直播--技术原理篇</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/12/算法-合并两个链表/">算法--合并两个链表</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/12/面试被虐总结二/">面试被虐总结二</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/12/面试被虐总结一/">面试被虐总结一</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/10/生命之源-RunLoop/">生命之源-RunLoop</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/07/想怎么转就怎么转/">想怎么转就怎么转</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/03/前世-内存管理/">前世-内存管理</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 iCocos
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >总到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

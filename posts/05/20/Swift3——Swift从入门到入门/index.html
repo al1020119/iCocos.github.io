@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Swift3——Swift从入门到入门 | iCocos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="自从14年Swift出来之后，苹果就一直保持对它的快速更新与迭代，也正是因为这样，导致我们几乎是每年学习一门语言，从1.0到2.0，再从2.0到3.0......">
+<meta name="keywords" content="Swift3,Swift从入门到入门">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift3——Swift从入门到入门">
+<meta property="og:url" content="http://yoursite.com/posts/05/20/Swift3——Swift从入门到入门/index.html">
+<meta property="og:site_name" content="iCocos">
+<meta property="og:description" content="自从14年Swift出来之后，苹果就一直保持对它的快速更新与迭代，也正是因为这样，导致我们几乎是每年学习一门语言，从1.0到2.0，再从2.0到3.0......">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/iCocosImages/201703/iCocosBlogHeader.JPG">
+<meta property="og:updated_time" content="2018-05-06T13:06:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift3——Swift从入门到入门">
+<meta name="twitter:description" content="自从14年Swift出来之后，苹果就一直保持对它的快速更新与迭代，也正是因为这样，导致我们几乎是每年学习一门语言，从1.0到2.0，再从2.0到3.0......">
+<meta name="twitter:image" content="http://yoursite.com/iCocosImages/201703/iCocosBlogHeader.JPG">
+  
+    <link rel="alternative" href="/atom.xml" title="iCocos" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">iCocos</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">梦工厂</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Homes">首页</a></li>
+                        
+                            <li><a href="/Sites">网站</a></li>
+                        
+                            <li><a href="/Uscvs">简历</a></li>
+                        
+                            <li><a href="/Works">作品</a></li>
+                        
+                            <li><a href="/Mesgs">留言</a></li>
+                        
+                            <li><a href="/Warm">温馨</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl pinterest" target="_blank" href="http://www.icocos.cn" title="pinterest">pinterest</a>
+                            
+                                <a class="fl pinboard" target="_blank" href="http://al1020119.github.io/" title="pinboard">pinboard</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/al1020119" title="github">github</a>
+                            
+                                <a class="fl weibo" target="_blank" href="https://weibo.com/iCocosLver" title="weibo">weibo</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="http://www.linkedin.com/in/%E7%90%86%E9%B9%8F-%E6%9B%B9-3b30b5134/" title="linkedin">linkedin</a>
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=LE9AXE1FTUBsXV0CT0NB" title="mail">mail</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/icocos-65/activities" title="zhihu">zhihu</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/2017/" style="font-size: 10px;">2017</a> <a href="/tags/3-rf一把无形的双刃剑/" style="font-size: 10px;">3-rf一把无形的双刃剑</a> <a href="/tags/500错误/" style="font-size: 10px;">500错误</a> <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/APP接口/" style="font-size: 10px;">APP接口</a> <a href="/tags/ARC中循环引用问题/" style="font-size: 10px;">ARC中循环引用问题</a> <a href="/tags/Algo/" style="font-size: 10px;">Algo</a> <a href="/tags/Apple/" style="font-size: 10px;">Apple</a> <a href="/tags/App启动优化分析与总结/" style="font-size: 10px;">App启动优化分析与总结</a> <a href="/tags/App整个启动过程分析/" style="font-size: 10px;">App整个启动过程分析</a> <a href="/tags/App跳转到系统设置/" style="font-size: 10px;">App跳转到系统设置</a> <a href="/tags/Array、Slice、Map、Set/" style="font-size: 10px;">Array、Slice、Map、Set</a> <a href="/tags/CURL初探/" style="font-size: 10px;">CURL初探</a> <a href="/tags/CocoaPods私有化组件/" style="font-size: 10px;">CocoaPods私有化组件</a> <a href="/tags/GET-POST方式总结/" style="font-size: 10px;">GET/POST方式总结</a> <a href="/tags/Games/" style="font-size: 10px;">Games</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Golang知识图谱/" style="font-size: 10px;">Golang知识图谱</a> <a href="/tags/Google-I-O/" style="font-size: 10px;">Google I/O</a> <a href="/tags/Go基础/" style="font-size: 16.67px;">Go基础</a> <a href="/tags/Go安装与配置/" style="font-size: 10px;">Go安装与配置</a> <a href="/tags/Http服务初探/" style="font-size: 10px;">Http服务初探</a> <a href="/tags/Live/" style="font-size: 10px;">Live</a> <a href="/tags/Meeting/" style="font-size: 10px;">Meeting</a> <a href="/tags/MySql安装与配置/" style="font-size: 10px;">MySql安装与配置</a> <a href="/tags/Nginx安装与配置/" style="font-size: 10px;">Nginx安装与配置</a> <a href="/tags/Objective-C与Swift优缺点对比/" style="font-size: 10px;">Objective-C与Swift优缺点对比</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/PHP经典面试一/" style="font-size: 10px;">PHP经典面试一</a> <a href="/tags/PHP经典面试二/" style="font-size: 10px;">PHP经典面试二</a> <a href="/tags/Php安装与配置/" style="font-size: 10px;">Php安装与配置</a> <a href="/tags/QQ号与QQ群添加与调整功能/" style="font-size: 10px;">QQ号与QQ群添加与调整功能</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/React-Native搭建与初始化项目/" style="font-size: 10px;">React Native搭建与初始化项目</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Response/" style="font-size: 10px;">Response</a> <a href="/tags/RunLoop/" style="font-size: 10px;">RunLoop</a> <a href="/tags/Server/" style="font-size: 15.56px;">Server</a> <a href="/tags/Swift/" style="font-size: 17.78px;">Swift</a> <a href="/tags/Swift-4-0-适配实战总结（Xcode9）/" style="font-size: 10px;">Swift 4.0 适配实战总结（Xcode9）</a> <a href="/tags/Swift3/" style="font-size: 13.33px;">Swift3</a> <a href="/tags/Swift3中的Runtime/" style="font-size: 11.11px;">Swift3中的Runtime</a> <a href="/tags/Swift从入门到入门/" style="font-size: 10px;">Swift从入门到入门</a> <a href="/tags/Swift内存管理/" style="font-size: 10px;">Swift内存管理</a> <a href="/tags/WWDC/" style="font-size: 12.22px;">WWDC</a> <a href="/tags/WWDC17惊喜/" style="font-size: 10px;">WWDC17惊喜</a> <a href="/tags/Xcode-Server完整教程/" style="font-size: 10px;">Xcode Server完整教程</a> <a href="/tags/Xcode默认路径（Fastlane打包的尴尬）/" style="font-size: 10px;">Xcode默认路径（Fastlane打包的尴尬）</a> <a href="/tags/attribute-使用与总结/" style="font-size: 10px;">attribute__使用与总结</a> <a href="/tags/cocos2dx初探/" style="font-size: 10px;">cocos2dx初探</a> <a href="/tags/goroutine和channel/" style="font-size: 10px;">goroutine和channel</a> <a href="/tags/groutine和channel底层机制/" style="font-size: 10px;">groutine和channel底层机制</a> <a href="/tags/iCocos/" style="font-size: 10px;">iCocos</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iPhone-X适配实战总结/" style="font-size: 10px;">iPhone X适配实战总结</a> <a href="/tags/ipv6-客户端/" style="font-size: 10px;">ipv6(客户端)</a> <a href="/tags/ipv6-服务器/" style="font-size: 10px;">ipv6(服务器)</a> <a href="/tags/kotlin/" style="font-size: 12.22px;">kotlin</a> <a href="/tags/session和cookie/" style="font-size: 10px;">session和cookie</a> <a href="/tags/万物皆对象/" style="font-size: 10px;">万物皆对象</a> <a href="/tags/不为人知的淫技/" style="font-size: 10px;">不为人知的淫技</a> <a href="/tags/免密登录，我以为有多难？/" style="font-size: 10px;">免密登录，我以为有多难？</a> <a href="/tags/关于马甲包与审核/" style="font-size: 10px;">关于马甲包与审核</a> <a href="/tags/内存管理/" style="font-size: 10px;">内存管理</a> <a href="/tags/函数与方法/" style="font-size: 10px;">函数与方法</a> <a href="/tags/函数篇/" style="font-size: 10px;">函数篇</a> <a href="/tags/分页与实现/" style="font-size: 10px;">分页与实现</a> <a href="/tags/动态-静态分析与实战/" style="font-size: 10px;">动态&静态分析与实战</a> <a href="/tags/可选类型总结/" style="font-size: 10px;">可选类型总结</a> <a href="/tags/合并两个链表/" style="font-size: 10px;">合并两个链表</a> <a href="/tags/图像与图像操作/" style="font-size: 10px;">图像与图像操作</a> <a href="/tags/基础学习笔记/" style="font-size: 10px;">基础学习笔记</a> <a href="/tags/大会/" style="font-size: 11.11px;">大会</a> <a href="/tags/大会后感/" style="font-size: 10px;">大会后感</a> <a href="/tags/大流量高并发解决方案/" style="font-size: 10px;">大流量高并发解决方案</a> <a href="/tags/字符串操作/" style="font-size: 10px;">字符串操作</a> <a href="/tags/实战验证与补充/" style="font-size: 10px;">实战验证与补充</a> <a href="/tags/实用技巧/" style="font-size: 10px;">实用技巧</a> <a href="/tags/屏幕旋转/" style="font-size: 10px;">屏幕旋转</a> <a href="/tags/工具集选/" style="font-size: 10px;">工具集选</a> <a href="/tags/底层分析/" style="font-size: 14.44px;">底层分析</a> <a href="/tags/底层机制/" style="font-size: 10px;">底层机制</a> <a href="/tags/开发文档/" style="font-size: 11.11px;">开发文档</a> <a href="/tags/开发者中心更新手机号码/" style="font-size: 10px;">开发者中心更新手机号码</a> <a href="/tags/异常处理/" style="font-size: 10px;">异常处理</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/技术原理/" style="font-size: 10px;">技术原理</a> <a href="/tags/接口设计规范/" style="font-size: 10px;">接口设计规范</a> <a href="/tags/数据库优化的八种方式/" style="font-size: 10px;">数据库优化的八种方式</a> <a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a> <a href="/tags/数组篇/" style="font-size: 10px;">数组篇</a> <a href="/tags/文件上传下载原理与配置/" style="font-size: 10px;">文件上传下载原理与配置</a> <a href="/tags/文件上传下载实战/" style="font-size: 10px;">文件上传下载实战</a> <a href="/tags/文件处理/" style="font-size: 10px;">文件处理</a> <a href="/tags/文件操作/" style="font-size: 10px;">文件操作</a> <a href="/tags/方法调用技巧/" style="font-size: 10px;">方法调用技巧</a> <a href="/tags/时间与日期处理/" style="font-size: 10px;">时间与日期处理</a> <a href="/tags/最新高级面试题整理（阿里篇）/" style="font-size: 10px;">最新高级面试题整理（阿里篇）</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/漫威科幻/" style="font-size: 10px;">漫威科幻</a> <a href="/tags/第一周语法总结/" style="font-size: 10px;">第一周语法总结</a> <a href="/tags/类-结构体-枚举总结/" style="font-size: 10px;">类&结构体&枚举总结</a> <a href="/tags/缓存/" style="font-size: 10px;">缓存</a> <a href="/tags/自动打包上传/" style="font-size: 10px;">自动打包上传</a> <a href="/tags/访问控制/" style="font-size: 10px;">访问控制</a> <a href="/tags/语法小结/" style="font-size: 10px;">语法小结</a> <a href="/tags/重整iOS技术（Fastlane完整打包流程）/" style="font-size: 10px;">重整iOS技术（Fastlane完整打包流程）</a> <a href="/tags/防止反编译总结/" style="font-size: 10px;">防止反编译总结</a> <a href="/tags/阿里云主机配置与操作/" style="font-size: 10px;">阿里云主机配置与操作</a> <a href="/tags/除了代码，还有生活/" style="font-size: 10px;">除了代码，还有生活</a> <a href="/tags/面试一/" style="font-size: 10px;">面试一</a> <a href="/tags/面试二/" style="font-size: 10px;">面试二</a> <a href="/tags/魔术方法/" style="font-size: 10px;">魔术方法</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://al1020119.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯码迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中！</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">iCocos</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">iCocos</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">梦工厂</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Homes">首页</a></li>
+                
+                    <li><a href="/Sites">网站</a></li>
+                
+                    <li><a href="/Uscvs">简历</a></li>
+                
+                    <li><a href="/Works">作品</a></li>
+                
+                    <li><a href="/Mesgs">留言</a></li>
+                
+                    <li><a href="/Warm">温馨</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="pinterest" target="_blank" href="http://www.icocos.cn" title="pinterest">pinterest</a>
+                    
+                        <a class="pinboard" target="_blank" href="http://al1020119.github.io/" title="pinboard">pinboard</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/al1020119" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/iCocosLver" title="weibo">weibo</a>
+                    
+                        <a class="linkedin" target="_blank" href="http://www.linkedin.com/in/%E7%90%86%E9%B9%8F-%E6%9B%B9-3b30b5134/" title="linkedin">linkedin</a>
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=LE9AXE1FTUBsXV0CT0NB" title="mail">mail</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/icocos-65/activities" title="zhihu">zhihu</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Swift3——Swift从入门到入门" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/posts/05/20/Swift3——Swift从入门到入门/" class="article-date">
+      <time datetime="2017-05-20T12:21:08.000Z" itemprop="datePublished">2017-05-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Swift3——Swift从入门到入门
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Swift3/">Swift3</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift3/">Swift3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift从入门到入门/">Swift从入门到入门</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p> 自从14年Swift出来之后，苹果就一直保持对它的快速更新与迭代，也正是因为这样，导致我们几乎是每年学习一门语言，从1.0到2.0，再从2.0到3.0……</p>
+<h2 id="Swift从入门到入门"><a href="#Swift从入门到入门" class="headerlink" title="Swift从入门到入门"></a>Swift从入门到入门</h2><a id="more"></a>
+<h3 id="嗨，欢迎来到梦工厂，我是曹理鹏-iCocos-，一名-iOS-前端-开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。"><a href="#嗨，欢迎来到梦工厂，我是曹理鹏-iCocos-，一名-iOS-前端-开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。" class="headerlink" title="嗨，欢迎来到梦工厂，我是曹理鹏 (@iCocos)，一名 iOS / 前端 开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。"></a>嗨，欢迎来到梦工厂，我是曹理鹏 (@iCocos)，一名 iOS / 前端 开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。</h3><h3 id="微信：clpaial10201119-QQ：2211523682"><a href="#微信：clpaial10201119-QQ：2211523682" class="headerlink" title="微信：clpaial10201119 / QQ：2211523682"></a>微信：clpaial10201119 / QQ：2211523682</h3><h3 id="博客-前后端-：https-icocos-github-io"><a href="#博客-前后端-：https-icocos-github-io" class="headerlink" title="博客(前后端)：https://icocos.github.io/"></a>博客(前后端)：<a href="https://icocos.github.io/" target="_blank" rel="noopener">https://icocos.github.io/</a></h3><h3 id="博客-iOS-：http-al1020119-github-io"><a href="#博客-iOS-：http-al1020119-github-io" class="headerlink" title="博客(iOS)：http://al1020119.github.io/"></a>博客(iOS)：<a href="http://al1020119.github.io/" target="_blank" rel="noopener">http://al1020119.github.io/</a></h3><h3 id="github：https-github-com-al1020119"><a href="#github：https-github-com-al1020119" class="headerlink" title="github：https://github.com/al1020119"></a>github：<a href="https://github.com/al1020119" target="_blank" rel="noopener">https://github.com/al1020119</a></h3><h3 id="个人网站：http-www-icocos-cn"><a href="#个人网站：http-www-icocos-cn" class="headerlink" title="个人网站：http://www.icocos.cn/"></a>个人网站：<a href="http://www.icocos.cn/" target="_blank" rel="noopener">http://www.icocos.cn/</a></h3><p><img src="/iCocosImages/201703/iCocosBlogHeader.JPG" alt="曹理鹏(iCocos)-梦工厂"></p>
+<p>至于Swift1，Swift2的东西，这里就说这没撒说的了，有很多即使还是一样的知识点，但是用到3里面还是不是你当初所了解的哪有，所以……</p>
+<blockquote>
+<p>之前 Apple 在 WWDC 上已将 Swift 3 整合进了 Xcode 8 beta 中，而本月苹果发布了 Swift 3 的正式版。这也是自 2015 年底Apple开源Swift之后，首个发布的主要版本（Swift 3.0），该版本实现了 Swift 演变过程中所讨论并通过的90多个提议。这里我对 Swift 3 的新特性、新变化进行一个总结。</p>
+</blockquote>
+<p>原文:Swift - Swift 3 新特性汇总（不同于以往版本的新变化）</p>
+<p><a href="http://www.jianshu.com/p/a10afa7f9ce2" target="_blank" rel="noopener">语法列表：</a></p>
+<p><a href="https://segmentfault.com/a/1190000008296736" target="_blank" rel="noopener">学习笔记：</a></p>
+<p>由于Swift是开源的，所以关于这门语言所有的更新内容可以从GitHub上找到详细的解释。</p>
+<h3 id="Swift-3改变可以分为四个大的部分"><a href="#Swift-3改变可以分为四个大的部分" class="headerlink" title="Swift 3改变可以分为四个大的部分"></a>Swift 3改变可以分为四个大的部分</h3><pre><code>1. 移除在Swift 2.2中弃用的方法
+2. Swift 3 的新特性
+3. 一些语法的修改
+4. 语言更加安全，优雅（正确的废话）
+</code></pre><h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p><a href="http://www.jianshu.com/p/ca8e05150068" target="_blank" rel="noopener">http://www.jianshu.com/p/ca8e05150068</a><br><a href="http://www.tuicool.com/articles/NVJryi6" target="_blank" rel="noopener">http://www.tuicool.com/articles/NVJryi6</a></p>
+<h2 id="一、彻底移除在-Swift-2-2-就已经弃用的特性"><a href="#一、彻底移除在-Swift-2-2-就已经弃用的特性" class="headerlink" title="一、彻底移除在 Swift 2.2 就已经弃用的特性"></a>一、彻底移除在 Swift 2.2 就已经弃用的特性</h2><p>这些特性在我们使用 Xcode 7.3 的时候就已经有告警提示，在 Swift 3 中已将其彻底移出。</p>
+<h3 id="1，弃用-与-–-操作符"><a href="#1，弃用-与-–-操作符" class="headerlink" title="1，弃用 ++ 与 – 操作符"></a>1，弃用 ++ 与 – 操作符</h3><p>过去我们可以使用 ++ 与 – 操作符来实现自增自减，现已废弃。</p>
+<pre><code>var i = 0
+i++
+++i
+i--
+--i
+</code></pre><p>可以使用复合加法运算（+=）与减法运算（-=），或者使用普通的加法运算（+）与减法运算（-）实现同样的功能。</p>
+<pre><code>//使用复合加法运算（+=）与减法运算（-=）
+var i = 0
+i += 1
+i -= 1
+
+//使用普通的加法运算（+）与减法运算（-）
+i = i + 1
+i = i - 1
+</code></pre><h3 id="2，废除C语言风格的for循环"><a href="#2，废除C语言风格的for循环" class="headerlink" title="2，废除C语言风格的for循环"></a>2，废除C语言风格的for循环</h3><p>我们过去可能习惯下面风格的 for 循环，现在也已废弃。</p>
+<pre><code>for var i=1; i&lt;100; i++ {
+print(&quot;\(i)&quot;)
+}
+现在可以使用 for-in 循环，或者使用 for-each 加闭包的写法实现同样的功能。
+
+
+//for-in循环
+for i in 1...10 {
+print(i)
+}
+
+//for-each循环
+(1...10).forEach {
+print($0)
+}
+</code></pre><h3 id="3，移除函数参数的-var-标记"><a href="#3，移除函数参数的-var-标记" class="headerlink" title="3，移除函数参数的 var 标记"></a>3，移除函数参数的 var 标记</h3><p>在 Swift 函数中，参数默认是常量。过去可以在参数前加关键字 var 将其定义为变量，这样函数内部就可以对该参数进行修改（外部的参数任然不会被修改）。</p>
+<pre><code>var age = 22
+add(age)
+
+func add(var age:Int) {
+age += 1
+}
+</code></pre><p>现在这种做法已经被废弃，Swift 3 不再允许开发者这样来将参数标记为变量了。</p>
+<h3 id="4，所有函数参数都必须带上标签"><a href="#4，所有函数参数都必须带上标签" class="headerlink" title="4，所有函数参数都必须带上标签"></a>4，所有函数参数都必须带上标签</h3><p>过去如果一个函数有多个参数，调用的时候第一个参数无需带标签，而从第二个参数开始，必须要带标签。</p>
+<pre><code>let number = additive(8, b: 12)
+
+func additive(a:Int, b:Int) -&gt; Int{
+return a + b
+}
+</code></pre><p>现在为了确保函数参数标签的一致性，所有参数都必须带上标签。</p>
+<pre><code>let number = additive(a: 8, b: 12)
+
+func additive(a:Int, b:Int) -&gt; Int{
+return a + b
+}
+</code></pre><p>这个变化可能会造成我们的项目代码要进行较大的改动，毕竟涉及的地方很多。所以苹果又给出了一种不用给第一个参数带标签的解决方案。即在第一个参数前面加上一个下划线。（不过这个只是方便我们代码从 Swift2 迁移到 Swift3 的一个折中方案，可以的话还是建议将所有的参数都带上标签。）</p>
+<pre><code>let number = additive(8, b: 12)
+
+func additive(_ a:Int, b:Int) -&gt; Int{
+return a + b
+}
+</code></pre><h3 id="5，函数声明和函数调用都需要括号来包括参数"><a href="#5，函数声明和函数调用都需要括号来包括参数" class="headerlink" title="5，函数声明和函数调用都需要括号来包括参数"></a>5，函数声明和函数调用都需要括号来包括参数</h3><p>我们可以使用函数类型作为参数 ，对于一个参数是函数、返回值也是函数的函数。原来我们可能会这么写：</p>
+<pre><code>func g(a: Int -&gt; Int) -&gt; Int-&gt;Int { ... }
+</code></pre><p>当这样非常难以阅读，很难看出参数在哪里结束，返回值又从哪里开始。在 Swift 3 中变成这么定义这个函数：</p>
+<pre><code>func g(a:(Int) -&gt; Int) -&gt; (Int) -&gt; Int { ... }
+</code></pre><h3 id="6，Selector-不再允许使用-String"><a href="#6，Selector-不再允许使用-String" class="headerlink" title="6，Selector 不再允许使用 String"></a>6，Selector 不再允许使用 String</h3><p>假设我们给按钮添加一个点击事件响应，点击后执行 tapped 函数。以前可以这么写：</p>
+<pre><code>button.addTarget(responder, action: &quot;tapped&quot;, forControlEvents: .TouchUpInside)
+</code></pre><p>但由于按钮的 selector 写的是字符串。如果字符串拼写错了，那程序会在运行时因找不到相关方法而崩溃。所以 Swift 3 将这种写法废除，改成 #selecor()。这样就将允许编译器提前检查方法名的拼写问题，而不用再等到运行时才发现问题。</p>
+<pre><code>button.addTarget(self, action:#selector(tapped), for:.touchUpInside)
+</code></pre><h2 id="二、Swift-3-的新特性"><a href="#二、Swift-3-的新特性" class="headerlink" title="二、Swift 3 的新特性"></a>二、Swift 3 的新特性</h2><h3 id="1，内联序列函数sequence"><a href="#1，内联序列函数sequence" class="headerlink" title="1，内联序列函数sequence"></a>1，内联序列函数sequence</h3><p>Swift 3 新增了两个全局函数：sequence(first: next:) 和 sequence(state: next:)。使用它们可以返回一个无限序列。下面是一个简单的使用样例，更详细的介绍可以关注我后续的文章。</p>
+<pre><code>// 从某一个树节点一直向上遍历到根节点
+for node in sequence(first: leaf, next: { $0.parent }) {
+// node is leaf, then leaf.parent, then leaf.parent.parent, etc.
+}
+
+// 遍历出所有的2的n次方数（不考虑溢出）
+for value in sequence(first: 1, next: { $0 * 2 }) {
+// value is 1, then 2, then 4, then 8, etc.
+}
+</code></pre><h3 id="2，-key-path不再只能使用String"><a href="#2，-key-path不再只能使用String" class="headerlink" title="2， key-path不再只能使用String"></a>2， key-path不再只能使用String</h3><p>这个是用在键值编码（KVC）与键值观察（KVO）上的，具体 KVC、KVO 相关内容可以参考我原来写的这篇文章：Swift - 反射（Reflection）的介绍与使用样例（附KVC介绍）<br>我们还是可以继续使用 String 类型的 key-Path：</p>
+<pre><code>//用户类
+class User: NSObject{
+var name:String = &quot;&quot;  //姓名
+var age:Int = 0  //年龄
+}
+
+//创建一个User实例对象
+let user1 = User()
+user1.name = &quot;hangge&quot;
+user1.age = 100
+
+//使用KVC取值
+let name = user1.value(forKey: &quot;name&quot;)
+print(name)
+
+//使用KVC赋值
+user1.setValue(&quot;hangge.com&quot;, forKey: &quot;name&quot;)
+但建议使用新增的 #keyPath() 写法，这样可以避免我们因为拼写错误而引发问题。
+
+
+//使用KVC取值
+let name = user1.value(forKeyPath: #keyPath(User.name))
+print(name)
+
+//使用KVC赋值
+user1.setValue(&quot;hangge.com&quot;, forKeyPath: #keyPath(User.name))
+</code></pre><h3 id="3，Foundation-去掉-NS-前缀"><a href="#3，Foundation-去掉-NS-前缀" class="headerlink" title="3，Foundation 去掉 NS 前缀"></a>3，Foundation 去掉 NS 前缀</h3><p>比如过去我们使用 Foundation 相关类来对文件中的 JSON 数据进行解析，这么写：</p>
+<pre><code>let file = NSBundle.mainBundle().pathForResource(&quot;tutorials&quot;, ofType: &quot;json&quot;)
+let url = NSURL(fileURLWithPath: file!)
+let data = NSData(contentsOfURL: url)
+let json = try! NSJSONSerialization.JSONObjectWithData(data!, options: [])
+print(json)
+在 Swift 3 中，将移除 NS 前缀，就变成了：
+
+let file = Bundle.main.path(forResource: &quot;tutorials&quot;, ofType: &quot;json&quot;)
+let url = URL(fileURLWithPath: file!)
+let data = try! Data(contentsOf: url)
+let json = try! JSONSerialization.jsonObject(with: data)
+print(json)
+</code></pre><h3 id="4，除了M-PI-还有-pi"><a href="#4，除了M-PI-还有-pi" class="headerlink" title="4，除了M_PI 还有 .pi"></a>4，除了M_PI 还有 .pi</h3><p>在过去，我们使用 M_PI 常量来表示 π。所以根据半径求周长代码如下：</p>
+<pre><code>let r =  3.0
+let circumference = 2 * M_PI * r
+</code></pre><p>在 Swift 3 中，π 提供了 Float，Double 与 CGFloat 三种形式（Float.pi、Double.pi、CGFloat.pi），所以求周长还可以这么写：</p>
+<pre><code>let r = 3.0
+let circumference = 2 * Double.pi * r
+
+//我们还可以将前缀省略，让其通过类型自动推断
+let r = 3.0
+let circumference = 2 * .pi * r
+</code></pre><h3 id="5，简化GCD的写法"><a href="#5，简化GCD的写法" class="headerlink" title="5，简化GCD的写法"></a>5，简化GCD的写法</h3><p>关于 GCD，我原来写过一篇相关文章：Swift - 多线程实现方式（3） - Grand Central Dispatch（GCD）<br>过去写法采用 C 语言的风格，初学者可能会不大适应。比如创建一个简单的异步线程：</p>
+<pre><code>let queue = dispatch_queue_create(&quot;Swift 2.2&quot;, nil)
+dispatch_async(queue) {
+print(&quot;Swift 2.2 queue&quot;)
+}
+Swift 3 取消了这种冗余的写法，而采用了更为面向对象的方式：
+
+
+let queue = DispatchQueue(label: &quot;Swift 3&quot;)
+queue.async {
+print(&quot;Swift 3 queue&quot;)
+}
+</code></pre><h3 id="6，Core-Graphics的写法也更加面向对象化"><a href="#6，Core-Graphics的写法也更加面向对象化" class="headerlink" title="6，Core Graphics的写法也更加面向对象化"></a>6，Core Graphics的写法也更加面向对象化</h3><p>Core Graphics 是一个相当强大的绘图框架，但是和 GCD 一样，它原来的 API 也是 C 语言风格的。<br>比如我们要创建一个 view，其内部背景使用 Core Graphics 进行绘制（红色边框，蓝色背景）。过去我们这么写：</p>
+<pre><code>class View: UIView {
+override func drawRect(rect: CGRect) {
+let context = UIGraphicsGetCurrentContext()
+let blue = UIColor.blueColor().CGColor
+CGContextSetFillColorWithColor(context, blue)
+let red = UIColor.redColor().CGColor
+CGContextSetStrokeColorWithColor(context, red)
+CGContextSetLineWidth(context, 10)
+CGContextAddRect(context, frame)
+CGContextDrawPath(context, .FillStroke)
+}
+}
+
+let frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+let aView = View(frame: frame)
+</code></pre><p>在 Swift 3 中改进了写法，只要对当前画布上下文解包，之后的所有绘制操作就都基于解包对象。</p>
+<pre><code>class View: UIView {
+override func draw(_ rect: CGRect) {
+guard let context = UIGraphicsGetCurrentContext() else {
+return
+}
+
+let blue = UIColor.blue.cgColor
+context.setFillColor(blue)
+let red = UIColor.red.cgColor
+context.setStrokeColor(red)
+context.setLineWidth(10)
+context.addRect(frame)
+context.drawPath(using: .fillStroke)
+}
+}
+
+let frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+let aView = View(frame: frame)
+</code></pre><h3 id="7，新增的访问控制关键字：fileprivate、open"><a href="#7，新增的访问控制关键字：fileprivate、open" class="headerlink" title="7，新增的访问控制关键字：fileprivate、open"></a>7，新增的访问控制关键字：fileprivate、open</h3><p>在 Swift 3 中在原有的 3 个访问控制关键字 private、public、internal 外。又添加了2个新关键字 fileprivate、open。它们可以看成是对原来 private 和 public 的进一步细分。具体使用方法和介绍可以关注我的后续文章。</p>
+<h2 id="三、一些语法的修改-Swift-3-的新特性"><a href="#三、一些语法的修改-Swift-3-的新特性" class="headerlink" title="三、一些语法的修改:Swift 3 的新特性"></a>三、一些语法的修改:Swift 3 的新特性</h2><h3 id="1，数组排序：sort-与sorted"><a href="#1，数组排序：sort-与sorted" class="headerlink" title="1，数组排序：sort()与sorted()"></a>1，数组排序：sort()与sorted()</h3><p>过去数组排序的两个方法：sortInPlace() 和 sort()，现在分别改名成 sort() 和 sorted()<br>sort() 是直接对目标数组进行排序。sorted() 是返回一个排序后的数组，原数组不变。</p>
+<pre><code>var array1 = [1, 5, 3, 2, 4]
+array1.sort()
+print(array1)  //[1, 2, 3, 4, 5]
+
+var array2 = [1, 5, 3, 2, 4]
+let sortedArray = array2.sorted()
+print(array2)  //[1, 5, 3, 2, 4]
+print(sortedArray)  //[1, 2, 3, 4, 5]
+</code></pre><h3 id="2，reversed-与enumerated"><a href="#2，reversed-与enumerated" class="headerlink" title="2，reversed()与enumerated()"></a>2，reversed()与enumerated()</h3><p>过去 reverse() 方法实现数组反转，enumerate() 方法实现遍历。现这两个方法都加上 ed 后缀（reversed、enumerated）</p>
+<pre><code>for i in (1...10).reversed() {
+print(i)
+}
+
+let array = [1, 5, 3, 2, 4]
+for (index, value) in array.enumerated() {
+print(&quot;\(index + 1) \(value)&quot;)
+}
+</code></pre><h3 id="3，CGRect、CGPoint、CGSize"><a href="#3，CGRect、CGPoint、CGSize" class="headerlink" title="3，CGRect、CGPoint、CGSize"></a>3，CGRect、CGPoint、CGSize</h3><p>过去的 CGRectMake、CGPointMake、CGSizeMake 已废弃。现改用 CGRect、CGPoint、CGSize 代替。</p>
+<pre><code>//Swift 2
+let frame = CGRectMake(0, 0, 20, 20)
+let point = CGPointMake(0, 0)
+let size = CGSizeMake(20, 20)
+
+//Swift 3
+let frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+let point = CGPoint(x: 0, y: 0)
+let size = CGSize(width: 20, height: 20)
+</code></pre><h3 id="4，移除了API中多余的单词"><a href="#4，移除了API中多余的单词" class="headerlink" title="4，移除了API中多余的单词"></a>4，移除了API中多余的单词</h3><pre><code>XCPlaygroundPage.currentPage 改为 PlaygroundPage.current
+button.setTitle(forState) 改为 button.setTitle(for)
+button.addTarget(action, forControlEvents) 改为 button.addTarget(action, for)
+
+arr.minElement() 改为 arr.min()
+arr.maxElement() 改为 arr.max()
+attributedString.appendAttributedString(anotherString) 改为 attributedString.append(anotherString)
+names.insert(&quot;Jane&quot;, atIndex: 0) 改为 names.insert(&quot;Jane&quot;, at: 0)
+
+NSBundle.mainBundle() 改为 Bundle.main
+UIDevice.currentDevice() 改为 UIDevice.current
+NSData(contentsOfURL) 改为 Data(contentsOf)
+NSJSONSerialization.JSONObjectWithData() 改为 JSONSerialization.jsonObject(with)
+UIColor.blueColor() 改为 UIColor.blue
+</code></pre><h3 id="5，枚举成员变成小写字母开头"><a href="#5，枚举成员变成小写字母开头" class="headerlink" title="5，枚举成员变成小写字母开头"></a>5，枚举成员变成小写字母开头</h3><p>Swift 3 将枚举成员当做属性来看，所以现在使用小写字母开头而不是以前的大写字母。</p>
+<pre><code>.system //过去是：.System
+.touchUpInside //过去是：.TouchUpInside
+.fillStroke //过去是：.FillStroke
+.cgColor //过去是：.CGColor
+</code></pre><h3 id="6，-discardableResult"><a href="#6，-discardableResult" class="headerlink" title="6，@discardableResult"></a>6，@discardableResult</h3><p>在 Swift 3 中，如果一个方法有返回值。而调用的时候没有接收该方法的返回值，Xcode 会报出警告，告诉你这可能会存在潜在问题。</p>
+<p>原文:Swift - Swift 3 新特性汇总（不同于以往版本的新变化）</p>
+<p>除了可以通过接收返回值消除警告。还可以通过给方法声明 @discardableResult 来达到消除目的。</p>
+<pre><code>import UIKit
+
+class ViewController: UIViewController {
+
+override func viewDidLoad() {
+super.viewDidLoad()
+
+printMessage(message: &quot;Hello Swift 3!&quot;)
+}
+
+@discardableResult
+func printMessage(message: String) -&gt; String {
+let outputMessage = &quot;Output : \(message)&quot;
+return outputMessage
+}
+
+override func didReceiveMemoryWarning() {
+super.didReceiveMemoryWarning()
+}
+}
+</code></pre><p><a href="http://ios.jobbole.com/91543/" target="_blank" rel="noopener">迁移的坑</a></p>
+<p><a href="https://github.com/apple/swift-evolution" target="_blank" rel="noopener">官方资料</a></p>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>梦工厂@iCocos</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">感谢您的支持，我会继续努力！</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/posts/05/20/Swift3——Swift从入门到入门/">Swift3——Swift从入门到入门</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 iCocos 的个人博客">iCocos</a></p>
+        <p><span>发布时间:</span>2017年05月20日 - 20时21分</p>
+        <p><span>最后更新:</span>2018年05月06日 - 21时06分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/posts/05/20/Swift3——Swift从入门到入门/" title="Swift3——Swift从入门到入门">http://yoursite.com/posts/05/20/Swift3——Swift从入门到入门/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/posts/05/20/Swift3——Swift从入门到入门/　　作者: iCocos" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/posts/05/23/Swift3——Swift内存管理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Swift3——Swift内存管理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/05/18/kotlin——和Swift像得一塌糊涂/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">kotlin——和Swift像得一塌糊涂</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Swift从入门到入门"><span class="toc-number">1.</span> <span class="toc-text">Swift从入门到入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#嗨，欢迎来到梦工厂，我是曹理鹏-iCocos-，一名-iOS-前端-开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。"><span class="toc-number">1.1.</span> <span class="toc-text">嗨，欢迎来到梦工厂，我是曹理鹏 (@iCocos)，一名 iOS / 前端 开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微信：clpaial10201119-QQ：2211523682"><span class="toc-number">1.2.</span> <span class="toc-text">微信：clpaial10201119 / QQ：2211523682</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#博客-前后端-：https-icocos-github-io"><span class="toc-number">1.3.</span> <span class="toc-text">博客(前后端)：https://icocos.github.io/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#博客-iOS-：http-al1020119-github-io"><span class="toc-number">1.4.</span> <span class="toc-text">博客(iOS)：http://al1020119.github.io/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github：https-github-com-al1020119"><span class="toc-number">1.5.</span> <span class="toc-text">github：https://github.com/al1020119</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个人网站：http-www-icocos-cn"><span class="toc-number">1.6.</span> <span class="toc-text">个人网站：http://www.icocos.cn/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Swift-3改变可以分为四个大的部分"><span class="toc-number">1.7.</span> <span class="toc-text">Swift 3改变可以分为四个大的部分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特性"><span class="toc-number">2.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、彻底移除在-Swift-2-2-就已经弃用的特性"><span class="toc-number">3.</span> <span class="toc-text">一、彻底移除在 Swift 2.2 就已经弃用的特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1，弃用-与-–-操作符"><span class="toc-number">3.1.</span> <span class="toc-text">1，弃用 ++ 与 – 操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2，废除C语言风格的for循环"><span class="toc-number">3.2.</span> <span class="toc-text">2，废除C语言风格的for循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3，移除函数参数的-var-标记"><span class="toc-number">3.3.</span> <span class="toc-text">3，移除函数参数的 var 标记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4，所有函数参数都必须带上标签"><span class="toc-number">3.4.</span> <span class="toc-text">4，所有函数参数都必须带上标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5，函数声明和函数调用都需要括号来包括参数"><span class="toc-number">3.5.</span> <span class="toc-text">5，函数声明和函数调用都需要括号来包括参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6，Selector-不再允许使用-String"><span class="toc-number">3.6.</span> <span class="toc-text">6，Selector 不再允许使用 String</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Swift-3-的新特性"><span class="toc-number">4.</span> <span class="toc-text">二、Swift 3 的新特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1，内联序列函数sequence"><span class="toc-number">4.1.</span> <span class="toc-text">1，内联序列函数sequence</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2，-key-path不再只能使用String"><span class="toc-number">4.2.</span> <span class="toc-text">2， key-path不再只能使用String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3，Foundation-去掉-NS-前缀"><span class="toc-number">4.3.</span> <span class="toc-text">3，Foundation 去掉 NS 前缀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4，除了M-PI-还有-pi"><span class="toc-number">4.4.</span> <span class="toc-text">4，除了M_PI 还有 .pi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5，简化GCD的写法"><span class="toc-number">4.5.</span> <span class="toc-text">5，简化GCD的写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6，Core-Graphics的写法也更加面向对象化"><span class="toc-number">4.6.</span> <span class="toc-text">6，Core Graphics的写法也更加面向对象化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7，新增的访问控制关键字：fileprivate、open"><span class="toc-number">4.7.</span> <span class="toc-text">7，新增的访问控制关键字：fileprivate、open</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、一些语法的修改-Swift-3-的新特性"><span class="toc-number">5.</span> <span class="toc-text">三、一些语法的修改:Swift 3 的新特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1，数组排序：sort-与sorted"><span class="toc-number">5.1.</span> <span class="toc-text">1，数组排序：sort()与sorted()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2，reversed-与enumerated"><span class="toc-number">5.2.</span> <span class="toc-text">2，reversed()与enumerated()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3，CGRect、CGPoint、CGSize"><span class="toc-number">5.3.</span> <span class="toc-text">3，CGRect、CGPoint、CGSize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4，移除了API中多余的单词"><span class="toc-number">5.4.</span> <span class="toc-text">4，移除了API中多余的单词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5，枚举成员变成小写字母开头"><span class="toc-number">5.5.</span> <span class="toc-text">5，枚举成员变成小写字母开头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6，-discardableResult"><span class="toc-number">5.6.</span> <span class="toc-text">6，@discardableResult</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'iCocos',
+      repo: 'icocos.github.io',
+      oauth: {
+        client_id: '4b7d4fdd945e8aa01820',
+        client_secret: 'bb1a81ef2412269255e31aa4e2c8d21fe675c4d0',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/posts/05/23/Swift3——Swift内存管理/" title="上一篇: Swift3——Swift内存管理">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/posts/05/18/kotlin——和Swift像得一塌糊涂/" title="下一篇: kotlin——和Swift像得一塌糊涂">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/posts/06/15/初识游戏——cocos2dx初探/">初识游戏——cocos2dx初探</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/12/Golang——groutine和channel底层机制/">Golang——groutine和channel底层机制</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/07/Golang——Http服务初探/">Golang——Http服务初探</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/03/Golang——文件IO处理/">Golang——文件IO处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/01/Go——Golang-Response-Snippets/">Go——Golang Response Snippets</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/29/Go——简单说说goroutine和channel/">Go——简单说说goroutine和channel</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/25/Go——函数与方法的奇妙之处/">Go——函数与方法的奇妙之处</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/22/Go语言中的Array、Slice、Map和Set/">Go语言中的Array、Slice、Map和Set</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/19/漫威铁粉福利——漫威-妇联3/">漫威铁粉福利——漫威+妇联3</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/10/Golang知识图谱/">Golang知识图谱</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/09/Go——基础学习笔记/">Go——基础学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/05/服务器配置——实战验证与补充/">服务器配置——实战验证与补充</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/04/服务器配置——Go安装与配置/">服务器配置——Go安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/04/服务器配置——MySql安装与配置/">服务器配置——MySql安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/03/服务器配置——Php安装与配置/">服务器配置——Php安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/03/服务器配置——Nginx安装与配置/">服务器配置——Nginx安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/01/服务器配置——阿里云主机/">服务器配置——阿里云主机配置与操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/26/iOS——开发者中心更新手机号码/">iOS——开发者中心更新手机号码</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/24/iOS——Xcode默认路径-Fastlane打包/">iOS——Xcode默认路径(Fastlane打包)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/23/iOS——奇葩需求QQ号与QQ群添加与跳转/">iOS——奇葩需求QQ号与QQ群添加与跳转</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/20/iOS——3-rf一把无形的双刃剑/">iOS——3-rf一把无形的双刃剑</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/09/iOS——重整iOS技术（Fastlane完整打包流程）/">iOS——重整iOS技术（Fastlane完整打包流程）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/01/26/iOS游戏——关于马甲包与审核/">iOS游戏——关于马甲包与审核</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/12/31/回顾与展望：梦想之路！/">回顾与展望：梦想之路！</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/27/iOS——Swift-4-0-适配实战总结（Xcode9）/">iOS——Swift 4.0 适配实战总结（Xcode9）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/21/React-Nativec搭建与初始化项目/">React Native搭建与初始化项目</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/20/iOS——遇到的最奇葩的Bug/">iOS——遇到的最奇葩的Bug</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/18/iOS——免密登录，我以为有多难？/">iOS——免密登录，我以为有多难？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/18/iOS——iPhone-X适配实战总结/">iOS——iPhone X适配实战总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/16/iOS——App跳转到系统设置/">iOS——App跳转到系统设置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/11/Xcode-Server完整教程/">Xcode Server完整教程</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/08/iOS——-attribute-使用与总结/">iOS——__attribute__使用与总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/03/iOS——App启动优化分析与总结/">iOS——App启动优化分析与总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/10/26/iOS——防止反编译总结/">iOS——防止反编译总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/10/25/iOS——最新高级面试题整理（阿里篇）/">iOS——最新高级面试题整理（阿里篇）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/10/25/iOS——CocoaPods私有化组件/">iOS——CocoaPods私有化组件</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/09/19/iOS——Objective-C与Swift优缺点对比/">iOS——Objective-C与Swift优缺点对比</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/09/14/iOS开发——SVG图展示方案/">iOS开发——SVG图展示方案</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/09/12/Swift——简单服务端开发实战/">Swift——简单服务端开发实战</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/08/08/iOS开发——系统API使用问题汇总（-解决方案）/">iOS开发——系统API使用问题汇总（+解决方案）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/08/02/iOS（Swift）开发——开发文档/">iOS（Swift）开发——App开发文档</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/31/Swift开发——实用技巧Literal/">Swift开发——实用技巧Literal</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/22/Swift篇——ARC中循环引用问题/">Swift篇——ARC中循环引用问题</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/18/Swift篇——可选类型总结/">Swift篇——可选类型总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/15/Swift——类-结构体-枚举总结/">Swift——类&结构体&枚举总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/13/OC-Swift——方法调用技巧/">OC&&Swift——方法调用技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/08/Swift——不为人知的淫技/">Swift——不为人知的淫技</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/04/Swift——动态-静态分析与实战/">Swift——动态&静态分析与实战</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/01/Swift——访问控制关键字说明/">Swift——访问控制关键字说明</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/28/iOS——App整个启动过程分析/">iOS——App整个启动过程分析</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/25/带你简单理解block和-block的实现？/">带你简单理解block和__block的实现？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/24/带你简单理解weak和-weak的实现？/">带你简单理解weak和__weak的实现？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/20/分类能添加属性吗？成员变量呢？为什么？/">分类能添加属性吗？成员变量呢？为什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/18/为什么调用nil的任何方法都不会崩溃？/">为什么调用nil的任何方法都不会崩溃？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/15/XCode9——还有那些你不知道的新特性？/">XCode9——还有那些你不知道的新特性？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/13/WWDC17惊喜——Xcode9无线调试/">WWDC17惊喜——Xcode9无线调试</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/11/一个偶然的面试机会——我既然懵了/">一个偶然的面试机会——我既然懵了</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/06/WWDC17——都有那些值得你去了解的？/">WWDC17——都有那些值得你去了解的？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/05/Swift3——有了Perfect你也可以做PHP能做的事情/">Swift3——有了Perfect你也可以做PHP能做的事情</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/25/Swift3——Swift3中的Runtime/">Swift3——Swift3中的Runtime</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/23/Swift3——Swift内存管理/">Swift3——Swift内存管理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/20/Swift3——Swift从入门到入门/">Swift3——Swift从入门到入门</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/18/kotlin——和Swift像得一塌糊涂/">kotlin——和Swift像得一塌糊涂</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/18/kotlin——要火了❤️，你还在等什么？/">kotlin——要火了❤️，你还在等什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/15/2017-Swift——后感/">2017@Swift——后感</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/15/2017-Swift——中国开发者大会（第二天）/">2017@Swift——中国开发者大会（第二天）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/15/2017-Swift——中国开发者大会（第一天）/">2017@Swift——中国开发者大会（第一天）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/14/PHP——PHP经典面试二/">PHP——PHP经典面试二</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/14/PHP——PHP经典面试一/">PHP——PHP经典面试一</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/12/PHP——大流量高并发解决方案/">PHP——大流量高并发解决方案</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/12/PHP——数据库优化的八种方式/">PHP——数据库优化的八种方式</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/12/PHP——核心技术之缓存/">PHP——核心技术之缓存</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/10/PHP——魔术方法/">PHP——魔术方法</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/07/PHP——分页与实现/">PHP——分页与实现</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/05/PHP——文件上传下载实战/">PHP——文件上传下载实战</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/02/PHP——文件上传下载原理与配置/">PHP——文件上传下载原理与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/30/PHP——CURL初探/">PHP——CURL初探</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/28/PHP——GET-POST方式总结/">PHP——GET/POST方式总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/25/PHP——Redis安装，配置，简单使用/">PHP——Redis安装，配置，简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/22/PHP——服务器500错误总结/">PHP——服务器500错误总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/21/iOS——自动打包上传/">iOS——自动打包上传</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/20/iOS——ipv6-服务器/">iOS——ipv6(服务器)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/20/iOS——ipv6-客户端/">iOS——ipv6(客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/16/PHP——接口设计规范/">PHP——接口设计规范</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/16/PHP——APP接口是怎么来的？/">PHP——APP接口是怎么来的？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/15/PHP——数据库操作/">PHP——数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/13/PHP——异常处理/">PHP——异常处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/12/PHP——图像与图像操作/">PHP——图像与图像操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/11/PHP——时间与日期处理/">PHP——时间与日期处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/11/PHP——文件处理/">PHP——文件处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/09/PHP——session和cookie/">PHP——session和cookie</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/08/PHP——正则表达式/">PHP——正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/05/PHP——字符串操作/">PHP——字符串操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/04/PHP——万物皆对象/">PHP——万物皆对象</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/04/PHP——函数篇/">PHP——函数篇</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/03/PHP——数组篇/">PHP——数组篇</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/31/PHP第一周——基础总结/">PHP第一周——基础总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/27/PHP第三篇——语法概括/">PHP第三篇——语法概括</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/25/PHP第二篇——底层机制/">PHP第二篇——底层机制</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/23/PHP第一篇——工具集选/">PHP第一篇——工具集选</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/20/直播-技术原理篇/">直播--技术原理篇</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/12/算法-合并两个链表/">算法--合并两个链表</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/12/面试被虐总结二/">面试被虐总结二</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/12/面试被虐总结一/">面试被虐总结一</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/10/生命之源-RunLoop/">生命之源-RunLoop</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/07/想怎么转就怎么转/">想怎么转就怎么转</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/03/前世-内存管理/">前世-内存管理</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 iCocos
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >总到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

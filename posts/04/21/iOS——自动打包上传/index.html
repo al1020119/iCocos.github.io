@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS——自动打包上传 | iCocos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="为了不去每次都做这些繁琐的操作，我们只能做一个懒得程序狗，也就是将整个过程进行脚本化......">
+<meta name="keywords" content="iOS,自动打包上传">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS——自动打包上传">
+<meta property="og:url" content="http://yoursite.com/posts/04/21/iOS——自动打包上传/index.html">
+<meta property="og:site_name" content="iCocos">
+<meta property="og:description" content="为了不去每次都做这些繁琐的操作，我们只能做一个懒得程序狗，也就是将整个过程进行脚本化......">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/iCocosImages/201703/iCocosBlogHeader.JPG">
+<meta property="og:updated_time" content="2018-05-06T13:06:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS——自动打包上传">
+<meta name="twitter:description" content="为了不去每次都做这些繁琐的操作，我们只能做一个懒得程序狗，也就是将整个过程进行脚本化......">
+<meta name="twitter:image" content="http://yoursite.com/iCocosImages/201703/iCocosBlogHeader.JPG">
+  
+    <link rel="alternative" href="/atom.xml" title="iCocos" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">iCocos</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">梦工厂</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Homes">首页</a></li>
+                        
+                            <li><a href="/Sites">网站</a></li>
+                        
+                            <li><a href="/Uscvs">简历</a></li>
+                        
+                            <li><a href="/Works">作品</a></li>
+                        
+                            <li><a href="/Mesgs">留言</a></li>
+                        
+                            <li><a href="/Warm">温馨</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl pinterest" target="_blank" href="http://www.icocos.cn" title="pinterest">pinterest</a>
+                            
+                                <a class="fl pinboard" target="_blank" href="http://al1020119.github.io/" title="pinboard">pinboard</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/al1020119" title="github">github</a>
+                            
+                                <a class="fl weibo" target="_blank" href="https://weibo.com/iCocosLver" title="weibo">weibo</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="http://www.linkedin.com/in/%E7%90%86%E9%B9%8F-%E6%9B%B9-3b30b5134/" title="linkedin">linkedin</a>
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=LE9AXE1FTUBsXV0CT0NB" title="mail">mail</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/icocos-65/activities" title="zhihu">zhihu</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/2017/" style="font-size: 10px;">2017</a> <a href="/tags/3-rf一把无形的双刃剑/" style="font-size: 10px;">3-rf一把无形的双刃剑</a> <a href="/tags/500错误/" style="font-size: 10px;">500错误</a> <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/APP接口/" style="font-size: 10px;">APP接口</a> <a href="/tags/ARC中循环引用问题/" style="font-size: 10px;">ARC中循环引用问题</a> <a href="/tags/Algo/" style="font-size: 10px;">Algo</a> <a href="/tags/Apple/" style="font-size: 10px;">Apple</a> <a href="/tags/App启动优化分析与总结/" style="font-size: 10px;">App启动优化分析与总结</a> <a href="/tags/App整个启动过程分析/" style="font-size: 10px;">App整个启动过程分析</a> <a href="/tags/App跳转到系统设置/" style="font-size: 10px;">App跳转到系统设置</a> <a href="/tags/Array、Slice、Map、Set/" style="font-size: 10px;">Array、Slice、Map、Set</a> <a href="/tags/CURL初探/" style="font-size: 10px;">CURL初探</a> <a href="/tags/CocoaPods私有化组件/" style="font-size: 10px;">CocoaPods私有化组件</a> <a href="/tags/GET-POST方式总结/" style="font-size: 10px;">GET/POST方式总结</a> <a href="/tags/Games/" style="font-size: 10px;">Games</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Golang知识图谱/" style="font-size: 10px;">Golang知识图谱</a> <a href="/tags/Google-I-O/" style="font-size: 10px;">Google I/O</a> <a href="/tags/Go基础/" style="font-size: 16.67px;">Go基础</a> <a href="/tags/Go安装与配置/" style="font-size: 10px;">Go安装与配置</a> <a href="/tags/Http服务初探/" style="font-size: 10px;">Http服务初探</a> <a href="/tags/Live/" style="font-size: 10px;">Live</a> <a href="/tags/Meeting/" style="font-size: 10px;">Meeting</a> <a href="/tags/MySql安装与配置/" style="font-size: 10px;">MySql安装与配置</a> <a href="/tags/Nginx安装与配置/" style="font-size: 10px;">Nginx安装与配置</a> <a href="/tags/Objective-C与Swift优缺点对比/" style="font-size: 10px;">Objective-C与Swift优缺点对比</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/PHP经典面试一/" style="font-size: 10px;">PHP经典面试一</a> <a href="/tags/PHP经典面试二/" style="font-size: 10px;">PHP经典面试二</a> <a href="/tags/Php安装与配置/" style="font-size: 10px;">Php安装与配置</a> <a href="/tags/QQ号与QQ群添加与调整功能/" style="font-size: 10px;">QQ号与QQ群添加与调整功能</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/React-Native搭建与初始化项目/" style="font-size: 10px;">React Native搭建与初始化项目</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Response/" style="font-size: 10px;">Response</a> <a href="/tags/RunLoop/" style="font-size: 10px;">RunLoop</a> <a href="/tags/Server/" style="font-size: 15.56px;">Server</a> <a href="/tags/Swift/" style="font-size: 17.78px;">Swift</a> <a href="/tags/Swift-4-0-适配实战总结（Xcode9）/" style="font-size: 10px;">Swift 4.0 适配实战总结（Xcode9）</a> <a href="/tags/Swift3/" style="font-size: 13.33px;">Swift3</a> <a href="/tags/Swift3中的Runtime/" style="font-size: 11.11px;">Swift3中的Runtime</a> <a href="/tags/Swift从入门到入门/" style="font-size: 10px;">Swift从入门到入门</a> <a href="/tags/Swift内存管理/" style="font-size: 10px;">Swift内存管理</a> <a href="/tags/WWDC/" style="font-size: 12.22px;">WWDC</a> <a href="/tags/WWDC17惊喜/" style="font-size: 10px;">WWDC17惊喜</a> <a href="/tags/Xcode-Server完整教程/" style="font-size: 10px;">Xcode Server完整教程</a> <a href="/tags/Xcode默认路径（Fastlane打包的尴尬）/" style="font-size: 10px;">Xcode默认路径（Fastlane打包的尴尬）</a> <a href="/tags/attribute-使用与总结/" style="font-size: 10px;">attribute__使用与总结</a> <a href="/tags/cocos2dx初探/" style="font-size: 10px;">cocos2dx初探</a> <a href="/tags/goroutine和channel/" style="font-size: 10px;">goroutine和channel</a> <a href="/tags/groutine和channel底层机制/" style="font-size: 10px;">groutine和channel底层机制</a> <a href="/tags/iCocos/" style="font-size: 10px;">iCocos</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iPhone-X适配实战总结/" style="font-size: 10px;">iPhone X适配实战总结</a> <a href="/tags/ipv6-客户端/" style="font-size: 10px;">ipv6(客户端)</a> <a href="/tags/ipv6-服务器/" style="font-size: 10px;">ipv6(服务器)</a> <a href="/tags/kotlin/" style="font-size: 12.22px;">kotlin</a> <a href="/tags/session和cookie/" style="font-size: 10px;">session和cookie</a> <a href="/tags/万物皆对象/" style="font-size: 10px;">万物皆对象</a> <a href="/tags/不为人知的淫技/" style="font-size: 10px;">不为人知的淫技</a> <a href="/tags/免密登录，我以为有多难？/" style="font-size: 10px;">免密登录，我以为有多难？</a> <a href="/tags/关于马甲包与审核/" style="font-size: 10px;">关于马甲包与审核</a> <a href="/tags/内存管理/" style="font-size: 10px;">内存管理</a> <a href="/tags/函数与方法/" style="font-size: 10px;">函数与方法</a> <a href="/tags/函数篇/" style="font-size: 10px;">函数篇</a> <a href="/tags/分页与实现/" style="font-size: 10px;">分页与实现</a> <a href="/tags/动态-静态分析与实战/" style="font-size: 10px;">动态&静态分析与实战</a> <a href="/tags/可选类型总结/" style="font-size: 10px;">可选类型总结</a> <a href="/tags/合并两个链表/" style="font-size: 10px;">合并两个链表</a> <a href="/tags/图像与图像操作/" style="font-size: 10px;">图像与图像操作</a> <a href="/tags/基础学习笔记/" style="font-size: 10px;">基础学习笔记</a> <a href="/tags/大会/" style="font-size: 11.11px;">大会</a> <a href="/tags/大会后感/" style="font-size: 10px;">大会后感</a> <a href="/tags/大流量高并发解决方案/" style="font-size: 10px;">大流量高并发解决方案</a> <a href="/tags/字符串操作/" style="font-size: 10px;">字符串操作</a> <a href="/tags/实战验证与补充/" style="font-size: 10px;">实战验证与补充</a> <a href="/tags/实用技巧/" style="font-size: 10px;">实用技巧</a> <a href="/tags/屏幕旋转/" style="font-size: 10px;">屏幕旋转</a> <a href="/tags/工具集选/" style="font-size: 10px;">工具集选</a> <a href="/tags/底层分析/" style="font-size: 14.44px;">底层分析</a> <a href="/tags/底层机制/" style="font-size: 10px;">底层机制</a> <a href="/tags/开发文档/" style="font-size: 11.11px;">开发文档</a> <a href="/tags/开发者中心更新手机号码/" style="font-size: 10px;">开发者中心更新手机号码</a> <a href="/tags/异常处理/" style="font-size: 10px;">异常处理</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/技术原理/" style="font-size: 10px;">技术原理</a> <a href="/tags/接口设计规范/" style="font-size: 10px;">接口设计规范</a> <a href="/tags/数据库优化的八种方式/" style="font-size: 10px;">数据库优化的八种方式</a> <a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a> <a href="/tags/数组篇/" style="font-size: 10px;">数组篇</a> <a href="/tags/文件上传下载原理与配置/" style="font-size: 10px;">文件上传下载原理与配置</a> <a href="/tags/文件上传下载实战/" style="font-size: 10px;">文件上传下载实战</a> <a href="/tags/文件处理/" style="font-size: 10px;">文件处理</a> <a href="/tags/文件操作/" style="font-size: 10px;">文件操作</a> <a href="/tags/方法调用技巧/" style="font-size: 10px;">方法调用技巧</a> <a href="/tags/时间与日期处理/" style="font-size: 10px;">时间与日期处理</a> <a href="/tags/最新高级面试题整理（阿里篇）/" style="font-size: 10px;">最新高级面试题整理（阿里篇）</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/漫威科幻/" style="font-size: 10px;">漫威科幻</a> <a href="/tags/第一周语法总结/" style="font-size: 10px;">第一周语法总结</a> <a href="/tags/类-结构体-枚举总结/" style="font-size: 10px;">类&结构体&枚举总结</a> <a href="/tags/缓存/" style="font-size: 10px;">缓存</a> <a href="/tags/自动打包上传/" style="font-size: 10px;">自动打包上传</a> <a href="/tags/访问控制/" style="font-size: 10px;">访问控制</a> <a href="/tags/语法小结/" style="font-size: 10px;">语法小结</a> <a href="/tags/重整iOS技术（Fastlane完整打包流程）/" style="font-size: 10px;">重整iOS技术（Fastlane完整打包流程）</a> <a href="/tags/防止反编译总结/" style="font-size: 10px;">防止反编译总结</a> <a href="/tags/阿里云主机配置与操作/" style="font-size: 10px;">阿里云主机配置与操作</a> <a href="/tags/除了代码，还有生活/" style="font-size: 10px;">除了代码，还有生活</a> <a href="/tags/面试一/" style="font-size: 10px;">面试一</a> <a href="/tags/面试二/" style="font-size: 10px;">面试二</a> <a href="/tags/魔术方法/" style="font-size: 10px;">魔术方法</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://al1020119.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯码迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中！</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">iCocos</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">iCocos</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">梦工厂</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Homes">首页</a></li>
+                
+                    <li><a href="/Sites">网站</a></li>
+                
+                    <li><a href="/Uscvs">简历</a></li>
+                
+                    <li><a href="/Works">作品</a></li>
+                
+                    <li><a href="/Mesgs">留言</a></li>
+                
+                    <li><a href="/Warm">温馨</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="pinterest" target="_blank" href="http://www.icocos.cn" title="pinterest">pinterest</a>
+                    
+                        <a class="pinboard" target="_blank" href="http://al1020119.github.io/" title="pinboard">pinboard</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/al1020119" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/iCocosLver" title="weibo">weibo</a>
+                    
+                        <a class="linkedin" target="_blank" href="http://www.linkedin.com/in/%E7%90%86%E9%B9%8F-%E6%9B%B9-3b30b5134/" title="linkedin">linkedin</a>
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=LE9AXE1FTUBsXV0CT0NB" title="mail">mail</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/icocos-65/activities" title="zhihu">zhihu</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-iOS——自动打包上传" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/posts/04/21/iOS——自动打包上传/" class="article-date">
+      <time datetime="2017-04-21T12:27:18.000Z" itemprop="datePublished">2017-04-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS——自动打包上传
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动打包上传/">自动打包上传</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>为了不去每次都做这些繁琐的操作，我们只能做一个懒得程序狗，也就是将整个过程进行脚本化……</p>
+<h2 id="自动打包上传"><a href="#自动打包上传" class="headerlink" title="自动打包上传"></a>自动打包上传</h2><a id="more"></a>
+<h3 id="嗨，欢迎来到梦工厂，我是曹理鹏-iCocos-，一名-iOS-前端-开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。"><a href="#嗨，欢迎来到梦工厂，我是曹理鹏-iCocos-，一名-iOS-前端-开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。" class="headerlink" title="嗨，欢迎来到梦工厂，我是曹理鹏 (@iCocos)，一名 iOS / 前端 开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。"></a>嗨，欢迎来到梦工厂，我是曹理鹏 (@iCocos)，一名 iOS / 前端 开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。</h3><h3 id="微信：clpaial10201119-QQ：2211523682"><a href="#微信：clpaial10201119-QQ：2211523682" class="headerlink" title="微信：clpaial10201119 / QQ：2211523682"></a>微信：clpaial10201119 / QQ：2211523682</h3><h3 id="博客-前后端-：https-icocos-github-io"><a href="#博客-前后端-：https-icocos-github-io" class="headerlink" title="博客(前后端)：https://icocos.github.io/"></a>博客(前后端)：<a href="https://icocos.github.io/" target="_blank" rel="noopener">https://icocos.github.io/</a></h3><h3 id="博客-iOS-：http-al1020119-github-io"><a href="#博客-iOS-：http-al1020119-github-io" class="headerlink" title="博客(iOS)：http://al1020119.github.io/"></a>博客(iOS)：<a href="http://al1020119.github.io/" target="_blank" rel="noopener">http://al1020119.github.io/</a></h3><h3 id="github：https-github-com-al1020119"><a href="#github：https-github-com-al1020119" class="headerlink" title="github：https://github.com/al1020119"></a>github：<a href="https://github.com/al1020119" target="_blank" rel="noopener">https://github.com/al1020119</a></h3><h3 id="个人网站：http-www-icocos-cn"><a href="#个人网站：http-www-icocos-cn" class="headerlink" title="个人网站：http://www.icocos.cn/"></a>个人网站：<a href="http://www.icocos.cn/" target="_blank" rel="noopener">http://www.icocos.cn/</a></h3><p><img src="/iCocosImages/201703/iCocosBlogHeader.JPG" alt="115科技"></p>
+<p>之前写过一篇关于自动打包上传代码的教程，最近又开始需要上线APP，发现新版的Mac对之前的教程不支持了，就换了一种方式，这次试用fir.</p>
+<p><a href="http://al1020119.github.io/blog/2016/12/26/ios-daobao/" target="_blank" rel="noopener">http://al1020119.github.io/blog/2016/12/26/ios-daobao/</a></p>
+<h2 id="工作中一般两种情况，"><a href="#工作中一般两种情况，" class="headerlink" title="工作中一般两种情况，"></a>工作中一般两种情况，</h2><pre><code>1.打包Ad-Hoc给测试人员，或者内部人员测试
+2.打包product发布到App Store
+</code></pre><p>所以，为了不去每次都做这些繁琐的操作，我们只能做一个懒得程序狗，也就是将整个过程进行脚本化</p>
+<h3 id="大概的步骤是"><a href="#大概的步骤是" class="headerlink" title="大概的步骤是"></a>大概的步骤是</h3><pre><code>写个bash脚本，执行自动打包iOS版本，到指定的目录 （有条件的公司，可以自己搭个小服务器，这样谁都可以随时随地的打包）
+将打包好的文件上传到fir.im (当然上传到自己公司的服务器或者任何地方都行，只是fir.im我一直用，觉得比较方便)
+开发一个内部使用的类似APPStore，上面放着自己公司的所有APP,每次有更新的时候，测试童鞋直接通过这个自己下载新APP就可以了
+</code></pre><h2 id="主要命令"><a href="#主要命令" class="headerlink" title="主要命令"></a>主要命令</h2><h3 id="编译workspace"><a href="#编译workspace" class="headerlink" title="编译workspace"></a>编译workspace</h3><pre><code>xcodebuild -workspace workspacename -scheme schemename -configuration [-configuration configurationname] clean build SYMROOT=(SYMROOT)
+</code></pre><h3 id="编译project"><a href="#编译project" class="headerlink" title="编译project"></a>编译project</h3><pre><code>xcodebuild -target targetname -configuration [-configuration configurationname] clean build SYMROOT=(SYMROOT)
+</code></pre><h3 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h3><pre><code>xcodebuild -list
+</code></pre><h3 id="xcrun打包ipa"><a href="#xcrun打包ipa" class="headerlink" title="xcrun打包ipa"></a>xcrun打包ipa</h3><pre><code>xcrun -sdk iphoneos PackageApplication -v projectName.app -o ipaName.ipa
+</code></pre><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><pre><code>在终端输入：xcodebuild –help 或 –h查看具体的选项
+显示xcodebuildversion：xcodebuild –version
+显示当前系统安装的sdk：xcodebuild –showsdks
+显示当前目录下project Information：xcodebuild –list
+</code></pre><h3 id="xcodebuild-amp-xcrun"><a href="#xcodebuild-amp-xcrun" class="headerlink" title="xcodebuild&amp;xcrun"></a>xcodebuild&amp;xcrun</h3><pre><code>xcodebuild-&gt;Build
+xcrun-&gt;Api
+</code></pre><h3 id="终端查看对应版本"><a href="#终端查看对应版本" class="headerlink" title="终端查看对应版本"></a>终端查看对应版本</h3><pre><code>iCocosdeiMac:115科技 iCocos$ xcrun --version
+xcrun version 31.
+iCocosdeiMac:115科技 iCocos$ xcodebuild -version
+Xcode 8.2.1
+Build version 8C1002
+</code></pre><h3 id="xcodebuild-是苹果提供的打包项目或者工程的命令"><a href="#xcodebuild-是苹果提供的打包项目或者工程的命令" class="headerlink" title="xcodebuild 是苹果提供的打包项目或者工程的命令"></a>xcodebuild 是苹果提供的打包项目或者工程的命令</h3><pre><code>需要在包含 name.xcodeproj 的目录下执行 xcodebuild 命令，且如果该目录下有多个 projects，那么需要使用 -project 指定需要 build 的项目。
+在不指定 build 的 target 的时候，默认情况下会 build project 下的第一个 target
+当 build workspace 时，需要同时指定 -workspace 和 -scheme 参数，scheme 参数控制了哪些 targets 会被 build 以及以怎样的方式 build。
+有一些诸如 -list, -showBuildSettings, -showsdks 的参数可以查看项目或者工程的信息，不会对 build action 造成任何影响，放心使用。
+</code></pre><h3 id="使用xcodebuild和xcrun打包签名"><a href="#使用xcodebuild和xcrun打包签名" class="headerlink" title="使用xcodebuild和xcrun打包签名"></a>使用xcodebuild和xcrun打包签名</h3><p>我这里就使用公司项目作为测试，方便查找问题和后续打包上传</p>
+<h3 id="1-终端输入"><a href="#1-终端输入" class="headerlink" title="1. 终端输入"></a>1. 终端输入</h3><pre><code>xcodebuild -project T 115科技.xcodeproj -target 115科技 -configuration Release 
+
+xcodebuild -project T 曹理鹏(iCocos)-梦工厂.xcodeproj -target 曹理鹏(iCocos)-梦工厂 -configuration Debug 
+</code></pre><h3 id="这是骚等所有走完之后就能看到对应的信息，表示build成功"><a href="#这是骚等所有走完之后就能看到对应的信息，表示build成功" class="headerlink" title="这是骚等所有走完之后就能看到对应的信息，表示build成功"></a>这是骚等所有走完之后就能看到对应的信息，表示build成功</h3><pre><code>Signing Identity: &quot;iPhone Developer: xxx(59xxxxxx)&quot;
+Provisioning Profile: &quot;iOS Team Provisioning Profile: *&quot;
+</code></pre><h3 id="且在该目录下会多出一个-build-目录，该目录下有-Release-iphoneos-和-曹理鹏-iCocos-梦工厂-build-文件，根据我们-build-configuration-配置的参数不同，Release-iphoneos-的文件名会不同。"><a href="#且在该目录下会多出一个-build-目录，该目录下有-Release-iphoneos-和-曹理鹏-iCocos-梦工厂-build-文件，根据我们-build-configuration-配置的参数不同，Release-iphoneos-的文件名会不同。" class="headerlink" title="且在该目录下会多出一个 build 目录，该目录下有 Release-iphoneos 和 曹理鹏(iCocos)-梦工厂.build 文件，根据我们 build -configuration 配置的参数不同，Release-iphoneos 的文件名会不同。"></a>且在该目录下会多出一个 build 目录，该目录下有 Release-iphoneos 和 曹理鹏(iCocos)-梦工厂.build 文件，根据我们 build -configuration 配置的参数不同，Release-iphoneos 的文件名会不同。</h3><p>在 Release-iphoneos 文件夹下，有我们需要的曹理鹏(iCocos)-梦工厂.app文件，但是要安装到真机上，我们需要将该文件导出为ipa文件，这里使用 xcrun 命令。</p>
+<pre><code>xcrun -sdk iphoneos -v PackageApplication ./build/Release-iphoneos/曹理鹏(iCocos)-梦工厂.app -o ~/Desktop/曹理鹏(iCocos)-梦工厂.ipa
+</code></pre><p>这个时候桌面上就会出现一个曹理鹏(iCocos)-梦工厂.ipa文件，这就是我们平时Archive之后的问题，也正是我们所需要的ipa包</p>
+<h3 id="但是xcodebuild期间我出现了一个这样的错误"><a href="#但是xcodebuild期间我出现了一个这样的错误" class="headerlink" title="但是xcodebuild期间我出现了一个这样的错误"></a>但是xcodebuild期间我出现了一个这样的错误</h3><pre><code>ld: library not found for -lAFNetworking
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+Ld build/曹理鹏(iCocos)-梦工厂.build/Release-iphoneos/曹理鹏(iCocos)-梦工厂.build/Objects-normal/armv7/曹理鹏(iCocos)-梦工厂 normal armv7
+Ld build/曹理鹏(iCocos)-梦工厂.build/Release-iphoneos/曹理鹏(iCocos)-梦工厂.build/Objects-normal/arm64/曹理鹏(iCocos)-梦工厂 normal arm64
+(2 failures)
+</code></pre><h3 id="貌似是linker-command-failed-with-exit-code-1经典错误，但是然并卵，于是看了一下pingpong从零开始写个自动打包IPA脚本中的build方式，也有类似的问题。多谢pingpong帮我解决了这个问题。"><a href="#貌似是linker-command-failed-with-exit-code-1经典错误，但是然并卵，于是看了一下pingpong从零开始写个自动打包IPA脚本中的build方式，也有类似的问题。多谢pingpong帮我解决了这个问题。" class="headerlink" title="貌似是linker command failed with exit code 1经典错误，但是然并卵，于是看了一下pingpong从零开始写个自动打包IPA脚本中的build方式，也有类似的问题。多谢pingpong帮我解决了这个问题。"></a>貌似是linker command failed with exit code 1经典错误，但是然并卵，于是看了一下pingpong<a href="http://www.jianshu.com/p/97c97c2ec1ca" target="_blank" rel="noopener">从零开始写个自动打包IPA脚本</a>中的build方式，也有类似的问题。多谢pingpong帮我解决了这个问题。</h3><pre><code>iCocosdeiMac ios (develop) $ xcodebuild
+2016-05-02 13:05:04.623 xcodebuild[1015:16272] [MT] PluginLoading: Required plug-in compatibility UUID ACA8656B-FEA8-4B6D-8E4A-93F4C95C362C for plug-in at path &apos;~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XcodeColors.xcplugin&apos; not present in DVTPlugInCompatibilityUUIDs
+2016-05-02 13:05:04.625 xcodebuild[1015:16272] [MT] PluginLoading: Required plug-in compatibility UUID ACA8656B-FEA8-4B6D-8E4A-93F4C95C362C for plug-in at path &apos;~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/OMColorSense.xcplugin&apos; not present in DVTPlugInCompatibilityUUIDs
+=== BUILD TARGET xxx OF PROJECT xxx WITH THE DEFAULT CONFIGURATION (Release) ===
+
+Check dependencies
+
+Write auxiliary files
+write-file /Users/iCocos/Documents/code/xxx/ios/build/xxx.build/Release-iphoneos/xxx.build/xxx.hmap
+write-file /Users/iCocos/Documents/code/xxx/ios/build/xxx.build/Release-iphoneos/xxx.build/xxx-own-target-headers.hmap
+write-file /Users/iCocos/Documents/code/xxx/ios/build/xxx.build/Release-iphoneos/xxx.build/Script-492B764475E022A63FB67F55.sh
+</code></pre><h3 id="解决方案是：执行xcodebuild需要指定你所需要对应的workspace和scheme"><a href="#解决方案是：执行xcodebuild需要指定你所需要对应的workspace和scheme" class="headerlink" title="解决方案是：执行xcodebuild需要指定你所需要对应的workspace和scheme"></a>解决方案是：执行xcodebuild需要指定你所需要对应的workspace和scheme</h3><pre><code>xcodebuild -workspace /Users/iCocos/Desktop/MBA/最新Git源代码/曹理鹏(iCocos)-梦工厂/曹理鹏(iCocos)-梦工厂.xcworkspace -scheme 曹理鹏(iCocos)-梦工厂
+</code></pre><h3 id="执行前，先查看下-list-这个可以知道xcodebuild命令下对应的参数需要填写的内容"><a href="#执行前，先查看下-list-这个可以知道xcodebuild命令下对应的参数需要填写的内容" class="headerlink" title="执行前，先查看下-list,这个可以知道xcodebuild命令下对应的参数需要填写的内容"></a>执行前，先查看下-list,这个可以知道xcodebuild命令下对应的参数需要填写的内容</h3><pre><code>iCocosdeiMac ios (develop) $ xcodebuild -list
+2016-05-02 15:24:26.656 xcodebuild[16535:154176] [MT] PluginLoading: Required plug-in compatibility UUID ACA8656B-FEA8-4B6D-8E4A-93F4C95C362C for plug-in at path &apos;~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XcodeColors.xcplugin&apos; not present in DVTPlugInCompatibilityUUIDs
+2016-05-02 15:24:26.661 xcodebuild[16535:154176] [MT] PluginLoading: Required plug-in compatibility UUID ACA8656B-FEA8-4B6D-8E4A-93F4C95C362C for plug-in at path &apos;~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/OMColorSense.xcplugin&apos; not present in DVTPlugInCompatibilityUUIDs
+Information about project &quot;xxx&quot;:
+Targets:
+xxx
+xxxTests
+
+Build Configurations:
+Debug
+Release
+
+If no build configuration is specified and -scheme is not passed then &quot;Release&quot; is used.
+
+Schemes:
+xxx
+</code></pre><h3 id="然后，成功了-如下："><a href="#然后，成功了-如下：" class="headerlink" title="然后，成功了,如下："></a>然后，成功了,如下：</h3><pre><code>Entitlements:
+
+{
+&quot;application-identifier&quot; = &quot;L64TE3S9T9.com.曹理鹏(iCocos)-梦工厂.shaoshang&quot;;
+&quot;aps-environment&quot; = development;
+&quot;com.apple.developer.pass-type-identifiers&quot; =     (
+&quot;L64TE3S9T9.*&quot;
+);
+&quot;com.apple.developer.team-identifier&quot; = L64TE3S9T9;
+&quot;get-task-allow&quot; = 1;
+}
+
+
+builtin-productPackagingUtility -entitlements -format xml -o /Users/iCocos/Library/Developer/Xcode/DerivedData/曹理鹏(iCocos)-梦工厂-aqiwhxodbfeztuebgnzgbgicurgl/Build/Intermediates/曹理鹏(iCocos)-梦工厂.build/Debug-iphoneos/曹理鹏(iCocos)-梦工厂.build/曹理鹏(iCocos)-梦工厂.app.xcent
+
+CodeSign /Users/iCocos/Library/Developer/Xcode/DerivedData/曹理鹏(iCocos)-梦工厂-aqiwhxodbfeztuebgnzgbgicurgl/Build/Products/Debug-iphoneos/曹理鹏(iCocos)-梦工厂.app
+cd /Users/iCocos/Desktop/MBA/最新Git源代码/曹理鹏(iCocos)-梦工厂
+export CODESIGN_ALLOCATE=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
+export PATH=&quot;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/iCocos/.rvm/gems/ruby-2.3.0/bin:/Users/iCocos/.rvm/gems/ruby-2.3.0@global/bin:/Users/iCocos/.rvm/rubies/ruby-2.3.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/iCocos/.rvm/bin:/usr/local/mysql/bin/mysql&quot;
+
+Signing Identity:     &quot;iPhone Developer: Songbai He (73N6HPPJDP)&quot;
+Provisioning Profile: &quot;iOS Team Provisioning Profile: com.曹理鹏(iCocos)-梦工厂.shaoshang&quot;
+(34c1d23b-ade5-4d0f-9329-7b16009b30c2)
+
+/usr/bin/codesign --force --sign F8BAED0C84DB84AAA84769FED9FEAA9E80825C29 --entitlements /Users/iCocos/Library/Developer/Xcode/DerivedData/曹理鹏(iCocos)-梦工厂-aqiwhxodbfeztuebgnzgbgicurgl/Build/Intermediates/曹理鹏(iCocos)-梦工厂.build/Debug-iphoneos/曹理鹏(iCocos)-梦工厂.build/曹理鹏(iCocos)-梦工厂.app.xcent --timestamp=none /Users/iCocos/Library/Developer/Xcode/DerivedData/曹理鹏(iCocos)-梦工厂-aqiwhxodbfeztuebgnzgbgicurgl/Build/Products/Debug-iphoneos/曹理鹏(iCocos)-梦工厂.app
+
+Validate /Users/iCocos/Library/Developer/Xcode/DerivedData/曹理鹏(iCocos)-梦工厂-aqiwhxodbfeztuebgnzgbgicurgl/Build/Products/Debug-iphoneos/曹理鹏(iCocos)-梦工厂.app
+cd /Users/iCocos/Desktop/MBA/最新Git源代码/曹理鹏(iCocos)-梦工厂
+export PATH=&quot;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/iCocos/.rvm/gems/ruby-2.3.0/bin:/Users/iCocos/.rvm/gems/ruby-2.3.0@global/bin:/Users/iCocos/.rvm/rubies/ruby-2.3.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/iCocos/.rvm/bin:/usr/local/mysql/bin/mysql&quot;
+export PRODUCT_TYPE=com.apple.product-type.application
+builtin-validationUtility /Users/iCocos/Library/Developer/Xcode/DerivedData/曹理鹏(iCocos)-梦工厂-aqiwhxodbfeztuebgnzgbgicurgl/Build/Products/Debug-iphoneos/曹理鹏(iCocos)-梦工厂.app
+
+** BUILD SUCCEEDED **
+</code></pre><h2 id="下面就是验证你全栈的时候到了，其实也没有那么难，就是一点脚本而已"><a href="#下面就是验证你全栈的时候到了，其实也没有那么难，就是一点脚本而已" class="headerlink" title="下面就是验证你全栈的时候到了，其实也没有那么难，就是一点脚本而已"></a>下面就是验证你全栈的时候到了，其实也没有那么难，就是一点脚本而已</h2><h3 id="先git-指令，pull到最新的分支"><a href="#先git-指令，pull到最新的分支" class="headerlink" title="先git 指令，pull到最新的分支"></a>先git 指令，pull到最新的分支</h3><pre><code># git update
+git checkout $BRANCHNAME
+if [ $? -ne 0 ]; then
+exit 1
+fi
+
+git pull 
+#pod update --verbose --no-repo-update
+if [ $? -ne 0 ]; then
+exit 1
+fi
+</code></pre><h3 id="成功之后你同意会看到提示信息"><a href="#成功之后你同意会看到提示信息" class="headerlink" title="成功之后你同意会看到提示信息"></a>成功之后你同意会看到提示信息</h3><pre><code>logout
+Saving session...
+...copying shared history...
+...saving history...truncating history files...
+...completed.
+Deleting expired sessions...118 completed.
+</code></pre><h3 id="xcodebuild进行编译"><a href="#xcodebuild进行编译" class="headerlink" title="xcodebuild进行编译"></a>xcodebuild进行编译</h3><pre><code>xcodebuild \
+-workspace $SORCEPATH/曹理鹏(iCocos)-梦工厂.xcworkspace \
+-scheme $SCHEMENAMEPLQ \
+-configuration Debug \
+CODE_SIGN_IDENTITY=&quot;iPhone Developer: Songbai He(73N6HPPJDP)”  \
+PROVISIONING_PROFILE=&quot;com.曹理鹏(iCocos)-梦工厂.shaoshang&quot; \
+clean \
+build \
+-derivedDataPath $IPAPATH/$BRANCHNAME/$DATE
+</code></pre><h3 id="测试与发布只需要更改对应的参数即可"><a href="#测试与发布只需要更改对应的参数即可" class="headerlink" title="测试与发布只需要更改对应的参数即可"></a>测试与发布只需要更改对应的参数即可</h3><pre><code>-configuration Debug
+
+-configuration Release
+</code></pre><h2 id="用xcrun打包成ipa包"><a href="#用xcrun打包成ipa包" class="headerlink" title="用xcrun打包成ipa包"></a>用xcrun打包成ipa包</h2><pre><code>xcrun -sdk iphoneos PackageApplication \
+-v $IPAPATH/Build/Products/Debug-iphoneos/$SCHEMENAME.app \
+-o $IPAPATH/$IPANAME
+</code></pre><h2 id="生成ipa包，上传到fir-im"><a href="#生成ipa包，上传到fir-im" class="headerlink" title="生成ipa包，上传到fir.im"></a>生成ipa包，上传到fir.im</h2><h3 id="一：1-注册fir-拿到token"><a href="#一：1-注册fir-拿到token" class="headerlink" title="一：1.注册fir.拿到token"></a>一：1.注册fir.拿到token</h3><pre><code>fir.im官网：https://fir.im
+</code></pre><p>注册号账号，点击右上角个人信息，进入API token 拿到token，并保存</p>
+<h3 id="二：安装fir-cli"><a href="#二：安装fir-cli" class="headerlink" title="二：安装fir-cli"></a>二：安装fir-cli</h3><pre><code>fir-cli 使用 Ruby 构建, 无需编译, 只要安装相应 gem 即可.
+
+$ ruby -v # &gt; 1.9.3
+
+$ gem install fir-cli
+</code></pre><h3 id="三：Mac新版之后可能由于源的问题导致无法安装（由于10-11引入了-rootless-无法直接安装-fir-cli）"><a href="#三：Mac新版之后可能由于源的问题导致无法安装（由于10-11引入了-rootless-无法直接安装-fir-cli）" class="headerlink" title="三：Mac新版之后可能由于源的问题导致无法安装（由于10.11引入了 rootless, 无法直接安装 fir-cli）"></a>三：Mac新版之后可能由于源的问题导致无法安装（由于10.11引入了 rootless, 无法直接安装 fir-cli）</h3><p>一般都是这么安装的：使用 Homebrew 及 RVM 安装 Ruby, 再安装 fir-cli</p>
+<pre><code>Install Homebrew:
+
+$ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+
+Install RVM:
+
+$ \curl -sSL https://get.rvm.io | bash -s stable --ruby
+
+Install fir-cli:
+
+$ gem install fir-cli
+</code></pre><h3 id="四：在终端登录并查看信息"><a href="#四：在终端登录并查看信息" class="headerlink" title="四：在终端登录并查看信息"></a>四：在终端登录并查看信息</h3><ol>
+<li>$ fir login  </li>
+</ol>
+<p>按照提示输入token,然后</p>
+<pre><code>iCocosdeiMac:曹理鹏(iCocos)-梦工厂 iCocos$ fir login  
+Please enter your fir.im API Token: 849ad212b94683b4c3087248d422d124
+I, [2017-04-18T13:58:01.184043 #14531]  INFO -- : Login succeed, previous user&apos;s email: al10201119@163.com
+I, [2017-04-18T13:58:01.185131 #14531]  INFO -- : Login succeed, current  user&apos;s email: al10201119@163.com
+I, [2017-04-18T13:58:01.185223 #14531]  INFO -- : 
+</code></pre><ol start="2">
+<li><p>$fir me</p>
+<p>登录成功,就会显示用户信息</p>
+<p> I, [2017-04-18T13:58:21.876164 #14545]  INFO – : Login succeed, current user’s email: <a href="mailto:al10201119@163.com" target="_blank" rel="noopener">al10201119@163.com</a><br> I, [2017-04-18T13:58:21.876246 #14545]  INFO – : Login succeed, current user’s name:  al10201119<br> I, [2017-04-18T13:58:21.876261 #14545]  INFO – : </p>
+</li>
+</ol>
+<ol start="3">
+<li>使用fir指令，上传我们的ipa包</li>
+</ol>
+<pre><code>fir login -T c525718a775b954882xxxxxxxx       # fir.im token
+
+fir publish $IPAPATH/Develop/xxx.ipa
+</code></pre><ol start="4">
+<li><p>最后你会看到</p>
+<p> 恭喜！！！上传fir.im成功！</p>
+</li>
+</ol>
+<h2 id="也可以直接使用执行脚本"><a href="#也可以直接使用执行脚本" class="headerlink" title="也可以直接使用执行脚本"></a>也可以直接使用执行脚本</h2><pre><code>#author iCocos
+
+#注意：脚本目录和xxxx.xcodeproj要在同一个目录，如果放到其他目录，请自行修改脚本。
+#工程名字(Target名字)
+Project_Name=&quot;Target名字，系统默认和工程名字一样&quot;
+#配置环境，Release或者Debug
+Configuration=&quot;Release&quot;
+
+#AdHoc版本的Bundle ID
+AdHocBundleID=&quot;com.xxx&quot;
+#AppStore版本的Bundle ID
+AppStoreBundleID=&quot;com.xxx&quot;
+#enterprise的Bundle ID
+EnterpriseBundleID=&quot;com.xxx&quot;
+
+# ADHOC
+#证书名#描述文件
+ADHOCCODE_SIGN_IDENTITY=&quot;iPhone Distribution: xxxx&quot;
+ADHOCPROVISIONING_PROFILE_NAME=&quot;xxxx-xxxx-xxxx-xxxx&quot;
+
+#AppStore证书名#描述文件
+APPSTORECODE_SIGN_IDENTITY=&quot;iPhone Distribution: xxxx&quot;
+APPSTOREROVISIONING_PROFILE_NAME=&quot;xxxx-xxxx-xxxx-xxxx&quot;
+
+#企业(enterprise)证书名#描述文件
+ENTERPRISECODE_SIGN_IDENTITY=&quot;iPhone Distribution: xxxxx&quot;
+ENTERPRISEROVISIONING_PROFILE_NAME=&quot;xxxx-xxxx-xxxx-xxxx&quot;
+
+#加载各个版本的plist文件
+ADHOCExportOptionsPlist=./ADHOCExportOptionsPlist.plist
+AppStoreExportOptionsPlist=./AppStoreExportOptionsPlist.plist
+EnterpriseExportOptionsPlist=./EnterpriseExportOptionsPlist.plist
+
+ADHOCExportOptionsPlist=${ADHOCExportOptionsPlist}
+AppStoreExportOptionsPlist=${AppStoreExportOptionsPlist}
+EnterpriseExportOptionsPlist=${EnterpriseExportOptionsPlist}
+
+echo &quot;~~~~~~~~~~~~选择打包方式(输入序号)~~~~~~~~~~~~~~~&quot;
+echo &quot;  1 appstore&quot;
+echo &quot;  2 adhoc&quot;
+echo &quot;  3 enterprise&quot;
+
+# 读取用户输入并存到变量里
+read parameter
+sleep 0.5
+method=&quot;$parameter&quot;
+
+# 判读用户是否有输入
+if [ -n &quot;$method&quot; ]
+then
+
+#clean下
+xcodebuild clean -xcodeproj ./$Project_Name/$Project_Name.xcodeproj -configuration $Configuration -alltargets
+
+if [ &quot;$method&quot; = &quot;1&quot; ]
+then
+
+#appstore脚本
+xcodebuild -project $Project_Name.xcodeproj -scheme $Project_Name -configuration $Configuration -archivePath build/$Project_Name-appstore.xcarchive clean archive build  CODE_SIGN_IDENTITY=&quot;${APPSTORECODE_SIGN_IDENTITY}&quot; PROVISIONING_PROFILE=&quot;${APPSTOREROVISIONING_PROFILE_NAME}&quot; PRODUCT_BUNDLE_IDENTIFIER=&quot;${AppStoreBundleID}&quot;
+xcodebuild -exportArchive -archivePath build/$Project_Name-appstore.xcarchive -exportOptionsPlist $AppStoreExportOptionsPlist -exportPath ~/Desktop/$Project_Name-appstore.ipa
+elif [ &quot;$method&quot; = &quot;2&quot; ]
+then
+#adhoc脚本
+xcodebuild -project $Project_Name.xcodeproj -scheme $Project_Name -configuration $Configuration -archivePath build/$Project_Name-adhoc.xcarchive clean archive build CODE_SIGN_IDENTITY=&quot;${ADHOCCODE_SIGN_IDENTITY}&quot; PROVISIONING_PROFILE=&quot;${ADHOCPROVISIONING_PROFILE_NAME}&quot; PRODUCT_BUNDLE_IDENTIFIER=&quot;${AdHocBundleID}&quot;
+xcodebuild -exportArchive -archivePath build/$Project_Name-adhoc.xcarchive -exportOptionsPlist $ADHOCExportOptionsPlist -exportPath ~/Desktop/$Project_Name-adhoc.ipa
+elif [ &quot;$method&quot; = &quot;3&quot; ]
+then
+#企业打包脚本
+xcodebuild -project $Project_Name.xcodeproj -scheme $Project_Name -configuration $Configuration -archivePath build/$Project_Name-enterprise.xcarchive clean archive build CODE_SIGN_IDENTITY=&quot;${ENTERPRISECODE_SIGN_IDENTITY}&quot; PROVISIONING_PROFILE=&quot;${ENTERPRISEROVISIONING_PROFILE_NAME}&quot; PRODUCT_BUNDLE_IDENTIFIER=&quot;${EnterpriseBundleID}&quot;
+xcodebuild -exportArchive -archivePath build/$Project_Name-enterprise.xcarchive -exportOptionsPlist $EnterpriseExportOptionsPlist -exportPath ~/Desktop/$Project_Name-enterprise.ipa
+else
+echo &quot;参数无效....&quot;
+exit 1
+fi
+fi
+</code></pre><p>这里还有一个大神使用PHP干了一票，虽然还在学习PHP中，但是有机会也要试一下</p>
+<blockquote>
+<p>这里目前只是实现了Ad-Hoc打包上传，关于App Store其实也就是更改参数，和对应的地址，后续会退出相应的文章界面具体实战……</p>
+</blockquote>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>梦工厂@iCocos</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">感谢您的支持，我会继续努力！</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/posts/04/21/iOS——自动打包上传/">iOS——自动打包上传</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 iCocos 的个人博客">iCocos</a></p>
+        <p><span>发布时间:</span>2017年04月21日 - 20时27分</p>
+        <p><span>最后更新:</span>2018年05月06日 - 21时06分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/posts/04/21/iOS——自动打包上传/" title="iOS——自动打包上传">http://yoursite.com/posts/04/21/iOS——自动打包上传/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/posts/04/21/iOS——自动打包上传/　　作者: iCocos" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/posts/04/22/PHP——服务器500错误总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          PHP——服务器500错误总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/04/20/iOS——ipv6-服务器/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS——ipv6(服务器)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#自动打包上传"><span class="toc-number">1.</span> <span class="toc-text">自动打包上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#嗨，欢迎来到梦工厂，我是曹理鹏-iCocos-，一名-iOS-前端-开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。"><span class="toc-number">1.1.</span> <span class="toc-text">嗨，欢迎来到梦工厂，我是曹理鹏 (@iCocos)，一名 iOS / 前端 开发者，后端开发学习中，希望做点有意义的事情。现居广州，正在修行，探求创意之源。。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微信：clpaial10201119-QQ：2211523682"><span class="toc-number">1.2.</span> <span class="toc-text">微信：clpaial10201119 / QQ：2211523682</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#博客-前后端-：https-icocos-github-io"><span class="toc-number">1.3.</span> <span class="toc-text">博客(前后端)：https://icocos.github.io/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#博客-iOS-：http-al1020119-github-io"><span class="toc-number">1.4.</span> <span class="toc-text">博客(iOS)：http://al1020119.github.io/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github：https-github-com-al1020119"><span class="toc-number">1.5.</span> <span class="toc-text">github：https://github.com/al1020119</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个人网站：http-www-icocos-cn"><span class="toc-number">1.6.</span> <span class="toc-text">个人网站：http://www.icocos.cn/</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作中一般两种情况，"><span class="toc-number">2.</span> <span class="toc-text">工作中一般两种情况，</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#大概的步骤是"><span class="toc-number">2.1.</span> <span class="toc-text">大概的步骤是</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要命令"><span class="toc-number">3.</span> <span class="toc-text">主要命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编译workspace"><span class="toc-number">3.1.</span> <span class="toc-text">编译workspace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译project"><span class="toc-number">3.2.</span> <span class="toc-text">编译project</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看配置信息"><span class="toc-number">3.3.</span> <span class="toc-text">查看配置信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xcrun打包ipa"><span class="toc-number">3.4.</span> <span class="toc-text">xcrun打包ipa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">3.5.</span> <span class="toc-text">其他</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xcodebuild-amp-xcrun"><span class="toc-number">3.6.</span> <span class="toc-text">xcodebuild&amp;xcrun</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#终端查看对应版本"><span class="toc-number">3.7.</span> <span class="toc-text">终端查看对应版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xcodebuild-是苹果提供的打包项目或者工程的命令"><span class="toc-number">3.8.</span> <span class="toc-text">xcodebuild 是苹果提供的打包项目或者工程的命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用xcodebuild和xcrun打包签名"><span class="toc-number">3.9.</span> <span class="toc-text">使用xcodebuild和xcrun打包签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-终端输入"><span class="toc-number">3.10.</span> <span class="toc-text">1. 终端输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这是骚等所有走完之后就能看到对应的信息，表示build成功"><span class="toc-number">3.11.</span> <span class="toc-text">这是骚等所有走完之后就能看到对应的信息，表示build成功</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#且在该目录下会多出一个-build-目录，该目录下有-Release-iphoneos-和-曹理鹏-iCocos-梦工厂-build-文件，根据我们-build-configuration-配置的参数不同，Release-iphoneos-的文件名会不同。"><span class="toc-number">3.12.</span> <span class="toc-text">且在该目录下会多出一个 build 目录，该目录下有 Release-iphoneos 和 曹理鹏(iCocos)-梦工厂.build 文件，根据我们 build -configuration 配置的参数不同，Release-iphoneos 的文件名会不同。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#但是xcodebuild期间我出现了一个这样的错误"><span class="toc-number">3.13.</span> <span class="toc-text">但是xcodebuild期间我出现了一个这样的错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#貌似是linker-command-failed-with-exit-code-1经典错误，但是然并卵，于是看了一下pingpong从零开始写个自动打包IPA脚本中的build方式，也有类似的问题。多谢pingpong帮我解决了这个问题。"><span class="toc-number">3.14.</span> <span class="toc-text">貌似是linker command failed with exit code 1经典错误，但是然并卵，于是看了一下pingpong从零开始写个自动打包IPA脚本中的build方式，也有类似的问题。多谢pingpong帮我解决了这个问题。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案是：执行xcodebuild需要指定你所需要对应的workspace和scheme"><span class="toc-number">3.15.</span> <span class="toc-text">解决方案是：执行xcodebuild需要指定你所需要对应的workspace和scheme</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行前，先查看下-list-这个可以知道xcodebuild命令下对应的参数需要填写的内容"><span class="toc-number">3.16.</span> <span class="toc-text">执行前，先查看下-list,这个可以知道xcodebuild命令下对应的参数需要填写的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#然后，成功了-如下："><span class="toc-number">3.17.</span> <span class="toc-text">然后，成功了,如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下面就是验证你全栈的时候到了，其实也没有那么难，就是一点脚本而已"><span class="toc-number">4.</span> <span class="toc-text">下面就是验证你全栈的时候到了，其实也没有那么难，就是一点脚本而已</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#先git-指令，pull到最新的分支"><span class="toc-number">4.1.</span> <span class="toc-text">先git 指令，pull到最新的分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#成功之后你同意会看到提示信息"><span class="toc-number">4.2.</span> <span class="toc-text">成功之后你同意会看到提示信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xcodebuild进行编译"><span class="toc-number">4.3.</span> <span class="toc-text">xcodebuild进行编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试与发布只需要更改对应的参数即可"><span class="toc-number">4.4.</span> <span class="toc-text">测试与发布只需要更改对应的参数即可</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用xcrun打包成ipa包"><span class="toc-number">5.</span> <span class="toc-text">用xcrun打包成ipa包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成ipa包，上传到fir-im"><span class="toc-number">6.</span> <span class="toc-text">生成ipa包，上传到fir.im</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一：1-注册fir-拿到token"><span class="toc-number">6.1.</span> <span class="toc-text">一：1.注册fir.拿到token</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二：安装fir-cli"><span class="toc-number">6.2.</span> <span class="toc-text">二：安装fir-cli</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三：Mac新版之后可能由于源的问题导致无法安装（由于10-11引入了-rootless-无法直接安装-fir-cli）"><span class="toc-number">6.3.</span> <span class="toc-text">三：Mac新版之后可能由于源的问题导致无法安装（由于10.11引入了 rootless, 无法直接安装 fir-cli）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四：在终端登录并查看信息"><span class="toc-number">6.4.</span> <span class="toc-text">四：在终端登录并查看信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#也可以直接使用执行脚本"><span class="toc-number">7.</span> <span class="toc-text">也可以直接使用执行脚本</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'iCocos',
+      repo: 'icocos.github.io',
+      oauth: {
+        client_id: '4b7d4fdd945e8aa01820',
+        client_secret: 'bb1a81ef2412269255e31aa4e2c8d21fe675c4d0',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/posts/04/22/PHP——服务器500错误总结/" title="上一篇: PHP——服务器500错误总结">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/posts/04/20/iOS——ipv6-服务器/" title="下一篇: iOS——ipv6(服务器)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/posts/06/15/初识游戏——cocos2dx初探/">初识游戏——cocos2dx初探</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/12/Golang——groutine和channel底层机制/">Golang——groutine和channel底层机制</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/07/Golang——Http服务初探/">Golang——Http服务初探</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/03/Golang——文件IO处理/">Golang——文件IO处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/01/Go——Golang-Response-Snippets/">Go——Golang Response Snippets</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/29/Go——简单说说goroutine和channel/">Go——简单说说goroutine和channel</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/25/Go——函数与方法的奇妙之处/">Go——函数与方法的奇妙之处</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/22/Go语言中的Array、Slice、Map和Set/">Go语言中的Array、Slice、Map和Set</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/19/漫威铁粉福利——漫威-妇联3/">漫威铁粉福利——漫威+妇联3</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/10/Golang知识图谱/">Golang知识图谱</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/09/Go——基础学习笔记/">Go——基础学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/05/服务器配置——实战验证与补充/">服务器配置——实战验证与补充</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/04/服务器配置——Go安装与配置/">服务器配置——Go安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/04/服务器配置——MySql安装与配置/">服务器配置——MySql安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/03/服务器配置——Php安装与配置/">服务器配置——Php安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/03/服务器配置——Nginx安装与配置/">服务器配置——Nginx安装与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/01/服务器配置——阿里云主机/">服务器配置——阿里云主机配置与操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/26/iOS——开发者中心更新手机号码/">iOS——开发者中心更新手机号码</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/24/iOS——Xcode默认路径-Fastlane打包/">iOS——Xcode默认路径(Fastlane打包)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/23/iOS——奇葩需求QQ号与QQ群添加与跳转/">iOS——奇葩需求QQ号与QQ群添加与跳转</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/20/iOS——3-rf一把无形的双刃剑/">iOS——3-rf一把无形的双刃剑</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/09/iOS——重整iOS技术（Fastlane完整打包流程）/">iOS——重整iOS技术（Fastlane完整打包流程）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/01/26/iOS游戏——关于马甲包与审核/">iOS游戏——关于马甲包与审核</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/12/31/回顾与展望：梦想之路！/">回顾与展望：梦想之路！</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/27/iOS——Swift-4-0-适配实战总结（Xcode9）/">iOS——Swift 4.0 适配实战总结（Xcode9）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/21/React-Nativec搭建与初始化项目/">React Native搭建与初始化项目</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/20/iOS——遇到的最奇葩的Bug/">iOS——遇到的最奇葩的Bug</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/18/iOS——免密登录，我以为有多难？/">iOS——免密登录，我以为有多难？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/18/iOS——iPhone-X适配实战总结/">iOS——iPhone X适配实战总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/16/iOS——App跳转到系统设置/">iOS——App跳转到系统设置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/11/Xcode-Server完整教程/">Xcode Server完整教程</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/08/iOS——-attribute-使用与总结/">iOS——__attribute__使用与总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/11/03/iOS——App启动优化分析与总结/">iOS——App启动优化分析与总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/10/26/iOS——防止反编译总结/">iOS——防止反编译总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/10/25/iOS——最新高级面试题整理（阿里篇）/">iOS——最新高级面试题整理（阿里篇）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/10/25/iOS——CocoaPods私有化组件/">iOS——CocoaPods私有化组件</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/09/19/iOS——Objective-C与Swift优缺点对比/">iOS——Objective-C与Swift优缺点对比</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/09/14/iOS开发——SVG图展示方案/">iOS开发——SVG图展示方案</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/09/12/Swift——简单服务端开发实战/">Swift——简单服务端开发实战</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/08/08/iOS开发——系统API使用问题汇总（-解决方案）/">iOS开发——系统API使用问题汇总（+解决方案）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/08/02/iOS（Swift）开发——开发文档/">iOS（Swift）开发——App开发文档</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/31/Swift开发——实用技巧Literal/">Swift开发——实用技巧Literal</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/22/Swift篇——ARC中循环引用问题/">Swift篇——ARC中循环引用问题</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/18/Swift篇——可选类型总结/">Swift篇——可选类型总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/15/Swift——类-结构体-枚举总结/">Swift——类&结构体&枚举总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/13/OC-Swift——方法调用技巧/">OC&&Swift——方法调用技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/08/Swift——不为人知的淫技/">Swift——不为人知的淫技</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/04/Swift——动态-静态分析与实战/">Swift——动态&静态分析与实战</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/07/01/Swift——访问控制关键字说明/">Swift——访问控制关键字说明</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/28/iOS——App整个启动过程分析/">iOS——App整个启动过程分析</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/25/带你简单理解block和-block的实现？/">带你简单理解block和__block的实现？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/24/带你简单理解weak和-weak的实现？/">带你简单理解weak和__weak的实现？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/20/分类能添加属性吗？成员变量呢？为什么？/">分类能添加属性吗？成员变量呢？为什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/18/为什么调用nil的任何方法都不会崩溃？/">为什么调用nil的任何方法都不会崩溃？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/15/XCode9——还有那些你不知道的新特性？/">XCode9——还有那些你不知道的新特性？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/13/WWDC17惊喜——Xcode9无线调试/">WWDC17惊喜——Xcode9无线调试</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/11/一个偶然的面试机会——我既然懵了/">一个偶然的面试机会——我既然懵了</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/06/WWDC17——都有那些值得你去了解的？/">WWDC17——都有那些值得你去了解的？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/06/05/Swift3——有了Perfect你也可以做PHP能做的事情/">Swift3——有了Perfect你也可以做PHP能做的事情</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/25/Swift3——Swift3中的Runtime/">Swift3——Swift3中的Runtime</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/23/Swift3——Swift内存管理/">Swift3——Swift内存管理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/20/Swift3——Swift从入门到入门/">Swift3——Swift从入门到入门</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/18/kotlin——和Swift像得一塌糊涂/">kotlin——和Swift像得一塌糊涂</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/18/kotlin——要火了❤️，你还在等什么？/">kotlin——要火了❤️，你还在等什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/15/2017-Swift——后感/">2017@Swift——后感</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/15/2017-Swift——中国开发者大会（第二天）/">2017@Swift——中国开发者大会（第二天）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/15/2017-Swift——中国开发者大会（第一天）/">2017@Swift——中国开发者大会（第一天）</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/14/PHP——PHP经典面试二/">PHP——PHP经典面试二</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/14/PHP——PHP经典面试一/">PHP——PHP经典面试一</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/12/PHP——大流量高并发解决方案/">PHP——大流量高并发解决方案</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/12/PHP——数据库优化的八种方式/">PHP——数据库优化的八种方式</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/12/PHP——核心技术之缓存/">PHP——核心技术之缓存</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/10/PHP——魔术方法/">PHP——魔术方法</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/07/PHP——分页与实现/">PHP——分页与实现</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/05/PHP——文件上传下载实战/">PHP——文件上传下载实战</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/05/02/PHP——文件上传下载原理与配置/">PHP——文件上传下载原理与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/30/PHP——CURL初探/">PHP——CURL初探</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/28/PHP——GET-POST方式总结/">PHP——GET/POST方式总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/25/PHP——Redis安装，配置，简单使用/">PHP——Redis安装，配置，简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/22/PHP——服务器500错误总结/">PHP——服务器500错误总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/21/iOS——自动打包上传/">iOS——自动打包上传</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/20/iOS——ipv6-服务器/">iOS——ipv6(服务器)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/20/iOS——ipv6-客户端/">iOS——ipv6(客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/16/PHP——接口设计规范/">PHP——接口设计规范</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/16/PHP——APP接口是怎么来的？/">PHP——APP接口是怎么来的？</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/15/PHP——数据库操作/">PHP——数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/13/PHP——异常处理/">PHP——异常处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/12/PHP——图像与图像操作/">PHP——图像与图像操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/11/PHP——时间与日期处理/">PHP——时间与日期处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/11/PHP——文件处理/">PHP——文件处理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/09/PHP——session和cookie/">PHP——session和cookie</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/08/PHP——正则表达式/">PHP——正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/05/PHP——字符串操作/">PHP——字符串操作</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/04/PHP——万物皆对象/">PHP——万物皆对象</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/04/PHP——函数篇/">PHP——函数篇</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/04/03/PHP——数组篇/">PHP——数组篇</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/31/PHP第一周——基础总结/">PHP第一周——基础总结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/27/PHP第三篇——语法概括/">PHP第三篇——语法概括</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/25/PHP第二篇——底层机制/">PHP第二篇——底层机制</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/23/PHP第一篇——工具集选/">PHP第一篇——工具集选</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/20/直播-技术原理篇/">直播--技术原理篇</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/12/算法-合并两个链表/">算法--合并两个链表</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/12/面试被虐总结二/">面试被虐总结二</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/12/面试被虐总结一/">面试被虐总结一</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/10/生命之源-RunLoop/">生命之源-RunLoop</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/07/想怎么转就怎么转/">想怎么转就怎么转</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/03/03/前世-内存管理/">前世-内存管理</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 iCocos
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >总到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
